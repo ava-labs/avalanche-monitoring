@@ -206,7 +206,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Measures how many of each database operation is performed each second across all chains",
       "fieldConfig": {
         "defaults": {
@@ -352,7 +352,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Measures how long each database operation is taking on average",
       "fieldConfig": {
         "defaults": {
@@ -499,7 +499,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Measures how many of each database operation is performed each second on X-Chain",
       "fieldConfig": {
         "defaults": {
@@ -645,7 +645,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Measures how long each database operation is taking on average on X-Chain",
       "fieldConfig": {
         "defaults": {
@@ -792,7 +792,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Measures how many of each database operation is performed each second on P-Chain",
       "fieldConfig": {
         "defaults": {
@@ -938,7 +938,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Measures how long each database operation is taking on average on P-Chain",
       "fieldConfig": {
         "defaults": {
@@ -1085,7 +1085,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Measures how many of each database operation is performed each second across all chains",
       "fieldConfig": {
         "defaults": {
@@ -1231,7 +1231,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Measures how long each database operation is taking on average on C-Chain",
       "fieldConfig": {
         "defaults": {
@@ -1385,7 +1385,22 @@
     "Avalanche"
   ],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "hide": 0,
+        "includeAll": false,
+        "label": "Data Source",
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      }
+    ]
   },
   "time": {
     "from": "now-1h",

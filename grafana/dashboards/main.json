@@ -36,7 +36,7 @@
   "liveNow": false,
   "panels": [
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Stake weighted average uptime of your node, as reported by network peers. If this falls below 80% node probably won't be rewarded for the current staking period.",
       "fieldConfig": {
         "defaults": {
@@ -112,7 +112,7 @@
       "type": "gauge"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Percentage of the stake that view your node as sufficiently online and correct to vote that node be awarded at the end of the staking period.",
       "fieldConfig": {
         "defaults": {
@@ -393,7 +393,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of P-Chain blocks this node has proposed on the network in the last day. Since block production on P-Chain is usually below the target rate, every node proposes P blocks.",
       "fieldConfig": {
         "defaults": {
@@ -449,7 +449,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Percentage of CPU used",
       "fieldConfig": {
         "defaults": {
@@ -519,7 +519,7 @@
       "type": "gauge"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Percentage of storage filled",
       "fieldConfig": {
         "defaults": {
@@ -591,7 +591,7 @@
       "type": "gauge"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of currently failing internal health checks",
       "fieldConfig": {
         "defaults": {
@@ -654,7 +654,7 @@
       "type": "gauge"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Average time to get a response from a peer",
       "fieldConfig": {
         "defaults": {
@@ -725,7 +725,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Amount of AVAX currently staked",
       "fieldConfig": {
         "defaults": {
@@ -782,7 +782,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Amount of network stake node is currently connected to",
       "fieldConfig": {
         "defaults": {
@@ -848,7 +848,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of peers node is connected to",
       "fieldConfig": {
         "defaults": {
@@ -1046,7 +1046,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of blocks this node has proposed on the C-Chain in the last day. Since C-Chain blocks are produced at a fast rate, block producers are selected by stake weight.",
       "fieldConfig": {
         "defaults": {
@@ -1106,7 +1106,7 @@
       "type": "stat"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of blocks/vertices accepted in the last minute",
       "fieldConfig": {
         "defaults": {
@@ -1174,7 +1174,7 @@
       "type": "bargauge"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of blocks/vertices currently being processed by the node",
       "fieldConfig": {
         "defaults": {
@@ -1250,7 +1250,7 @@
       "type": "bargauge"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Number of peers currently being benched (ignored) by the node",
       "fieldConfig": {
         "defaults": {
@@ -1317,7 +1317,7 @@
       "type": "bargauge"
     },
     {
-      "datasource": null,
+      "datasource": "${datasource}",
       "description": "Percentage of successful queries per chain in the last minute",
       "fieldConfig": {
         "defaults": {
@@ -1547,7 +1547,22 @@
     "Avalanche"
   ],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "hide": 0,
+        "includeAll": false,
+        "label": "Data Source",
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      }
+    ]
   },
   "time": {
     "from": "now-6h",
