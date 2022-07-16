@@ -33,7 +33,7 @@
   ],
   "panels": [
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -123,7 +123,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -213,7 +213,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "The average time between a block's issuance and acceptance by this node over the last 5 minutes.",
       "fieldConfig": {
         "defaults": {
@@ -300,7 +300,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "The average time between a block's issuance and rejection by this node over the last 5 minutes.",
       "fieldConfig": {
         "defaults": {
@@ -390,7 +390,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -475,7 +475,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -560,7 +560,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Measures how much of each second is being spent handling different kinds of messages on the C-Chain.\nThe value for chits, for example, is the number of seconds spent handling chits messages per second, over the last 30 seconds.",
       "fieldConfig": {
         "defaults": {
@@ -758,7 +758,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Percentage of queries for which we receive chits on time.",
       "fieldConfig": {
         "defaults": {
@@ -852,7 +852,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Measures how long each kind of request on the C-Chain takes to handle.\nThe value for chits, for example, is how long, in seconds, it takes to handle a chits message.",
       "fieldConfig": {
         "defaults": {
@@ -1050,7 +1050,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "The total stake of validators currently \"benched\" due to poor query responsiveness. Queries to these validators will immediately timeout until they are removed from the \"bench.\"",
       "fieldConfig": {
         "defaults": {
@@ -1141,7 +1141,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "description": "Measures how many of each kind of message are received per second on the C-Chain.",
       "fieldConfig": {
         "defaults": {
@@ -1672,7 +1672,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": "${datasource}",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1857,7 +1857,22 @@
     "Avalanche"
   ],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "hide": 0,
+        "includeAll": false,
+        "label": "Data Source",
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      }
+    ]
   },
   "time": {
     "from": "now-6h",
