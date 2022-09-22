@@ -112,7 +112,7 @@ install_prometheus() {
     echo "User=prometheus"
     echo "Group=prometheus"
     echo "ExecReload=/bin/kill -HUP \$MAINPID"
-    echo "ExecStart=/usr/local/bin/prometheus   --config.file=/etc/prometheus/prometheus.yml   --storage.tsdb.path=/var/lib/prometheus   --web.console.templates=/etc/prometheus/consoles   --web.console.libraries=/etc/prometheus/console_libraries   --web.listen-address=0.0.0.0:9090   --web.external-url="
+    echo "ExecStart=/usr/local/bin/prometheus   --config.file=/etc/prometheus/prometheus.yml   --storage.tsdb.path=/var/lib/prometheus   --web.console.templates=/etc/prometheus/consoles   --web.console.libraries=/etc/prometheus/console_libraries   --web.listen-address=127.0.0.1:9090   --web.external-url="
     echo ""
     echo "SyslogIdentifier=prometheus"
     echo "Restart=always"
