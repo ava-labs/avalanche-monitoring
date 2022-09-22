@@ -227,14 +227,15 @@ install_exporter() {
     echo "    --collector.bonding \\"
     echo "    --collector.hwmon \\"
     echo "    --collector.arp \\"
-    echo "    --web.listen-address=:9100 \\"
+    echo "    --web.listen-address=127.0.0.1:9100 \\"
     echo "    --web.telemetry-path=\"/metrics\""
     echo ""
     echo "[Install]"
     echo "WantedBy=multi-user.target"
-  }>>node_exporter.service
+  } >node_exporter.service
   sudo cp node_exporter.service /etc/systemd/system/node_exporter.service
 
+  sudo systemctl daemon-reload
   sudo systemctl start node_exporter
   sudo systemctl enable node_exporter
 
