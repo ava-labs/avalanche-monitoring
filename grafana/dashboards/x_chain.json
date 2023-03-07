@@ -112,14 +112,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "round(increase(avalanche_X_vtx_accepted_count{job=\"avalanchego\"}[1m]))>0",
+          "expr": "round(increase(avalanche_X_avalanche_vtx_accepted_count{job=\"avalanchego\"}[1m]))>0",
           "interval": "",
           "legendFormat": "Accepted",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "round(increase(avalanche_X_vtx_rejected_count{job=\"avalanchego\"}[1m]))>0",
+          "expr": "round(increase(avalanche_X_avalanche_vtx_rejected_count{job=\"avalanchego\"}[1m]))>0",
           "hide": true,
           "interval": "",
           "legendFormat": "Rejected",
@@ -206,13 +206,13 @@
       "pluginVersion": "8.0.4",
       "targets": [
         {
-          "expr": "rate(avalanche_X_vtx_accepted_sum{job=\"avalanchego\"}[5m]) / rate(avalanche_X_vtx_accepted_count{job=\"avalanchego\"}[5m])",
+          "expr": "rate(avalanche_X_avalanche_vtx_accepted_sum{job=\"avalanchego\"}[5m]) / rate(avalanche_X_avalanche_vtx_accepted_count{job=\"avalanchego\"}[5m])",
           "interval": "",
           "legendFormat": "Accepted",
           "refId": "A"
         },
         {
-          "expr": "rate(avalanche_X_vtx_rejected_sum{job=\"avalanchego\"}[5m]) / rate(avalanche_X_vtx_rejected_count{job=\"avalanchego\"}[5m])",
+          "expr": "rate(avalanche_X_avalanche_vtx_rejected_sum{job=\"avalanchego\"}[5m]) / rate(avalanche_X_avalanche_vtx_rejected_count{job=\"avalanchego\"}[5m])",
           "hide": false,
           "interval": "",
           "legendFormat": "Rejected",
@@ -300,7 +300,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "avalanche_X_txs_processing{job=\"avalanchego\"}>0",
+          "expr": "avalanche_X_avalanche_txs_processing{job=\"avalanchego\"}>0",
           "hide": false,
           "interval": "",
           "legendFormat": "Transactions",
@@ -308,7 +308,7 @@
         },
         {
           "exemplar": true,
-          "expr": "avalanche_X_vtx_processing{job=\"avalanchego\"}>0",
+          "expr": "avalanche_X_avalanche_vtx_processing{job=\"avalanchego\"}>0",
           "hide": false,
           "interval": "",
           "legendFormat": "Vertices",
