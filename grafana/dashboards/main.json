@@ -269,14 +269,14 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "round(increase(avalanche_X_vtx_accepted_count{job=\"avalanchego\"}[1m]))>0",
+          "expr": "round(increase(avalanche_X_avalanche_vtx_accepted_count{job=\"avalanchego\"}[1m]))>0",
           "interval": "",
           "legendFormat": "Accepted",
           "refId": "A"
         },
         {
           "exemplar": true,
-          "expr": "round(increase(avalanche_X_vtx_rejected_count{job=\"avalanchego\"}[1m]))>0",
+          "expr": "round(increase(avalanche_X_avalanche_vtx_rejected_count{job=\"avalanchego\"}[1m]))>0",
           "hide": false,
           "interval": "",
           "legendFormat": "Rejected",
