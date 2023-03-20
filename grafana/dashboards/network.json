@@ -38,9 +38,7 @@
   "panels": [
     {
       "collapsed": false,
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -53,9 +51,7 @@
       "type": "row"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "Stake weighted average uptime of your node, as reported by network peers. If this falls below 80% node probably won't be rewarded for the current staking period.",
       "fieldConfig": {
         "defaults": {
@@ -161,9 +157,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "Percentage of the stake that view your node as sufficiently online and correct to vote that node be awarded at the end of the staking period.",
       "fieldConfig": {
         "defaults": {
@@ -301,9 +295,7 @@
         "noDataState": "no_data",
         "notifications": []
       },
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "Number of network peers the node is connected to",
       "fieldConfig": {
         "defaults": {
@@ -390,9 +382,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "Shows the amount of time this node will wait for a response to a request before considering the request failed, and the average time it takes to get a response to a request.",
       "fieldConfig": {
         "defaults": {
@@ -488,9 +478,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "Number of outstanding requests related to consensus/bootstrapping. Doesn't include handshake messages.",
       "fieldConfig": {
         "defaults": {
@@ -576,9 +564,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "From all chains",
       "fieldConfig": {
         "defaults": {
@@ -791,9 +777,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "From all chains",
       "fieldConfig": {
         "defaults": {
@@ -993,9 +977,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "From all chains",
       "fieldConfig": {
         "defaults": {
@@ -1072,9 +1054,7 @@
       "pluginVersion": "8.0.3",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_accepted_received_bytes{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1082,9 +1062,7 @@
           "refId": "A"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_get_accepted_received_bytes{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1092,9 +1070,7 @@
           "refId": "B"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_get_accepted_frontier_received_bytes{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1102,9 +1078,7 @@
           "refId": "C"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_get_ancestors_received_bytes{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1112,9 +1086,7 @@
           "refId": "D"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_put_received_bytes{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1122,9 +1094,7 @@
           "refId": "E"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_multi_put_received_bytes{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1132,9 +1102,7 @@
           "refId": "F"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_get_version_received_bytes{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1142,9 +1110,7 @@
           "refId": "G"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_get_peerlist_received_bytes{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1152,9 +1118,7 @@
           "refId": "H"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_pull_query_received_bytes{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1162,9 +1126,7 @@
           "refId": "I"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_push_query_received_bytes{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1172,9 +1134,7 @@
           "refId": "J"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_version_received_bytes{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1182,9 +1142,7 @@
           "refId": "K"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_ping_received_bytes{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1192,9 +1150,7 @@
           "refId": "L"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_pong_received_bytes{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1202,9 +1158,7 @@
           "refId": "M"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_get_received_bytes{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1212,9 +1166,7 @@
           "refId": "N"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_chits_received_bytes{job=\"avalanchego\"}[1m])",
           "hide": false,
@@ -1223,9 +1175,7 @@
           "refId": "O"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_app_gossip_received_bytes{job=\"avalanchego\"}[1m])",
           "hide": false,
@@ -1234,9 +1184,7 @@
           "refId": "P"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_app_request_received_bytes{job=\"avalanchego\"}[1m])",
           "hide": false,
@@ -1245,9 +1193,7 @@
           "refId": "Q"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_app_response_received_bytes{job=\"avalanchego\"}[1m])",
           "hide": false,
@@ -1260,9 +1206,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "From all chains",
       "fieldConfig": {
         "defaults": {
@@ -1339,9 +1283,7 @@
       "pluginVersion": "8.0.3",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_accepted_sent_bytes{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1349,9 +1291,7 @@
           "refId": "A"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_get_accepted_sent_bytes{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1359,9 +1299,7 @@
           "refId": "B"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_get_accepted_frontier_sent_bytes{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1369,9 +1307,7 @@
           "refId": "C"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_get_ancestors_sent_bytes{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1379,9 +1315,7 @@
           "refId": "D"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_put_sent_bytes{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1389,9 +1323,7 @@
           "refId": "E"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_multi_put_sent_bytes{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1399,9 +1331,7 @@
           "refId": "F"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_get_version_sent_bytes{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1409,9 +1339,7 @@
           "refId": "G"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_get_peerlist_sent_bytes{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1419,9 +1347,7 @@
           "refId": "H"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_pull_query_sent_bytes{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1429,9 +1355,7 @@
           "refId": "I"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_push_query_sent_bytes{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1439,9 +1363,7 @@
           "refId": "J"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_version_sent_bytes{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1449,9 +1371,7 @@
           "refId": "K"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_ping_sent_bytes{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1459,9 +1379,7 @@
           "refId": "L"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_pong_sent_bytes{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1469,9 +1387,7 @@
           "refId": "M"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_get_sent_bytes{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1479,9 +1395,7 @@
           "refId": "N"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_chits_sent_bytes{job=\"avalanchego\"}[1m])",
           "hide": false,
@@ -1490,9 +1404,7 @@
           "refId": "O"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_app_gossip_sent_bytes{job=\"avalanchego\"}[1m])",
           "hide": false,
@@ -1501,9 +1413,7 @@
           "refId": "P"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_app_request_sent_bytes{job=\"avalanchego\"}[1m])",
           "hide": false,
@@ -1512,9 +1422,7 @@
           "refId": "Q"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "rate(avalanche_network_app_response_sent_bytes{job=\"avalanchego\"}[1m])",
           "hide": false,
@@ -1527,9 +1435,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "From all chains",
       "fieldConfig": {
         "defaults": {
@@ -1606,9 +1512,7 @@
       "pluginVersion": "8.0.3",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_accepted_received_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_accepted_received{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1616,9 +1520,7 @@
           "refId": "A"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_get_accepted_received_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_get_accepted_received{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1626,9 +1528,7 @@
           "refId": "B"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_get_accepted_frontier_received_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_get_accepted_frontier_received{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1636,9 +1536,7 @@
           "refId": "C"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_get_ancestors_received_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_get_ancestors_received{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1646,9 +1544,7 @@
           "refId": "D"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_put_received_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_put_received{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1656,9 +1552,7 @@
           "refId": "E"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_multi_put_received_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_multi_put_received{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1666,9 +1560,7 @@
           "refId": "F"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_get_version_received_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_get_version_received{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1676,9 +1568,7 @@
           "refId": "G"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_get_peerlist_received_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_get_peerlist_received{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1686,9 +1576,7 @@
           "refId": "H"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_pull_query_received_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_pull_query_received{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1696,9 +1584,7 @@
           "refId": "I"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_push_query_received_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_push_query_received{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1706,9 +1592,7 @@
           "refId": "J"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_version_received_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_version_received{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1716,9 +1600,7 @@
           "refId": "K"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_ping_received_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_ping_received{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1726,9 +1608,7 @@
           "refId": "L"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_pong_received_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_pong_received{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1736,9 +1616,7 @@
           "refId": "M"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_get_received_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_get_received{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1746,9 +1624,7 @@
           "refId": "N"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_chits_received_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_chits_received{job=\"avalanchego\"}[1m])",
           "hide": false,
@@ -1757,9 +1633,7 @@
           "refId": "O"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_app_gossip_received_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_app_gossip_received{job=\"avalanchego\"}[1m])",
           "hide": false,
@@ -1768,9 +1642,7 @@
           "refId": "P"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_app_request_received_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_app_request_received{job=\"avalanchego\"}[1m])",
           "hide": false,
@@ -1779,9 +1651,7 @@
           "refId": "Q"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_app_response_received_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_app_response_received{job=\"avalanchego\"}[1m])",
           "hide": false,
@@ -1794,9 +1664,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "From all chains",
       "fieldConfig": {
         "defaults": {
@@ -1873,9 +1741,7 @@
       "pluginVersion": "8.0.3",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_accepted_sent_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_accepted_sent{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1883,9 +1749,7 @@
           "refId": "A"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_get_accepted_sent_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_get_accepted_sent{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1893,9 +1757,7 @@
           "refId": "B"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_get_accepted_frontier_sent_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_get_accepted_frontier_sent{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1903,9 +1765,7 @@
           "refId": "C"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_get_ancestors_sent_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_get_ancestors_sent{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1913,9 +1773,7 @@
           "refId": "D"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_put_sent_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_put_sent{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1923,9 +1781,7 @@
           "refId": "E"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_multi_put_sent_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_multi_put_sent{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1933,9 +1789,7 @@
           "refId": "F"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_get_version_sent_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_get_version_sent{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1943,9 +1797,7 @@
           "refId": "G"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_get_peerlist_sent_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_get_peerlist_sent{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1953,9 +1805,7 @@
           "refId": "H"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_pull_query_sent_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_pull_query_sent{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1963,9 +1813,7 @@
           "refId": "I"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_push_query_sent_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_push_query_sent{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1973,9 +1821,7 @@
           "refId": "J"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_version_sent_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_version_sent{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1983,9 +1829,7 @@
           "refId": "K"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_ping_sent_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_ping_sent{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1993,9 +1837,7 @@
           "refId": "L"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_pong_sent_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_pong_sent{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -2003,9 +1845,7 @@
           "refId": "M"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_get_sent_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_get_sent{job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -2013,9 +1853,7 @@
           "refId": "N"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_chits_sent_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_chits_sent{job=\"avalanchego\"}[1m])",
           "hide": false,
@@ -2024,9 +1862,7 @@
           "refId": "O"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_app_gossip_sent_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_app_gossip_sent{job=\"avalanchego\"}[1m])",
           "hide": false,
@@ -2035,9 +1871,7 @@
           "refId": "P"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_app_request_sent_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_app_request_sent{job=\"avalanchego\"}[1m])",
           "hide": false,
@@ -2046,9 +1880,7 @@
           "refId": "Q"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "${datasource}",
           "exemplar": true,
           "expr": "increase(avalanche_network_app_response_sent_bytes{job=\"avalanchego\"}[1m])/increase(avalanche_network_app_response_sent{job=\"avalanchego\"}[1m])",
           "hide": false,
@@ -2223,9 +2055,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "Number of messages that are queued to be sent to peers",
       "fieldConfig": {
         "defaults": {
@@ -2312,9 +2142,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "Amount of the stake in AVAX that is benched (ignored) because the nodes are unhealthy",
       "fieldConfig": {
         "defaults": {
@@ -2418,9 +2246,7 @@
     },
     {
       "collapsed": false,
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -2433,9 +2259,7 @@
       "type": "row"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "Number of messages waiting to acquire bytes from the inbound message throttler.",
       "fieldConfig": {
         "defaults": {
@@ -2522,9 +2346,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "Number of bytes left in the validator byte allocation of the inbound message throttler",
       "fieldConfig": {
         "defaults": {
@@ -2613,9 +2435,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "The amount of time, on average, that we wait to acquire bytes from the throttler before reading a message.",
       "fieldConfig": {
         "defaults": {
@@ -2699,9 +2519,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "The amount of time, on average, that we wait to acquire from the throttler before reading a message.",
       "fieldConfig": {
         "defaults": {
@@ -2785,9 +2603,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "Number of messages that are currently being handled and haven't yet returned their bytes to the inbound message throttler.",
       "fieldConfig": {
         "defaults": {
@@ -2874,9 +2690,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "Number of messages waiting to acquire from the inbound message buffer throttler.",
       "fieldConfig": {
         "defaults": {
@@ -2962,9 +2776,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "Number of bytes left in the at-large byte allocation of the inbound message throttler",
       "fieldConfig": {
         "defaults": {
@@ -3052,9 +2864,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "Number of messages waiting to acquire bytes from the inbound bandwidth throttler.",
       "fieldConfig": {
         "defaults": {
@@ -3142,9 +2952,7 @@
     },
     {
       "collapsed": false,
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -3157,9 +2965,7 @@
       "type": "row"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "Number of bytes left in the at-large byte allocation of the outbound message throttler",
       "fieldConfig": {
         "defaults": {
@@ -3247,9 +3053,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "Number of bytes left in the validator byte allocation of the outbound message throttler",
       "fieldConfig": {
         "defaults": {
@@ -3334,9 +3138,7 @@
     },
     {
       "collapsed": false,
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -3349,9 +3151,7 @@
       "type": "row"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "From all chains",
       "fieldConfig": {
         "defaults": {
@@ -3555,9 +3355,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "Number of messages that could not be parsed because they were of unknown type or invalidly formatted.",
       "fieldConfig": {
         "defaults": {
@@ -3639,9 +3437,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "Number of inbound messages dropped (not processed) due to expiration in last minute.",
       "fieldConfig": {
         "defaults": {
@@ -3727,9 +3523,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "Number of outbound messages dropped (not sent) due to rate-limiting in the last minute",
       "fieldConfig": {
         "defaults": {
@@ -3811,9 +3605,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "Number of inbound connections dropped due to inbound connection rate-limiting",
       "fieldConfig": {
         "defaults": {
@@ -3896,9 +3688,7 @@
     },
     {
       "collapsed": false,
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -3911,9 +3701,7 @@
       "type": "row"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -4046,9 +3834,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -4181,9 +3967,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "${datasource}",
       "description": "Rate at which we save bytes (don't send/receive them over the network) by compressing messages/receiving compressed messages.",
       "fieldConfig": {
         "defaults": {
@@ -4381,7 +4165,22 @@
     "Avalanche"
   ],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "hide": 0,
+        "includeAll": false,
+        "label": "Data Source",
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      }
+    ]
   },
   "time": {
     "from": "now-3h",
