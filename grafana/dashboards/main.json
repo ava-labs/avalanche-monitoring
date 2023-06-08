@@ -199,7 +199,7 @@
       "datasource": {
         "type": "prometheus"
       },
-      "description": "Number of accepted and rejected vertices on the X chain in the last minute",
+      "description": "Number of accepted and rejected blocks on the X chain in the last minute",
       "fieldConfig": {
         "defaults": {
           "color": {

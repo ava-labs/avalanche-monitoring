@@ -345,7 +345,7 @@
           "expr": "avalanche_X_blks_processing{job=\"avalanchego\"}>0",
           "hide": false,
           "interval": "",
-          "legendFormat": "Vertices",
+          "legendFormat": "Blocks",
           "range": true,
           "refId": "B"
         }
