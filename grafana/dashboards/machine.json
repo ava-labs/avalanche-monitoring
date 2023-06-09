@@ -80,9 +80,7 @@
           }
         ]
       },
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "Prometheus",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -177,9 +175,7 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "Prometheus",
       "description": "",
       "fill": 1,
       "fillGradient": 0,
@@ -257,9 +253,7 @@
       }
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "Prometheus",
       "description": "Include I/O from applications other than AvalancheGo",
       "fieldConfig": {
         "defaults": {
@@ -354,9 +348,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "Prometheus",
       "description": "Includes I/O from applications other than AvalancheGo",
       "fieldConfig": {
         "defaults": {
@@ -430,18 +422,14 @@
       "pluginVersion": "8.0.5",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "expr": "rate(node_disk_read_bytes_total[5m])",
           "interval": "",
           "legendFormat": "Read {{device}}",
           "refId": "A"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "expr": "rate(node_disk_written_bytes_total[5m])",
           "hide": false,
           "interval": "",
@@ -492,9 +480,7 @@
           }
         ]
       },
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -573,9 +559,7 @@
       "pluginVersion": "8.0.5",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "100 * (node_memory_MemTotal_bytes{job=~\"avalanchego-machine\"} - node_memory_MemFree_bytes{job=~\"avalanchego-machine\"} - node_memory_Buffers_bytes{job=~\"avalanchego-machine\"} - node_memory_Cached_bytes{job=~\"avalanchego-machine\"}) / node_memory_MemTotal_bytes{job=~\"avalanchego-machine\"}",
           "interval": "",
@@ -622,9 +606,7 @@
         "noDataState": "no_data",
         "notifications": []
       },
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -713,9 +695,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "Prometheus",
       "description": "Number of parallel execution threads in the client runtime",
       "fieldConfig": {
         "defaults": {
@@ -787,9 +767,7 @@
       },
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "editorMode": "code",
           "expr": "avalanche_go_goroutines{job=~\"avalanchego\"}",
           "interval": "",
@@ -802,9 +780,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "Prometheus",
       "description": "Number of open file handles the client is keeping",
       "fieldConfig": {
         "defaults": {
@@ -876,9 +852,7 @@
       },
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "editorMode": "code",
           "expr": "avalanche_process_open_fds{job=~\"avalanchego\"}",
           "legendFormat": "Open files",
@@ -886,9 +860,7 @@
           "refId": "A"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "editorMode": "code",
           "exemplar": false,
           "expr": "avalanche_process_max_fds{job=~\"avalanchego\"}",

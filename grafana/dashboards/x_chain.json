@@ -37,9 +37,7 @@
   "liveNow": false,
   "panels": [
     {
-      "datasource": {
-             "type": "prometheus"
-      },
+      "datasource": "Prometheus",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -121,9 +119,7 @@
       "pluginVersion": "8.0.4",
       "targets": [
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "editorMode": "code",
           "exemplar": true,
           "expr": "round(increase(avalanche_X_blks_accepted_count{job=\"avalanchego\"}[1m]))>0",
@@ -133,9 +129,7 @@
           "refId": "A"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "editorMode": "code",
           "exemplar": true,
           "expr": "round(increase(avalanche_X_blks_rejected_count{job=\"avalanchego\"}[1m]))>0",
@@ -150,9 +144,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "Prometheus",
       "description": "The average time between a block's issuance and acceptance by this node over the last 5 minutes.",
       "fieldConfig": {
         "defaults": {
@@ -230,9 +222,7 @@
       "pluginVersion": "8.0.4",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "editorMode": "code",
           "expr": "rate(avalanche_X_blks_accepted_sum{job=\"avalanchego\"}[5m]) / rate(avalanche_X_blks_accepted_count{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -241,9 +231,7 @@
           "refId": "A"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "editorMode": "code",
           "expr": "rate(avalanche_X_blks_rejected_sum{job=\"avalanchego\"}[5m]) / rate(avalanche_X_blks_rejected_count{job=\"avalanchego\"}[5m])",
           "hide": false,
@@ -257,9 +245,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "Prometheus",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -337,9 +323,7 @@
       "pluginVersion": "8.0.4",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "editorMode": "code",
           "exemplar": true,
           "expr": "avalanche_X_blks_processing{job=\"avalanchego\"}>0",
@@ -354,9 +338,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "Prometheus",
       "description": "Percentage of queries sent that we receive a response to. (Average over the last 5 minutes.)",
       "fieldConfig": {
         "defaults": {
@@ -438,9 +420,7 @@
       "pluginVersion": "8.0.4",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "(increase(avalanche_X_handler_chits_count{job=\"avalanchego\"}[5m]) + 1) / (increase(avalanche_X_handler_chits_count{job=\"avalanchego\"}[5m]) + increase(avalanche_X_handler_query_failed_count{job=\"avalanchego\"}[5m]) + 1)",
           "instant": false,
@@ -453,9 +433,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "Prometheus",
       "description": "Measures how much of each second is being spent handling different kinds of messages on the X-Chain.\nThe value for chits, for example, is the number of seconds spent handling chits messages per second.",
       "fieldConfig": {
         "defaults": {
@@ -535,9 +513,7 @@
       "pluginVersion": "8.0.4",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_pull_query_sum{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -545,9 +521,7 @@
           "refId": "A"
         },
         {
-          "datasource": {
-            "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_push_query_sum{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -555,9 +529,7 @@
           "refId": "B"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_chits_sum{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -565,9 +537,7 @@
           "refId": "C"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_accepted_sum{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -575,9 +545,7 @@
           "refId": "D"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_get_sum{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -585,9 +553,7 @@
           "refId": "E"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_put_sum{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -595,9 +561,7 @@
           "refId": "F"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_multiput_sum{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -605,9 +569,7 @@
           "refId": "G"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_get_ancestors_sum{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -615,9 +577,7 @@
           "refId": "H"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_get_failed_sum{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -625,9 +585,7 @@
           "refId": "I"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_query_failed_sum{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -635,9 +593,7 @@
           "refId": "J"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_get_accepted_sum{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -645,9 +601,7 @@
           "refId": "K"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_get_ancestors_failed_sum{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -655,9 +609,7 @@
           "refId": "L"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_app_request_sum{job=\"avalanchego\"}[5m])",
           "hide": false,
@@ -666,9 +618,7 @@
           "refId": "M"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_app_request_failed_sum{job=\"avalanchego\"}[5m])",
           "hide": false,
@@ -677,9 +627,7 @@
           "refId": "N"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_app_response_sum{job=\"avalanchego\"}[5m])",
           "hide": false,
@@ -688,9 +636,7 @@
           "refId": "O"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_app_gossip_sum{job=\"avalanchego\"}[5m])",
           "hide": false,
@@ -703,9 +649,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "Prometheus",
       "description": "Measures how long each kind of request on the X-Chain takes to handle.\nThe value for chits, for example, is how long, in seconds, it takes to handle a chits message.",
       "fieldConfig": {
         "defaults": {
@@ -785,9 +729,7 @@
       "pluginVersion": "8.0.4",
       "targets": [
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_pull_query_sum{job=\"avalanchego\"}[5m])/rate(avalanche_X_handler_pull_query_count{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -795,9 +737,7 @@
           "refId": "A"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_push_query_sum{job=\"avalanchego\"}[5m])/rate(avalanche_X_handler_push_query_count{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -805,9 +745,7 @@
           "refId": "B"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_chits_sum{job=\"avalanchego\"}[5m])/rate(avalanche_X_handler_chits_count{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -815,9 +753,7 @@
           "refId": "C"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_accepted_sum{job=\"avalanchego\"}[5m])/rate(avalanche_X_handler_accepted_count{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -825,9 +761,7 @@
           "refId": "D"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_get_sum{job=\"avalanchego\"}[5m])/rate(avalanche_X_handler_get_count{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -835,9 +769,7 @@
           "refId": "E"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_put_sum{job=\"avalanchego\"}[5m])/rate(avalanche_X_handler_put_count{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -845,9 +777,7 @@
           "refId": "F"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_multiput_sum{job=\"avalanchego\"}[5m])/rate(avalanche_X_handler_multi_put_count{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -855,9 +785,7 @@
           "refId": "G"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_get_ancestors_sum{job=\"avalanchego\"}[5m])/rate(avalanche_X_handler_get_ancestors_count{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -865,9 +793,7 @@
           "refId": "H"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_get_failed_sum{job=\"avalanchego\"}[5m])/rate(avalanche_X_handler_get_failed_count{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -875,9 +801,7 @@
           "refId": "I"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_query_failed_sum{job=\"avalanchego\"}[5m])/rate(avalanche_X_handler_query_failed_count{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -885,9 +809,7 @@
           "refId": "J"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_get_accepted_sum{job=\"avalanchego\"}[5m])/rate(avalanche_X_handler_get_accepted_count{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -895,9 +817,7 @@
           "refId": "K"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_get_ancestors_failed_sum{job=\"avalanchego\"}[5m])/rate(avalanche_X_handler_get_ancestors_failed_count{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -905,9 +825,7 @@
           "refId": "L"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_app_request_sum{job=\"avalanchego\"}[5m])/rate(avalanche_X_handler_app_request_count{job=\"avalanchego\"}[5m])",
           "hide": false,
@@ -916,9 +834,7 @@
           "refId": "M"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_app_request_failed_sum{job=\"avalanchego\"}[5m])/rate(avalanche_X_handler_app_request_failed_count{job=\"avalanchego\"}[5m])",
           "hide": false,
@@ -927,9 +843,7 @@
           "refId": "N"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_app_gossip_sum{job=\"avalanchego\"}[5m])/rate(avalanche_X_handler_app_gossip_count{job=\"avalanchego\"}[5m])",
           "hide": false,
@@ -938,9 +852,7 @@
           "refId": "O"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_app_response_sum{job=\"avalanchego\"}[5m])/rate(avalanche_X_handler_app_response_count{job=\"avalanchego\"}[5m])",
           "hide": false,
@@ -953,9 +865,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "Prometheus",
       "description": "The total stake of validators currently \"benched\" due to poor query responsiveness. Queries to these validators will immediately timeout until they are removed from the \"bench.\"",
       "fieldConfig": {
         "defaults": {
@@ -1037,9 +947,7 @@
       "pluginVersion": "8.0.4",
       "targets": [
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "avg_over_time(avalanche_X_benchlist_benched_weight{job=\"avalanchego\"}[15m]) / 10^9",
           "interval": "",
@@ -1051,9 +959,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "Prometheus",
       "description": "Measures how many of each kind of message are received per second on the X-Chain.",
       "fieldConfig": {
         "defaults": {
@@ -1133,9 +1039,7 @@
       "pluginVersion": "8.0.4",
       "targets": [
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_pull_query_count{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -1143,9 +1047,7 @@
           "refId": "A"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_push_query_count{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -1153,9 +1055,7 @@
           "refId": "B"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_chits_count{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -1163,9 +1063,7 @@
           "refId": "C"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_accepted_count{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -1173,9 +1071,7 @@
           "refId": "D"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_get_count{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -1183,9 +1079,7 @@
           "refId": "E"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_put_count{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -1193,9 +1087,7 @@
           "refId": "F"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_multi_put_count{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -1203,9 +1095,7 @@
           "refId": "G"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_get_ancestors_count{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -1213,9 +1103,7 @@
           "refId": "H"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_get_failed_count{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -1223,9 +1111,7 @@
           "refId": "I"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_query_failed_count{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -1233,9 +1119,7 @@
           "refId": "J"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_get_accepted_count{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -1243,9 +1127,7 @@
           "refId": "K"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_get_ancestors_failed_count{job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -1253,9 +1135,7 @@
           "refId": "L"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_chits_count{job=\"avalanchego\"}[5m])",
           "hide": false,
@@ -1264,9 +1144,7 @@
           "refId": "M"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_app_request_count{job=\"avalanchego\"}[5m])",
           "hide": false,
@@ -1275,9 +1153,7 @@
           "refId": "N"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_app_request_failed_count{job=\"avalanchego\"}[5m])",
           "hide": false,
@@ -1286,9 +1162,7 @@
           "refId": "O"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_app_response_count{job=\"avalanchego\"}[5m])",
           "hide": false,
@@ -1297,9 +1171,7 @@
           "refId": "P"
         },
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "exemplar": true,
           "expr": "rate(avalanche_X_handler_app_gossip_count{job=\"avalanchego\"}[5m])",
           "hide": false,
@@ -1312,9 +1184,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1388,9 +1258,7 @@
       },
       "targets": [
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "editorMode": "code",
           "exemplar": true,
           "expr": "increase(avalanche_X_vm_avalanche_utxo_cache_hit[5m])/(increase(avalanche_X_vm_avalanche_utxo_cache_hit[5m])+increase(avalanche_X_vm_avalanche_utxo_cache_miss[5m]))",
@@ -1404,9 +1272,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "Prometheus",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1486,9 +1352,7 @@
       "pluginVersion": "8.0.4",
       "targets": [
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "editorMode": "code",
           "exemplar": true,
           "expr": "avalanche_X_handler_unprocessed_msgs_len",
@@ -1502,9 +1366,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "type": "prometheus"
-      },
+      "datasource": "Prometheus",
       "description": "",
       "fieldConfig": {
         "defaults": {
@@ -1585,9 +1447,7 @@
       "pluginVersion": "8.0.4",
       "targets": [
         {
-          "datasource": {
-             "type": "prometheus"
-          },
+          "datasource": "Prometheus",
           "expr": "increase(avalanche_X_handler_expired[1m])",
           "interval": "",
           "legendFormat": "Expired",

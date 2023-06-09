@@ -27,7 +27,7 @@
   ],
   "panels": [
     {
-      "datasource": null,
+      "datasource": "Prometheus",
       "description": "Database read rate. Note that these reads may be from caches and not from disk.",
       "fieldConfig": {
         "defaults": {
@@ -117,7 +117,7 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": "Prometheus",
       "description": "Database write rate.",
       "fieldConfig": {
         "defaults": {
