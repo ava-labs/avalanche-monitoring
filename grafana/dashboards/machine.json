@@ -169,7 +169,7 @@
           "refId": "A"
         }
       ],
-      "title": "CPU Utilization (%)",
+      "title": "CPU Utilization",
       "type": "timeseries"
     },
     {
@@ -583,7 +583,7 @@
           "refId": "A"
         }
       ],
-      "title": "Memory Utilization (%)",
+      "title": "Memory Utilization",
       "type": "timeseries"
     },
     {
@@ -709,7 +709,7 @@
           "refId": "A"
         }
       ],
-      "title": "Disk Utilization (%)",
+      "title": "Disk Utilization",
       "type": "timeseries"
     },
     {
