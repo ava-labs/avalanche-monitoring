@@ -28,13 +28,15 @@
   "links": [
     {
       "icon": "external link",
+      "includeVars": true,
+      "keepTime": true,
       "tags": [
         "Avalanche"
       ],
       "type": "dashboards"
     }
   ],
-  "liveNow": false,
+  "liveNow": true,
   "panels": [
     {
       "datasource": {
@@ -125,7 +127,7 @@
           "exemplar": true,
           "expr": "round(increase(avalanche_snowman_blks_accepted_count{chain=\"P\", job=\"avalanchego\"}[1m]))>0",
           "interval": "",
-          "legendFormat": "Blocks",
+          "legendFormat": "Blocks {{node_id}}",
           "refId": "A"
         }
       ],
@@ -222,7 +224,7 @@
           "exemplar": true,
           "expr": "round(increase(avalanche_snowman_blks_rejected_count{chain=\"P\", job=\"avalanchego\"}[1m]))>0",
           "interval": "",
-          "legendFormat": "Blocks",
+          "legendFormat": "Blocks {{node_id}}",
           "range": true,
           "refId": "A"
         }
@@ -503,7 +505,7 @@
           "exemplar": true,
           "expr": "avalanche_snowman_blks_processing{chain=\"P\", job=\"avalanchego\"}>0",
           "interval": "",
-          "legendFormat": "Blocks",
+          "legendFormat": "Blocks {{node_id}}",
           "refId": "A"
         }
       ],
@@ -594,7 +596,7 @@
           "exemplar": true,
           "expr": "avalanche_snowman_polls{chain=\"P\"} > 0",
           "interval": "",
-          "legendFormat": "Polls",
+          "legendFormat": "Polls {{node_id}}",
           "refId": "A"
         }
       ],
@@ -605,7 +607,7 @@
       "datasource": {
         "type": "prometheus"
       },
-      "description": "Measures how much of each second is being spent handling different kinds of messages on the C-Chain.\nThe value for chits, for example, is the number of seconds spent handling chits messages per second, over the last 30 seconds.",
+      "description": "Measures how much of each second is being spent handling different kinds of messages on the P-Chain.\nThe value for chits, for example, is the number of seconds spent handling chits messages per second, over the last 30 seconds.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -690,7 +692,7 @@
           "exemplar": true,
           "expr": "rate(avalanche_handler_message_handling_time{chain=\"P\", job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "{{ op }}",
+          "legendFormat": "{{ op }} {{node_id}}",
           "refId": "A"
         }
       ],
@@ -815,7 +817,7 @@
       "datasource": {
         "type": "prometheus"
       },
-      "description": "Measures how long each kind of request on the C-Chain takes to handle.\nThe value for chits, for example, is how long, in seconds, it takes to handle a chits message.",
+      "description": "Measures how long each kind of request on the P-Chain takes to handle.\nThe value for chits, for example, is how long, in seconds, it takes to handle a chits message.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -883,7 +885,7 @@
             "max"
           ],
           "displayMode": "table",
-          "placement": "right",
+          "placement": "bottom",
           "showLegend": true
         },
         "tooltip": {
@@ -900,7 +902,7 @@
           "exemplar": true,
           "expr": "rate(avalanche_handler_message_handling_time{chain=\"P\", job=\"avalanchego\"}[5m])/rate(avalanche_handler_messages{chain=\"P\", job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "{{ op }}",
+          "legendFormat": "{{ op }} {{node_id}}",
           "refId": "A"
         }
       ],
@@ -1191,7 +1193,7 @@
           "exemplar": true,
           "expr": "avg_over_time(avalanche_benchlist_benched_weight{chain=\"P\", job=\"avalanchego\"}[15m]) / 10^9",
           "interval": "",
-          "legendFormat": "AVAX Benched",
+          "legendFormat": "AVAX Benched {{node_id}}",
           "refId": "A"
         }
       ],
@@ -1202,7 +1204,7 @@
       "datasource": {
         "type": "prometheus"
       },
-      "description": "Measures how many of each kind of message are received per second on the C-Chain.",
+      "description": "Measures how many of each kind of message are received per second on the P-Chain.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1270,7 +1272,7 @@
             "max"
           ],
           "displayMode": "table",
-          "placement": "right",
+          "placement": "bottom",
           "showLegend": true
         },
         "tooltip": {
@@ -1287,7 +1289,7 @@
           "exemplar": true,
           "expr": "rate(avalanche_handler_messages{chain=\"P\", job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "{{ op }}",
+          "legendFormat": "{{ op }} {{node_id}}",
           "refId": "A"
         }
       ],
@@ -1302,7 +1304,19 @@
     "Avalanche"
   ],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "datasource": {
+          "type": "prometheus"
+        },
+        "filters": [],
+        "hide": 0,
+        "label": "Filter",
+        "name": "filter",
+        "skipUrlSync": false,
+        "type": "adhoc"
+      }
+    ]
   },
   "time": {
     "from": "now-6h",

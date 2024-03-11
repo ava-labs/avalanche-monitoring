@@ -19,15 +19,20 @@
   "links": [
     {
       "icon": "external link",
+      "includeVars": true,
+      "keepTime": true,
       "tags": [
         "Avalanche"
       ],
       "type": "dashboards"
     }
   ],
+  "liveNow": true,
   "panels": [
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus"
+      },
       "description": "Database read rate. Note that these reads may be from caches and not from disk.",
       "fieldConfig": {
         "defaults": {
@@ -108,7 +113,7 @@
           },
           "expr": "sum(rate(avalanche_meterdb_size{chain=\"all\", method=~\"has|get|iterator_next\"}[5m]))",
           "interval": "",
-          "legendFormat": "Bytes Read",
+          "legendFormat": "Bytes Read {{node_id}}",
           "refId": "A"
         }
       ],
@@ -118,7 +123,9 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus"
+      },
       "description": "Database write rate.",
       "fieldConfig": {
         "defaults": {
@@ -199,7 +206,7 @@
           },
           "expr": "sum(rate(avalanche_meterdb_size{chain=\"all\", method=~\"put|delete|batch_write\"}[5m]))",
           "interval": "",
-          "legendFormat": "Bytes Written",
+          "legendFormat": "Bytes Written {{node_id}}",
           "refId": "A"
         }
       ],
@@ -209,7 +216,9 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus"
+      },
       "description": "Measures how many of each database operation is performed each second across all chains",
       "fieldConfig": {
         "defaults": {
@@ -276,7 +285,7 @@
             "max"
           ],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "bottom"
         },
         "tooltip": {
           "mode": "single"
@@ -287,7 +296,7 @@
         {
           "expr": "rate(avalanche_meterdb_calls{chain=\"all\", job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "{{ method }}",
+          "legendFormat": "{{ method }} {{node_id}}",
           "refId": "A"
         }
       ],
@@ -297,7 +306,9 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus"
+      },
       "description": "Measures how long each database operation is taking on average",
       "fieldConfig": {
         "defaults": {
@@ -365,7 +376,7 @@
             "max"
           ],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "bottom"
         },
         "tooltip": {
           "mode": "single"
@@ -376,7 +387,7 @@
         {
           "expr": "increase(avalanche_meterdb_duration{chain=\"all\", job=\"avalanchego\"}[5m])/increase(avalanche_meterdb_calls{chain=\"all\", job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "{{ method }}",
+          "legendFormat": "{{ method }} {{node_id}}",
           "refId": "A"
         }
       ],
@@ -386,7 +397,9 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus"
+      },
       "description": "Measures how many of each database operation is performed each second on X-Chain",
       "fieldConfig": {
         "defaults": {
@@ -453,7 +466,7 @@
             "max"
           ],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "bottom"
         },
         "tooltip": {
           "mode": "single"
@@ -464,7 +477,7 @@
         {
           "expr": "rate(avalanche_meterdb_calls{chain=\"X\", job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "{{ method }}",
+          "legendFormat": "{{ method }} {{node_id}}",
           "refId": "A"
         }
       ],
@@ -474,7 +487,9 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus"
+      },
       "description": "Measures how long each database operation is taking on average on X-Chain",
       "fieldConfig": {
         "defaults": {
@@ -542,7 +557,7 @@
             "max"
           ],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "bottom"
         },
         "tooltip": {
           "mode": "single"
@@ -553,7 +568,7 @@
         {
           "expr": "increase(avalanche_meterdb_duration{chain=\"X\", job=\"avalanchego\"}[5m])/increase(avalanche_meterdb_calls{chain=\"X\", job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "{{ method }}",
+          "legendFormat": "{{ method }} {{node_id}}",
           "refId": "A"
         }
       ],
@@ -563,7 +578,9 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus"
+      },
       "description": "Measures how many of each database operation is performed each second on P-Chain",
       "fieldConfig": {
         "defaults": {
@@ -630,7 +647,7 @@
             "max"
           ],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "bottom"
         },
         "tooltip": {
           "mode": "single"
@@ -641,7 +658,7 @@
         {
           "expr": "rate(avalanche_meterdb_calls{chain=\"P\", job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "{{ method }}",
+          "legendFormat": "{{ method }} {{node_id}}",
           "refId": "A"
         }
       ],
@@ -651,7 +668,9 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus"
+      },
       "description": "Measures how long each database operation is taking on average on P-Chain",
       "fieldConfig": {
         "defaults": {
@@ -719,7 +738,7 @@
             "max"
           ],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "bottom"
         },
         "tooltip": {
           "mode": "single"
@@ -730,7 +749,7 @@
         {
           "expr": "increase(avalanche_meterdb_duration{chain=\"P\", job=\"avalanchego\"}[5m])/increase(avalanche_meterdb_calls{chain=\"P\", job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "{{ method }}",
+          "legendFormat": "{{ method }} {{node_id}}",
           "refId": "A"
         }
       ],
@@ -740,7 +759,9 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus"
+      },
       "description": "Measures how many of each database operation is performed each second across all chains",
       "fieldConfig": {
         "defaults": {
@@ -807,7 +828,7 @@
             "max"
           ],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "bottom"
         },
         "tooltip": {
           "mode": "single"
@@ -818,7 +839,7 @@
         {
           "expr": "rate(avalanche_meterdb_calls{chain=\"C\", job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "{{ method }}",
+          "legendFormat": "{{ method }} {{node_id}}",
           "refId": "A"
         }
       ],
@@ -828,7 +849,9 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus"
+      },
       "description": "Measures how long each database operation is taking on average on C-Chain",
       "fieldConfig": {
         "defaults": {
@@ -896,7 +919,7 @@
             "max"
           ],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "bottom"
         },
         "tooltip": {
           "mode": "single"
@@ -907,7 +930,7 @@
         {
           "expr": "increase(avalanche_meterdb_duration{chain=\"C\", job=\"avalanchego\"}[5m])/increase(avalanche_meterdb_calls{chain=\"C\", job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "{{ method }}",
+          "legendFormat": "{{ method }} {{node_id}}",
           "refId": "A"
         }
       ],
@@ -924,7 +947,19 @@
     "Avalanche"
   ],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "datasource": {
+          "type": "prometheus"
+        },
+        "filters": [],
+        "hide": 0,
+        "label": "Filter",
+        "name": "filter",
+        "skipUrlSync": false,
+        "type": "adhoc"
+      }
+    ]
   },
   "time": {
     "from": "now-1h",
