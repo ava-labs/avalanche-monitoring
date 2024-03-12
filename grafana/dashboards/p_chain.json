@@ -117,7 +117,7 @@
         },
         {
           "exemplar": true,
-          "expr": "round(increase(avalanche_P_blks_acc_count{job=\"avalanchego\"}[1m]))>0",
+          "expr": "round(increase(avalanche_P_blks_rejected_count{job=\"avalanchego\"}[1m]))>0",
           "hide": false,
           "interval": "",
           "legendFormat": "",
