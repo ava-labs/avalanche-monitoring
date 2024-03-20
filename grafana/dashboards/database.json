@@ -19,15 +19,20 @@
   "links": [
     {
       "icon": "external link",
+      "includeVars": true,
+      "keepTime": true,
       "tags": [
         "Avalanche"
       ],
       "type": "dashboards"
     }
   ],
+  "liveNow": true,
   "panels": [
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus"
+      },
       "description": "Database read rate. Note that these reads may be from caches and not from disk.",
       "fieldConfig": {
         "defaults": {
@@ -103,11 +108,14 @@
       "pluginVersion": "8.0.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_db_read_size_sum{job=\"avalanchego\"}[5m])",
           "hide": false,
           "interval": "",
-          "legendFormat": "Bytes Read",
+          "legendFormat": "Bytes Read {{node_id}}",
           "refId": "B"
         }
       ],
@@ -117,7 +125,9 @@
       "type": "timeseries"
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus"
+      },
       "description": "Database write rate.",
       "fieldConfig": {
         "defaults": {
@@ -193,10 +203,13 @@
       "pluginVersion": "8.0.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_db_write_size_sum{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "Write Rate",
+          "legendFormat": "Write Rate {{node_id}}",
           "refId": "A"
         }
       ],
@@ -206,7 +219,9 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus"
+      },
       "description": "Measures how many of each database operation is performed each second across all chains",
       "fieldConfig": {
         "defaults": {
@@ -274,7 +289,7 @@
             "max"
           ],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "bottom"
         },
         "tooltip": {
           "mode": "single"
@@ -283,66 +298,93 @@
       "pluginVersion": "8.0.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_db_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "put",
+          "legendFormat": "put {{node_id}}",
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_db_get_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "get",
+          "legendFormat": "get {{node_id}}",
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_db_delete_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "delete",
+          "legendFormat": "delete {{node_id}}",
           "refId": "C"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_db_has_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "has",
+          "legendFormat": "has {{node_id}}",
           "refId": "D"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_db_compact_size_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "compact",
+          "legendFormat": "compact {{node_id}}",
           "refId": "E"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_db_batch_put_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch put",
+          "legendFormat": "batch put {{node_id}}",
           "refId": "F"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_db_batch_delete_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch delete",
+          "legendFormat": "batch delete {{node_id}}",
           "refId": "G"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_db_batch_reset_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch reset",
+          "legendFormat": "batch reset {{node_id}}",
           "refId": "H"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_db_batch_replay_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch replay",
+          "legendFormat": "batch replay {{node_id}}",
           "refId": "I"
         }
       ],
@@ -352,7 +394,9 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus"
+      },
       "description": "Measures how long each database operation is taking on average",
       "fieldConfig": {
         "defaults": {
@@ -421,7 +465,7 @@
             "max"
           ],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "bottom"
         },
         "tooltip": {
           "mode": "single"
@@ -430,66 +474,93 @@
       "pluginVersion": "8.0.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_db_put_sum{job=\"avalanchego\"}[5m])/increase(avalanche_db_put_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "put",
+          "legendFormat": "put {{node_id}}",
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_db_get_sum{job=\"avalanchego\"}[5m])/increase(avalanche_db_get_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "get",
+          "legendFormat": "get {{node_id}}",
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_db_delete_sum{job=\"avalanchego\"}[5m])/increase(avalanche_db_delete_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "delete",
+          "legendFormat": "delete {{node_id}}",
           "refId": "C"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_db_has_sum{job=\"avalanchego\"}[5m])/increase(avalanche_db_has_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "has",
+          "legendFormat": "has {{node_id}}",
           "refId": "D"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_db_compact_size_sum{job=\"avalanchego\"}[5m])/increase(avalanche_db_compact_size_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "compact",
+          "legendFormat": "compact {{node_id}}",
           "refId": "E"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_db_batch_put_sum{job=\"avalanchego\"}[5m])/increase(avalanche_db_batch_put_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch put",
+          "legendFormat": "batch put {{node_id}}",
           "refId": "F"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_db_batch_delete_sum{job=\"avalanchego\"}[5m])/increase(avalanche_db_batch_delete_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch delete",
+          "legendFormat": "batch delete {{node_id}}",
           "refId": "G"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_db_batch_reset_sum{job=\"avalanchego\"}[5m])/increase(avalanche_db_batch_reset_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch reset",
+          "legendFormat": "batch reset {{node_id}}",
           "refId": "H"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_db_batch_replay_sum{job=\"avalanchego\"}[5m])/increase(avalanche_db_batch_replay_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch replay",
+          "legendFormat": "batch replay {{node_id}}",
           "refId": "I"
         }
       ],
@@ -499,7 +570,9 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus"
+      },
       "description": "Measures how many of each database operation is performed each second on X-Chain",
       "fieldConfig": {
         "defaults": {
@@ -567,7 +640,7 @@
             "max"
           ],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "bottom"
         },
         "tooltip": {
           "mode": "single"
@@ -576,66 +649,93 @@
       "pluginVersion": "8.0.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_X_db_put_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "put",
+          "legendFormat": "put {{node_id}}",
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_X_db_get_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "get",
+          "legendFormat": "get {{node_id}}",
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_X_db_delete_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "delete",
+          "legendFormat": "delete {{node_id}}",
           "refId": "C"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_X_db_has_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "has",
+          "legendFormat": "has {{node_id}}",
           "refId": "D"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_X_db_compact_size_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "compact",
+          "legendFormat": "compact {{node_id}}",
           "refId": "E"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_X_db_batch_put_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch put",
+          "legendFormat": "batch put {{node_id}}",
           "refId": "F"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_X_db_batch_delete_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch delete",
+          "legendFormat": "batch delete {{node_id}}",
           "refId": "G"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_X_db_batch_reset_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch reset",
+          "legendFormat": "batch reset {{node_id}}",
           "refId": "H"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_X_db_batch_replay_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch replay",
+          "legendFormat": "batch replay {{node_id}}",
           "refId": "I"
         }
       ],
@@ -645,7 +745,9 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus"
+      },
       "description": "Measures how long each database operation is taking on average on X-Chain",
       "fieldConfig": {
         "defaults": {
@@ -714,7 +816,7 @@
             "max"
           ],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "bottom"
         },
         "tooltip": {
           "mode": "single"
@@ -723,66 +825,93 @@
       "pluginVersion": "8.0.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_X_db_put_sum{job=\"avalanchego\"}[5m])/increase(avalanche_X_db_put_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "put",
+          "legendFormat": "put {{node_id}}",
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_X_db_get_sum{job=\"avalanchego\"}[5m])/increase(avalanche_X_db_get_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "get",
+          "legendFormat": "get {{node_id}}",
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_X_db_delete_sum{job=\"avalanchego\"}[5m])/increase(avalanche_X_db_delete_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "delete",
+          "legendFormat": "delete {{node_id}}",
           "refId": "C"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_X_db_has_sum{job=\"avalanchego\"}[5m])/increase(avalanche_X_db_has_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "has",
+          "legendFormat": "has {{node_id}}",
           "refId": "D"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_X_db_compact_size_sum{job=\"avalanchego\"}[5m])/increase(avalanche_X_db_compact_size_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "compact",
+          "legendFormat": "compact {{node_id}}",
           "refId": "E"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_X_db_batch_put_sum{job=\"avalanchego\"}[5m])/increase(avalanche_X_db_batch_put_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch put",
+          "legendFormat": "batch put {{node_id}}",
           "refId": "F"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_X_db_batch_delete_sum{job=\"avalanchego\"}[5m])/increase(avalanche_X_db_batch_delete_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch delete",
+          "legendFormat": "batch delete {{node_id}}",
           "refId": "G"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_X_db_batch_reset_sum{job=\"avalanchego\"}[5m])/increase(avalanche_X_db_batch_reset_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch reset",
+          "legendFormat": "batch reset {{node_id}}",
           "refId": "H"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_X_db_batch_replay_sum{job=\"avalanchego\"}[5m])/increase(avalanche_X_db_batch_replay_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch replay",
+          "legendFormat": "batch replay {{node_id}}",
           "refId": "I"
         }
       ],
@@ -792,7 +921,9 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus"
+      },
       "description": "Measures how many of each database operation is performed each second on P-Chain",
       "fieldConfig": {
         "defaults": {
@@ -860,7 +991,7 @@
             "max"
           ],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "bottom"
         },
         "tooltip": {
           "mode": "single"
@@ -869,66 +1000,93 @@
       "pluginVersion": "8.0.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_P_db_put_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "put",
+          "legendFormat": "put {{node_id}}",
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_P_db_get_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "get",
+          "legendFormat": "get {{node_id}}",
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_P_db_delete_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "delete",
+          "legendFormat": "delete {{node_id}}",
           "refId": "C"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_P_db_has_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "has",
+          "legendFormat": "has {{node_id}}",
           "refId": "D"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_P_db_compact_size_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "compact",
+          "legendFormat": "compact {{node_id}}",
           "refId": "E"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_P_db_batch_put_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch put",
+          "legendFormat": "batch put {{node_id}}",
           "refId": "F"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_P_db_batch_delete_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch delete",
+          "legendFormat": "batch delete {{node_id}}",
           "refId": "G"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_P_db_batch_reset_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch reset",
+          "legendFormat": "batch reset {{node_id}}",
           "refId": "H"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_P_db_batch_replay_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch replay",
+          "legendFormat": "batch replay {{node_id}}",
           "refId": "I"
         }
       ],
@@ -938,7 +1096,9 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus"
+      },
       "description": "Measures how long each database operation is taking on average on P-Chain",
       "fieldConfig": {
         "defaults": {
@@ -1007,7 +1167,7 @@
             "max"
           ],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "bottom"
         },
         "tooltip": {
           "mode": "single"
@@ -1016,66 +1176,93 @@
       "pluginVersion": "8.0.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_P_db_put_sum{job=\"avalanchego\"}[5m])/increase(avalanche_P_db_put_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "put",
+          "legendFormat": "put {{node_id}}",
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_P_db_get_sum{job=\"avalanchego\"}[5m])/increase(avalanche_P_db_get_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "get",
+          "legendFormat": "get {{node_id}}",
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_P_db_delete_sum{job=\"avalanchego\"}[5m])/increase(avalanche_P_db_delete_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "delete",
+          "legendFormat": "delete {{node_id}}",
           "refId": "C"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_P_db_has_sum{job=\"avalanchego\"}[5m])/increase(avalanche_P_db_has_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "has",
+          "legendFormat": "has {{node_id}}",
           "refId": "D"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_P_db_compact_size_sum{job=\"avalanchego\"}[5m])/increase(avalanche_P_db_compact_size_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "compact",
+          "legendFormat": "compact {{node_id}}",
           "refId": "E"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_P_db_batch_put_sum{job=\"avalanchego\"}[5m])/increase(avalanche_P_db_batch_put_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch put",
+          "legendFormat": "batch put {{node_id}}",
           "refId": "F"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_P_db_batch_delete_sum{job=\"avalanchego\"}[5m])/increase(avalanche_P_db_batch_delete_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch delete",
+          "legendFormat": "batch delete {{node_id}}",
           "refId": "G"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_P_db_batch_reset_sum{job=\"avalanchego\"}[5m])/increase(avalanche_P_db_batch_reset_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch reset",
+          "legendFormat": "batch reset {{node_id}}",
           "refId": "H"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_P_db_batch_replay_sum{job=\"avalanchego\"}[5m])/increase(avalanche_P_db_batch_replay_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch replay",
+          "legendFormat": "batch replay {{node_id}}",
           "refId": "I"
         }
       ],
@@ -1085,7 +1272,9 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus"
+      },
       "description": "Measures how many of each database operation is performed each second across all chains",
       "fieldConfig": {
         "defaults": {
@@ -1153,7 +1342,7 @@
             "max"
           ],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "bottom"
         },
         "tooltip": {
           "mode": "single"
@@ -1162,66 +1351,93 @@
       "pluginVersion": "8.0.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_C_db_put_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "put",
+          "legendFormat": "put {{node_id}}",
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_C_db_get_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "get",
+          "legendFormat": "get {{node_id}}",
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_C_db_delete_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "delete",
+          "legendFormat": "delete {{node_id}}",
           "refId": "C"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_C_db_has_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "has",
+          "legendFormat": "has {{node_id}}",
           "refId": "D"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_C_db_compact_size_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "compact",
+          "legendFormat": "compact {{node_id}}",
           "refId": "E"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_C_db_batch_put_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch put",
+          "legendFormat": "batch put {{node_id}}",
           "refId": "F"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_C_db_batch_delete_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch delete",
+          "legendFormat": "batch delete {{node_id}}",
           "refId": "G"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_C_db_batch_reset_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch reset",
+          "legendFormat": "batch reset {{node_id}}",
           "refId": "H"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "rate(avalanche_C_db_batch_replay_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch replay",
+          "legendFormat": "batch replay {{node_id}}",
           "refId": "I"
         }
       ],
@@ -1231,7 +1447,9 @@
       "type": "timeseries"
     },
     {
-      "datasource": "Prometheus",
+      "datasource": {
+        "type": "prometheus"
+      },
       "description": "Measures how long each database operation is taking on average on C-Chain",
       "fieldConfig": {
         "defaults": {
@@ -1300,7 +1518,7 @@
             "max"
           ],
           "displayMode": "table",
-          "placement": "right"
+          "placement": "bottom"
         },
         "tooltip": {
           "mode": "single"
@@ -1309,66 +1527,93 @@
       "pluginVersion": "8.0.5",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_C_db_put_sum{job=\"avalanchego\"}[5m])/increase(avalanche_C_db_put_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "put",
+          "legendFormat": "put {{node_id}}",
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_C_db_get_sum{job=\"avalanchego\"}[5m])/increase(avalanche_C_db_get_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "get",
+          "legendFormat": "get {{node_id}}",
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_C_db_delete_sum{job=\"avalanchego\"}[5m])/increase(avalanche_C_db_delete_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "delete",
+          "legendFormat": "delete {{node_id}}",
           "refId": "C"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_C_db_has_sum{job=\"avalanchego\"}[5m])/increase(avalanche_C_db_has_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "has",
+          "legendFormat": "has {{node_id}}",
           "refId": "D"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_C_db_compact_size_sum{job=\"avalanchego\"}[5m])/increase(avalanche_C_db_compact_size_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "compact",
+          "legendFormat": "compact {{node_id}}",
           "refId": "E"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_C_db_batch_put_sum{job=\"avalanchego\"}[5m])/increase(avalanche_C_db_batch_put_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch put",
+          "legendFormat": "batch put {{node_id}}",
           "refId": "F"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_C_db_batch_delete_sum{job=\"avalanchego\"}[5m])/increase(avalanche_C_db_batch_delete_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch delete",
+          "legendFormat": "batch delete {{node_id}}",
           "refId": "G"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_C_db_batch_reset_sum{job=\"avalanchego\"}[5m])/increase(avalanche_C_db_batch_reset_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch reset",
+          "legendFormat": "batch reset {{node_id}}",
           "refId": "H"
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
           "exemplar": true,
           "expr": "increase(avalanche_C_db_batch_replay_sum{job=\"avalanchego\"}[5m])/increase(avalanche_C_db_batch_replay_count{job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "batch replay",
+          "legendFormat": "batch replay {{node_id}}",
           "refId": "I"
         }
       ],
@@ -1385,7 +1630,19 @@
     "Avalanche"
   ],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "datasource": {
+          "type": "prometheus"
+        },
+        "filters": [],
+        "hide": 0,
+        "label": "Filter",
+        "name": "filter",
+        "skipUrlSync": false,
+        "type": "adhoc"
+      }
+    ]
   },
   "time": {
     "from": "now-1h",
