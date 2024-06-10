@@ -790,15 +790,30 @@
       "pluginVersion": "8.0.4",
       "targets": [
         {
+          "refId": "A",
+          "expr": "increase(avalanche_handler_messages{chain=\"C\", op=\"chits\", job=\"avalanchego\"}[5m])",
           "datasource": {
              "type": "prometheus"
           },
-          "exemplar": true,
-          "expr": "(increase(avalanche_C_handler_chits_count{job=\"avalanchego\"}[5m]) + 1) / (increase(avalanche_C_handler_chits_count{job=\"avalanchego\"}[5m]) + increase(avalanche_C_handler_query_failed_count{job=\"avalanchego\"}[5m]) + 1)",
-          "instant": false,
-          "interval": "",
-          "legendFormat": "% Successful",
-          "refId": "A"
+          "hide": true
+        },
+        {
+          "refId": "B",
+          "expr": "increase(avalanche_handler_messages{chain=\"C\", op=\"query_failed\", job=\"avalanchego\"}[5m]) + 1",
+          "datasource": {
+             "type": "prometheus"
+          },
+          "hide": true
+        },
+        {
+          "refId": "C",
+          "datasource": {
+            "type": "__expr__",
+            "name": "Expression"
+          },
+          "type": "math",
+          "expression": "($A + 1) / ($A + $B + 1)",
+          "legendFormat": "% Successful"
         }
       ],
       "title": "Percentage of Successful Queries",
