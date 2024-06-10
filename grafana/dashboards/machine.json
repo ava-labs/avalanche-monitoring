@@ -791,7 +791,7 @@
             "type": "prometheus"
           },
           "editorMode": "code",
-          "expr": "avalanche_go_goroutines{job=~\"avalanchego\"}",
+          "expr": "avalanche_process_go_goroutines{job=~\"avalanchego\"}",
           "interval": "",
           "legendFormat": "goroutines",
           "range": true,
@@ -799,107 +799,6 @@
         }
       ],
       "title": "Number of Go goroutines",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus"
-      },
-      "description": "Number of open file handles the client is keeping",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "min": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 24
-      },
-      "id": 24,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "max"
-          ],
-          "displayMode": "list",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus"
-          },
-          "editorMode": "code",
-          "expr": "avalanche_process_open_fds{job=~\"avalanchego\"}",
-          "legendFormat": "Open files",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus"
-          },
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "avalanche_process_max_fds{job=~\"avalanchego\"}",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "Max number allowed",
-          "range": true,
-          "refId": "B"
-        }
-      ],
-      "title": "Number of Open Files",
       "type": "timeseries"
     }
   ],
