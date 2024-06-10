@@ -124,7 +124,7 @@
              "type": "prometheus"
           },
           "exemplar": true,
-          "expr": "round(increase(avalanche_snowman_blks_accepted_count{chain:\"C\", job=\"avalanchego\"}[1m]))>0",
+          "expr": "round(increase(avalanche_snowman_blks_accepted_count{chain=\"C\", job=\"avalanchego\"}[1m]))>0",
           "interval": "",
           "legendFormat": "Accepted",
           "refId": "A"
