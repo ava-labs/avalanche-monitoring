@@ -1092,7 +1092,7 @@
             "type": "prometheus"
           },
           "exemplar": true,
-          "expr": "increase(avalanche_handler_expired{chain=\"C\"}[1m]) or 0 * up",
+          "expr": "increase(avalanche_handler_expired{chain=\"C\", job=\"avalanchego\"}[1m]) or 0 * up",
           "interval": "",
           "legendFormat": "{{ op }}",
           "refId": "A"
