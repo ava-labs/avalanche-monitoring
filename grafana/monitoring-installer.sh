@@ -297,15 +297,15 @@ install_dashboards() {
   mkdir -p /tmp/avalanche-monitoring-installer/dashboards-install
   cd /tmp/avalanche-monitoring-installer/dashboards-install
 
-  wget -nd -m -nv https://raw.githubusercontent.com/ava-labs/avalanche-monitoring/master/grafana/dashboards/c_chain.json
-  wget -nd -m -nv https://raw.githubusercontent.com/ava-labs/avalanche-monitoring/master/grafana/dashboards/database.json
-  wget -nd -m -nv https://raw.githubusercontent.com/ava-labs/avalanche-monitoring/master/grafana/dashboards/machine.json
-  wget -nd -m -nv https://raw.githubusercontent.com/ava-labs/avalanche-monitoring/master/grafana/dashboards/main.json
-  wget -nd -m -nv https://raw.githubusercontent.com/ava-labs/avalanche-monitoring/master/grafana/dashboards/network.json
-  wget -nd -m -nv https://raw.githubusercontent.com/ava-labs/avalanche-monitoring/master/grafana/dashboards/p_chain.json
-  wget -nd -m -nv https://raw.githubusercontent.com/ava-labs/avalanche-monitoring/master/grafana/dashboards/x_chain.json
+  wget -nd -m -nv https://raw.githubusercontent.com/ava-labs/avalanche-monitoring/avalanchego-v1.11.8/grafana/dashboards/c_chain.json
+  wget -nd -m -nv https://raw.githubusercontent.com/ava-labs/avalanche-monitoring/avalanchego-v1.11.8/grafana/dashboards/database.json
+  wget -nd -m -nv https://raw.githubusercontent.com/ava-labs/avalanche-monitoring/avalanchego-v1.11.8/grafana/dashboards/machine.json
+  wget -nd -m -nv https://raw.githubusercontent.com/ava-labs/avalanche-monitoring/avalanchego-v1.11.8/grafana/dashboards/main.json
+  wget -nd -m -nv https://raw.githubusercontent.com/ava-labs/avalanche-monitoring/avalanchego-v1.11.8/grafana/dashboards/network.json
+  wget -nd -m -nv https://raw.githubusercontent.com/ava-labs/avalanche-monitoring/avalanchego-v1.11.8/grafana/dashboards/p_chain.json
+  wget -nd -m -nv https://raw.githubusercontent.com/ava-labs/avalanche-monitoring/avalanchego-v1.11.8/grafana/dashboards/x_chain.json
   if test -f "/etc/grafana/dashboards/subnets.json"; then
-    wget -nd -m -nv https://raw.githubusercontent.com/ava-labs/avalanche-monitoring/master/grafana/dashboards/subnets.json
+    wget -nd -m -nv https://raw.githubusercontent.com/ava-labs/avalanche-monitoring/avalanchego-v1.11.8/grafana/dashboards/subnets.json
   fi
 
   sudo mkdir -p /etc/grafana/dashboards
@@ -378,7 +378,7 @@ install_extras() {
   mkdir -p /tmp/avalanche-monitoring-installer/dashboards-install
   cd /tmp/avalanche-monitoring-installer/dashboards-install
 
-  wget -nd -m -nv https://raw.githubusercontent.com/ava-labs/avalanche-monitoring/master/grafana/dashboards/subnets.json
+  wget -nd -m -nv https://raw.githubusercontent.com/ava-labs/avalanche-monitoring/avalanchego-v1.11.8/grafana/dashboards/subnets.json
 
   sudo mkdir -p /etc/grafana/dashboards
   sudo cp subnets.json /etc/grafana/dashboards
