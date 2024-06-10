@@ -696,7 +696,7 @@
           "exemplar": true,
           "expr": "rate(avalanche_handler_message_handling_time{chain=\"C\", job=\"avalanchego\"}[5m])",
           "interval": "",
-          "legendFormat": "{{op}}",
+          "legendFormat": "{{ op }}",
           "refId": "A"
         }
       ],
@@ -1166,7 +1166,7 @@
           "exemplar": true,
           "expr": "avalanche_handler_sync_unprocessed_msgs_count{chain=\"C\"}",
           "interval": "",
-          "legendFormat": "{{op}}",
+          "legendFormat": "{{ op }}",
           "refId": "A"
         },
         {
@@ -1176,7 +1176,7 @@
           "exemplar": true,
           "expr": "avalanche_handler_async_unprocessed_msgs_count{chain=\"C\"}",
           "interval": "",
-          "legendFormat": "{{op}}",
+          "legendFormat": "{{ op }}",
           "refId": "B"
         }
       ],
@@ -1250,10 +1250,6 @@
       "id": 29,
       "options": {
         "legend": {
-          "calcs": [
-            "mean",
-            "max"
-          ],
           "displayMode": "list",
           "placement": "bottom",
           "showLegend": true
@@ -1270,9 +1266,9 @@
              "type": "prometheus"
           },
           "exemplar": true,
-          "expr": "increase(avalanche_C_handler_expired[1m])",
+          "expr": "increase(avalanche_handler_expired{chain=\"C\"}[1m])",
           "interval": "",
-          "legendFormat": "Expired",
+          "legendFormat": "{{ op }}",
           "refId": "A"
         }
       ],
