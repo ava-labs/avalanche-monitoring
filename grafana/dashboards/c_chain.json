@@ -1148,10 +1148,6 @@
       "id": 19,
       "options": {
         "legend": {
-          "calcs": [
-            "mean",
-            "max"
-          ],
           "displayMode": "list",
           "placement": "bottom",
           "showLegend": true
@@ -1165,13 +1161,23 @@
       "targets": [
         {
           "datasource": {
-             "type": "prometheus"
+            "type": "prometheus"
           },
           "exemplar": true,
-          "expr": "avalanche_C_handler_unprocessed_msgs_len",
+          "expr": "avalanche_handler_sync_unprocessed_msgs_count{chain=\"C\"}",
           "interval": "",
-          "legendFormat": "Pending Messages",
+          "legendFormat": "{{op}}",
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus"
+          },
+          "exemplar": true,
+          "expr": "avalanche_handler_async_unprocessed_msgs_count{chain=\"C\"}",
+          "interval": "",
+          "legendFormat": "{{op}}",
+          "refId": "B"
         }
       ],
       "title": "Unprocessed Incoming Messages",
