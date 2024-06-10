@@ -222,7 +222,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "round(increase(avalanche_C_blks_rejected_count{job=\"avalanchego\"}[1m]))>0",
+          "expr": "round(increase(avalanche_snowman_blks_rejected_count{chain=\"C\", job=\"avalanchego\"}[1m]))>0",
           "interval": "",
           "legendFormat": "Rejected",
           "range": true,
@@ -317,7 +317,7 @@
           "datasource": {
              "type": "prometheus"
           },
-          "expr": "rate(avalanche_C_blks_accepted_sum{job=\"avalanchego\"}[5m]) / rate(avalanche_C_blks_accepted_count{job=\"avalanchego\"}[5m])",
+          "expr": "rate(avalanche_snowman_blks_accepted_sum{chain=\"C\", job=\"avalanchego\"}[5m]) / rate(avalanche_snowman_blks_accepted_count{chain=\"C\", job=\"avalanchego\"}[5m])",
           "interval": "",
           "legendFormat": "Avg Acceptance Latency",
           "refId": "A"
@@ -414,7 +414,7 @@
           "datasource": {
              "type": "prometheus"
           },
-          "expr": "rate(avalanche_C_blks_rejected_sum{job=\"avalanchego\"}[5m]) / rate(avalanche_C_blks_rejected_count{job=\"avalanchego\"}[5m])",
+          "expr": "rate(avalanche_snowman_blks_rejected_sum{chain=\"C\", job=\"avalanchego\"}[5m]) / rate(avalanche_snowman_blks_rejected_count{chain=\"C\", job=\"avalanchego\"}[5m])",
           "interval": "",
           "legendFormat": "Avg Rejection Latency",
           "refId": "A"
@@ -506,7 +506,7 @@
              "type": "prometheus"
           },
           "exemplar": true,
-          "expr": "avalanche_C_blks_processing{job=\"avalanchego\"}>0",
+          "expr": "avalanche_snowman_blks_processing{chain=\"C\", job=\"avalanchego\"}>0",
           "interval": "",
           "legendFormat": "Transactions",
           "refId": "A"
@@ -598,7 +598,7 @@
              "type": "prometheus"
           },
           "exemplar": true,
-          "expr": "avalanche_C_polls > 0",
+          "expr": "avalanche_snowman_polls{chain=\"C\"} > 0",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
