@@ -790,30 +790,42 @@
       "pluginVersion": "8.0.4",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus"
+          },
+          "expr": "max(increase(avalanche_handler_messages{chain=\"C\", op=\"chits\", job=\"avalanchego\"}[5m]))",
+          "hide": true,
           "refId": "A",
-          "expr": "increase(avalanche_handler_messages{chain=\"C\", op=\"chits\", job=\"avalanchego\"}[5m])",
-          "datasource": {
-             "type": "prometheus"
-          },
-          "hide": true
+          "editorMode": "builder",
+          "range": true,
+          "useBackend": false,
+          "disableTextWrap": false,
+          "fullMetaSearch": false,
+          "includeNullMetadata": true
         },
         {
+          "datasource": {
+            "type": "prometheus"
+          },
+          "expr": "max(increase(avalanche_handler_messages{chain=\"C\", op=\"query_failed\", job=\"avalanchego\"}[5m]))",
+          "hide": true,
           "refId": "B",
-          "expr": "increase(avalanche_handler_messages{chain=\"C\", op=\"query_failed\", job=\"avalanchego\"}[5m])",
-          "datasource": {
-             "type": "prometheus"
-          },
-          "hide": true
+          "editorMode": "code",
+          "range": true,
+          "useBackend": false,
+          "disableTextWrap": false,
+          "fullMetaSearch": false,
+          "includeNullMetadata": true
         },
         {
-          "refId": "C",
           "datasource": {
-            "type": "__expr__",
-            "name": "Expression"
+            "name": "Expression",
+            "type": "__expr__"
           },
-          "type": "math",
           "expression": "($A + 1) / ($A + $B + 1)",
-          "legendFormat": "% Successful"
+          "legendFormat": "% Successful",
+          "refId": "C",
+          "type": "math"
         }
       ],
       "title": "Percentage of Successful Queries",
