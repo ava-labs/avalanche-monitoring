@@ -799,7 +799,7 @@
         },
         {
           "refId": "B",
-          "expr": "increase(avalanche_handler_messages{chain=\"C\", op=\"query_failed\", job=\"avalanchego\"}[5m]) + 1",
+          "expr": "increase(avalanche_handler_messages{chain=\"C\", op=\"query_failed\", job=\"avalanchego\"}[5m])",
           "datasource": {
              "type": "prometheus"
           },
