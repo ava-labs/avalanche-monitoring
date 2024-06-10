@@ -103,10 +103,9 @@
       "options": {
         "legend": {
           "calcs": [
+            "min",
             "mean",
-            "lastNotNull",
-            "max",
-            "min"
+            "max"
           ],
           "displayMode": "list",
           "placement": "bottom",
@@ -200,10 +199,9 @@
       "options": {
         "legend": {
           "calcs": [
+            "min",
             "mean",
-            "lastNotNull",
-            "max",
-            "min"
+            "max"
           ],
           "displayMode": "list",
           "placement": "bottom",
@@ -297,10 +295,9 @@
       "options": {
         "legend": {
           "calcs": [
+            "min",
             "mean",
-            "lastNotNull",
-            "max",
-            "min"
+            "max"
           ],
           "displayMode": "list",
           "placement": "bottom",
@@ -394,10 +391,9 @@
       "options": {
         "legend": {
           "calcs": [
+            "min",
             "mean",
-            "lastNotNull",
-            "max",
-            "min"
+            "max"
           ],
           "displayMode": "list",
           "placement": "bottom",
@@ -487,7 +483,6 @@
         "legend": {
           "calcs": [
             "mean",
-            "lastNotNull",
             "max"
           ],
           "displayMode": "list",
@@ -579,7 +574,6 @@
         "legend": {
           "calcs": [
             "mean",
-            "lastNotNull",
             "max"
           ],
           "displayMode": "list",
@@ -773,10 +767,9 @@
       "options": {
         "legend": {
           "calcs": [
+            "min",
             "mean",
-            "lastNotNull",
-            "max",
-            "min"
+            "max"
           ],
           "displayMode": "list",
           "placement": "bottom",
@@ -1099,7 +1092,7 @@
             "type": "prometheus"
           },
           "exemplar": true,
-          "expr": "increase(avalanche_handler_expired{chain=\"C\"}[1m])",
+          "expr": "increase(avalanche_handler_expired{chain=\"C\"}[1m]) or 0 * up",
           "interval": "",
           "legendFormat": "{{ op }}",
           "refId": "A"
@@ -1178,7 +1171,6 @@
         "legend": {
           "calcs": [
             "mean",
-            "lastNotNull",
             "max"
           ],
           "displayMode": "list",
