@@ -811,8 +811,7 @@
             "type": "__expr__"
           },
           "expression": "($A + 1) / ($A + $B + 1)",
-          "legendFormat": "% Successful",
-          "refId": "C",
+          "refId": "% Successful",
           "type": "math"
         }
       ],
