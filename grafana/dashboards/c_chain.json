@@ -508,7 +508,7 @@
           "exemplar": true,
           "expr": "avalanche_snowman_blks_processing{chain=\"C\", job=\"avalanchego\"}>0",
           "interval": "",
-          "legendFormat": "Transactions",
+          "legendFormat": "Blocks",
           "refId": "A"
         }
       ],
