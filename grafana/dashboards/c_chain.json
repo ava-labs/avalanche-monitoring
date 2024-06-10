@@ -1497,13 +1497,31 @@
           "datasource": {
             "type": "prometheus"
           },
-          "editorMode": "code",
-          "exemplar": true,
-          "expr": "increase(avalanche_C_vm_chain_state_decided_cache_hit[5m])/(increase(avalanche_C_vm_chain_state_decided_cache_hit[5m])+increase(avalanche_C_vm_chain_state_decided_cache_miss[5m]))",
+          "expr": "sum(increase(avalanche_evm_chain_state_decided_cache_get_count{chain=\"C\", result=\"hit\"}[5m]) or 0 * up)",
           "interval": "",
-          "legendFormat": "Hit Rate",
-          "range": true,
-          "refId": "A"
+          "legendFormat": "Hits",
+          "refId": "A",
+          "hide": true
+        },
+        {
+          "datasource": {
+            "type": "prometheus"
+          },
+          "expr": "sum(increase(avalanche_evm_chain_state_decided_cache_get_count{chain=\"C\"}[5m]) or 0 * up)",
+          "interval": "",
+          "legendFormat": "Calls",
+          "refId": "B",
+          "hide": true
+        },
+        {
+          "refId": "Hit Rate",
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__",
+            "name": "Expression"
+          },
+          "type": "math",
+          "expression": "$A/$B"
         }
       ],
       "title": "Decided Cache Hit Rate",
