@@ -126,7 +126,7 @@
           "exemplar": true,
           "expr": "round(increase(avalanche_snowman_blks_accepted_count{chain=\"C\", job=\"avalanchego\"}[1m]))>0",
           "interval": "",
-          "legendFormat": "Accepted",
+          "legendFormat": "Blocks",
           "refId": "A"
         }
       ],
@@ -224,7 +224,7 @@
           "exemplar": true,
           "expr": "round(increase(avalanche_snowman_blks_rejected_count{chain=\"C\", job=\"avalanchego\"}[1m]))>0",
           "interval": "",
-          "legendFormat": "Rejected",
+          "legendFormat": "Blocks",
           "range": true,
           "refId": "A"
         }
@@ -600,7 +600,7 @@
           "exemplar": true,
           "expr": "avalanche_snowman_polls{chain=\"C\"} > 0",
           "interval": "",
-          "legendFormat": "",
+          "legendFormat": "Polls",
           "refId": "A"
         }
       ],
