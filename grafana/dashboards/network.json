@@ -1269,27 +1269,30 @@
             "type": "prometheus"
           },
           "expr": "sum(increase(avalanche_network_msgs{io=\"sent\", op=~\"pull_query|push_query\", job=\"avalanchego\"}[5m]))",
-          "hide": true,
+          "interval": "",
           "legendFormat": "{{ op }}",
-          "refId": "A"
+          "refId": "A",
+          "hide": true
         },
         {
           "datasource": {
             "type": "prometheus"
           },
           "expr": "sum(increase(avalanche_snowman_blks_accepted_count{chain=~\"C|P|X\", job=\"avalanchego\"}[5m]))",
-          "hide": true,
+          "interval": "",
           "legendFormat": "{{ chain }}",
-          "refId": "B"
+          "refId": "B",
+          "hide": true
         },
         {
+          "refId": "Messages",
           "datasource": {
             "type": "__expr__",
-            "uid": "__expr__"
+            "uid": "__expr__",
+            "name": "Expression"
           },
-          "expression": "$A / $B",
-          "refId": "Queries per Accepted Container",
-          "type": "math"
+          "type": "math",
+          "expression": "$A / $B"
         }
       ],
       "title": "Queries Sent per Accepted Container",
