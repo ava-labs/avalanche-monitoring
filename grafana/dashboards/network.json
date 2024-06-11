@@ -1266,7 +1266,7 @@
       "targets": [
         {
           "datasource": "Prometheus",
-          "expr": "sum(increase(avalanche_network_pull_query_sent{io=\"sent\", op=~\"pull_query|push_query\", job=\"avalanchego\"}[5m]))",
+          "expr": "sum(increase(avalanche_network_msgs{io=\"sent\", op=~\"pull_query|push_query\", job=\"avalanchego\"}[5m]))",
           "legendFormat": "{{ op }}",
           "refId": "A"
         },
