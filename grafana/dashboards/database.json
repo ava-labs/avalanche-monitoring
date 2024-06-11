@@ -106,7 +106,7 @@
           "datasource": {
             "type": "prometheus"
           },
-          "expr": "sum(rate(avalanche_meterdb_size{chain=\"all\", method=\"has|get|iterator_next\"}[5m]))",
+          "expr": "sum(rate(avalanche_meterdb_size{chain=\"all\", method=~\"has|get|iterator_next\"}[5m]))",
           "interval": "",
           "legendFormat": "Bytes Read",
           "refId": "A"
