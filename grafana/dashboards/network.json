@@ -1184,7 +1184,7 @@
           "interval": "",
           "legendFormat": "{{ op }}",
           "refId": "B",
-          "range": true
+          "hide": true
         },
         {
           "datasource": {
