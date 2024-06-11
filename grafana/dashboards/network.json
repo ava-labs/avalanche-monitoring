@@ -1071,7 +1071,7 @@
           "hide": true
         },
         {
-          "refId": "C",
+          "refId": "Size",
           "datasource": {
             "type": "__expr__",
             "uid": "__expr__",
@@ -1170,10 +1170,31 @@
           "datasource": {
             "type": "prometheus"
           },
-          "expr": "increase(avalanche_network_msgs_bytes{io=\"sent\", job=\"avalanchego\"}[1m])/increase(avalanche_network_msgs{io=\"sent\", job=\"avalanchego\"}[1m])",
+          "expr": "increase(avalanche_network_msgs_bytes{io=\"sent\", job=\"avalanchego\"}[1m])",
           "interval": "",
           "legendFormat": "{{ op }}",
-          "refId": "A"
+          "refId": "A",
+          "hide": true
+        },
+        {
+          "datasource": {
+            "type": "prometheus"
+          },
+          "expr": "increase(avalanche_network_msgs{io=\"sent\", job=\"avalanchego\"}[1m])",
+          "interval": "",
+          "legendFormat": "{{ op }}",
+          "refId": "B",
+          "range": true
+        },
+        {
+          "datasource": {
+            "type": "__expr__",
+            "uid": "__expr__",
+            "name": "Expression"
+          },
+          "refId": "Size",
+          "type": "math",
+          "expression": "$A / $B"
         }
       ],
       "title": "Average Sent Message Size",
