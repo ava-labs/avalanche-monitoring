@@ -194,10 +194,12 @@
       "pluginVersion": "8.0.5",
       "targets": [
         {
-          "exemplar": true,
-          "expr": "rate(avalanche_db_write_size_sum{job=\"avalanchego\"}[5m])",
+          "datasource": {
+            "type": "prometheus"
+          },
+          "expr": "sum(rate(avalanche_meterdb_size{chain=\"all\", method=~\"put|delete|batch_write\"}[5m]))",
           "interval": "",
-          "legendFormat": "Write Rate",
+          "legendFormat": "Bytes Written",
           "refId": "A"
         }
       ],
