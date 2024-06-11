@@ -103,12 +103,13 @@
       "pluginVersion": "8.0.5",
       "targets": [
         {
-          "exemplar": true,
-          "expr": "rate(avalanche_db_read_size_sum{job=\"avalanchego\"}[5m])",
-          "hide": false,
+          "datasource": {
+            "type": "prometheus"
+          },
+          "expr": "sum(rate(avalanche_meterdb_size{chain=\"all\", method=\"has|get|iterator_next\"}[5m]))",
           "interval": "",
           "legendFormat": "Bytes Read",
-          "refId": "B"
+          "refId": "A"
         }
       ],
       "timeFrom": null,
