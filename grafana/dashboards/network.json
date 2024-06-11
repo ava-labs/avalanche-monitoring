@@ -1267,12 +1267,14 @@
         {
           "datasource": "Prometheus",
           "expr": "sum(increase(avalanche_network_msgs{io=\"sent\", op=~\"pull_query|push_query\", job=\"avalanchego\"}[5m]))",
+          "hide": true,
           "legendFormat": "{{ op }}",
           "refId": "A"
         },
         {
           "datasource": "Prometheus",
           "expr": "sum(increase(avalanche_snowman_blks_accepted_count{chain=~\"C|P|X\", job=\"avalanchego\"}[5m]))",
+          "hide": true,
           "legendFormat": "{{ chain }}",
           "refId": "B"
         },
@@ -1282,7 +1284,6 @@
             "uid": "__expr__"
           },
           "expression": "$A / $B",
-          "hide": false,
           "refId": "Queries per Accepted Container",
           "type": "math"
         }
