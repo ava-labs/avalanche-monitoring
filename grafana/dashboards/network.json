@@ -1491,24 +1491,10 @@
       "pluginVersion": "8.0.3",
       "targets": [
         {
-          "expr": "avalanche_X_benchlist_benched_weight/1000000000",
+          "expr": "avalanche_benchlist_benched_weight/1000000000",
           "interval": "",
-          "legendFormat": "X chain",
+          "legendFormat": "{{ chain }}",
           "refId": "A"
-        },
-        {
-          "expr": "avalanche_P_benchlist_benched_weight/1000000000",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "P Chain",
-          "refId": "B"
-        },
-        {
-          "expr": "avalanche_C_benchlist_benched_weight/1000000000",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "C Chain",
-          "refId": "C"
         }
       ],
       "title": "Benched stake",
