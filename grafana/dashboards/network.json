@@ -2545,127 +2545,10 @@
       "pluginVersion": "8.0.3",
       "targets": [
         {
-          "exemplar": true,
-          "expr": "rate(avalanche_network_accepted_failed{job=\"avalanchego\"}[1m])",
+          "expr": "rate(avalanche_network_msgs_failed_to_send{job=\"avalanchego\"}[1m])",
           "interval": "",
-          "legendFormat": "accepted",
+          "legendFormat": "{{ op }}",
           "refId": "A"
-        },
-        {
-          "exemplar": true,
-          "expr": "rate(avalanche_network_get_accepted_failed{job=\"avalanchego\"}[1m])",
-          "interval": "",
-          "legendFormat": "get accepted",
-          "refId": "B"
-        },
-        {
-          "exemplar": true,
-          "expr": "rate(avalanche_network_get_accepted_frontier_failed{job=\"avalanchego\"}[1m])",
-          "interval": "",
-          "legendFormat": "get accepted frontier",
-          "refId": "C"
-        },
-        {
-          "exemplar": true,
-          "expr": "rate(avalanche_network_get_ancestors_failed{job=\"avalanchego\"}[1m])",
-          "interval": "",
-          "legendFormat": "get ancestors",
-          "refId": "D"
-        },
-        {
-          "exemplar": true,
-          "expr": "rate(avalanche_network_put_failed{job=\"avalanchego\"}[1m])",
-          "interval": "",
-          "legendFormat": "put",
-          "refId": "E"
-        },
-        {
-          "exemplar": true,
-          "expr": "rate(avalanche_network_multi_put_failed{job=\"avalanchego\"}[1m])",
-          "interval": "",
-          "legendFormat": "multiput",
-          "refId": "F"
-        },
-        {
-          "exemplar": true,
-          "expr": "rate(avalanche_network_get_version_failed{job=\"avalanchego\"}[1m])",
-          "interval": "",
-          "legendFormat": "get version",
-          "refId": "G"
-        },
-        {
-          "exemplar": true,
-          "expr": "rate(avalanche_network_get_peerlist_failed{job=\"avalanchego\"}[1m])",
-          "interval": "",
-          "legendFormat": "get peerlist",
-          "refId": "H"
-        },
-        {
-          "exemplar": true,
-          "expr": "rate(avalanche_network_pull_query_failed{job=\"avalanchego\"}[1m])",
-          "interval": "",
-          "legendFormat": "pull query",
-          "refId": "I"
-        },
-        {
-          "exemplar": true,
-          "expr": "rate(avalanche_network_push_query_failed{job=\"avalanchego\"}[1m])",
-          "interval": "",
-          "legendFormat": "push query",
-          "refId": "J"
-        },
-        {
-          "exemplar": true,
-          "expr": "rate(avalanche_network_version_failed{job=\"avalanchego\"}[1m])",
-          "interval": "",
-          "legendFormat": "version",
-          "refId": "K"
-        },
-        {
-          "exemplar": true,
-          "expr": "rate(avalanche_network_ping_failed{job=\"avalanchego\"}[1m])",
-          "interval": "",
-          "legendFormat": "ping",
-          "refId": "L"
-        },
-        {
-          "exemplar": true,
-          "expr": "rate(avalanche_network_pong_failed{job=\"avalanchego\"}[1m])",
-          "interval": "",
-          "legendFormat": "pong",
-          "refId": "M"
-        },
-        {
-          "exemplar": true,
-          "expr": "rate(avalanche_network_chits_failed{job=\"avalanchego\"}[1m])",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "chits",
-          "refId": "N"
-        },
-        {
-          "exemplar": true,
-          "expr": "rate(avalanche_network_app_gossip_failed{job=\"avalanchego\"}[1m])",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "app gossip",
-          "refId": "O"
-        },
-        {
-          "exemplar": true,
-          "expr": "rate(avalanche_network_app_request_failed{job=\"avalanchego\"}[1m])",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "app request",
-          "refId": "P"
-        },
-        {
-          "exemplar": true,
-          "expr": "rate(avalanche_network_app_response_failed{job=\"avalanchego\"}[1m])",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "app response",
-          "refId": "Q"
         }
       ],
       "title": "Messages Failed To Send per Second",
@@ -2749,7 +2632,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "increase(avalanche_network_msgs_failed_to_parse[1m])>0",
+          "expr": "increase(avalanche_network_msgs_failed_to_parse[1m])",
           "interval": "",
           "legendFormat": "Failed to Parse",
           "refId": "A"
