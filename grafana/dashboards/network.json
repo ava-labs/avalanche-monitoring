@@ -2723,7 +2723,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "increase(avalanche_P_handler_expired[1m])+increase(avalanche_C_handler_expired[1m])+increase(avalanche_X_handler_expired[1m])",
+          "expr": "sum(increase(avalanche_handler_expired[1m]))",
           "interval": "",
           "legendFormat": "Messages Dropped",
           "refId": "A"
@@ -3011,80 +3011,14 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "(increase(avalanche_network_codec_gzip_push_query_compress_time_sum[5m])+1)/(increase(avalanche_network_codec_gzip_push_query_compress_time_count[5m])+1)",
+          "expr": "increase(avalanche_network_codec_compressed_duration{direction=\"compression\"}[5m])/increase(avalanche_network_codec_compressed_count{direction=\"compression\"}[5m])",
           "hide": false,
           "interval": "",
-          "legendFormat": "Push Query",
-          "range": true,
-          "refId": "B"
-        },
-        {
-          "datasource": {
-            "type": "prometheus"
-          },
-          "editorMode": "code",
-          "exemplar": true,
-          "expr": "(increase(avalanche_network_codec_gzip_put_compress_time_sum[5m])+1)/(increase(avalanche_network_codec_gzip_put_compress_time_count[5m])+1)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Put",
-          "range": true,
-          "refId": "C"
-        },
-        {
-          "datasource": {
-            "type": "prometheus"
-          },
-          "editorMode": "code",
-          "exemplar": true,
-          "expr": "(increase(avalanche_network_codec_gzip_peerlist_compress_time_sum[5m])+1)/(increase(avalanche_network_codec_gzip_peerlist_compress_time_count[5m])+1)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Peer List",
-          "range": true,
-          "refId": "D"
-        },
-        {
-          "datasource": {
-            "type": "prometheus"
-          },
-          "editorMode": "code",
-          "exemplar": true,
-          "expr": "(increase(avalanche_network_codec_gzip_app_gossip_compress_time_sum[5m])+1)/(increase(avalanche_network_codec_gzip_app_gossip_compress_time_count[5m])+1)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "App Gossip",
-          "range": true,
-          "refId": "E"
-        },
-        {
-          "datasource": {
-            "type": "prometheus"
-          },
-          "editorMode": "code",
-          "exemplar": true,
-          "expr": "(increase(avalanche_network_codec_gzip_app_request_compress_time_sum[5m])+1)/(increase(avalanche_network_codec_gzip_app_request_compress_time_count[5m])+1)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "App Request",
-          "range": true,
-          "refId": "F"
-        },
-        {
-          "datasource": {
-            "type": "prometheus"
-          },
-          "editorMode": "code",
-          "exemplar": true,
-          "expr": "(increase(avalanche_network_codec_app_gzip_response_compress_time_sum[5m])+1)/(increase(avalanche_network_codec_gzip_app_response_compress_time_count[5m])+1)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "App Response",
-          "range": true,
-          "refId": "G"
+          "legendFormat": "{{ op }} {{ type }}",
+          "refId": "A"
         }
       ],
-      "title": "Average Message Compression Time (gzip codec)",
+      "title": "Average Message Compression Time",
       "type": "timeseries"
     },
     {
