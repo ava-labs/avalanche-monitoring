@@ -2723,7 +2723,7 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(increase(avalanche_handler_expired[1m]))",
+          "expr": "sum(increase(avalanche_handler_expired[1m]) or 0 * up)",
           "interval": "",
           "legendFormat": "Messages Dropped",
           "refId": "A"
