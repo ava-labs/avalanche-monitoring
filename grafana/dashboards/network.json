@@ -3108,82 +3108,13 @@
           "datasource": {
             "type": "prometheus"
           },
-          "editorMode": "code",
-          "exemplar": true,
-          "expr": "(increase(avalanche_network_codec_gzip_push_query_compress_time_sum[5m])+1)/(increase(avalanche_network_codec_gzip_push_query_compress_time_count[5m])+1)",
-          "hide": false,
+          "expr": "increase(avalanche_network_codec_compressed_duration{direction=\"decompression\"}[5m])/increase(avalanche_network_codec_compressed_count{direction=\"decompression\"}[5m])",
           "interval": "",
-          "legendFormat": "Push Query",
-          "range": true,
-          "refId": "B"
-        },
-        {
-          "datasource": {
-            "type": "prometheus"
-          },
-          "editorMode": "code",
-          "exemplar": true,
-          "expr": "(increase(avalanche_network_codec_gzip_put_compress_time_sum[5m])+1)/(increase(avalanche_network_codec_gzip_put_compress_time_count[5m])+1)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Put",
-          "range": true,
-          "refId": "C"
-        },
-        {
-          "datasource": {
-            "type": "prometheus"
-          },
-          "editorMode": "code",
-          "exemplar": true,
-          "expr": "(increase(avalanche_network_codec_gzip_peerlist_compress_time_sum[5m])+1)/(increase(avalanche_network_codec_gzip_peerlist_compress_time_count[5m])+1)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Peer List",
-          "range": true,
-          "refId": "D"
-        },
-        {
-          "datasource": {
-            "type": "prometheus"
-          },
-          "editorMode": "code",
-          "exemplar": true,
-          "expr": "(increase(avalanche_network_codec_gzip_app_gossip_compress_time_sum[5m])+1)/(increase(avalanche_network_codec_gzip_app_gossip_compress_time_count[5m])+1)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "App Gossip",
-          "range": true,
-          "refId": "E"
-        },
-        {
-          "datasource": {
-            "type": "prometheus"
-          },
-          "editorMode": "code",
-          "exemplar": true,
-          "expr": "(increase(avalanche_network_codec_gzip_app_request_compress_time_sum[5m])+1)/(increase(avalanche_network_codec_gzip_app_request_compress_time_count[5m])+1)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "App Request",
-          "range": true,
-          "refId": "F"
-        },
-        {
-          "datasource": {
-            "type": "prometheus"
-          },
-          "editorMode": "code",
-          "exemplar": true,
-          "expr": "(increase(avalanche_network_codec_app_gzip_response_compress_time_sum[5m])+1)/(increase(avalanche_network_codec_gzip_app_response_compress_time_count[5m])+1)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "App Response",
-          "range": true,
-          "refId": "G"
+          "legendFormat": "{{ op }} {{ type }}",
+          "refId": "A"
         }
       ],
-      "title": "Average Message Compression Time (gzip codec)",
+      "title": "Average Message Decompression Time",
       "type": "timeseries"
     },
     {
