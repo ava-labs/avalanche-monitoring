@@ -378,7 +378,7 @@ install_extras() {
   mkdir -p /tmp/avalanche-monitoring-installer/dashboards-install
   cd /tmp/avalanche-monitoring-installer/dashboards-install
 
-  wget -nd -m -nv https://raw.githubusercontent.com/ava-labs/avalanche-monitoring/avalanchego-v1.11.8/grafana/dashboards/subnets.json
+  wget -nd -m -nv https://raw.githubusercontent.com/ava-labs/avalanche-monitoring/master/grafana/dashboards/subnets.json
 
   sudo mkdir -p /etc/grafana/dashboards
   sudo cp subnets.json /etc/grafana/dashboards
