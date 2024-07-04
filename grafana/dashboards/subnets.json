@@ -671,7 +671,7 @@
             "type": "prometheus"
           },
           "exemplar": true,
-          "expr": "rate(avalanche_handler_pull_query_sum{chain=\"${chain_id}\", job=\"avalanchego\"}[5m])",
+          "expr": "rate(avalanche_handler_message_handling_time{chain=\"${chain_id}\", job=\"avalanchego\"}[5m])",
           "interval": "",
           "legendFormat": "{{ op }} {{node_id}}",
           "refId": "A"
@@ -1133,7 +1133,7 @@
           "datasource": {
             "type": "prometheus"
           },
-          "expr": "sum(increase(avalanche_${vm_type}_rpcchainvm_bytes_to_id_cache_get_count{chain=\"${chain_id}\", result=\"hit\"}[5m]) or 0 * up)",
+          "expr": "sum(increase(avalanche_rpcchainvm_bytes_to_id_cache_get_count{chain=\"${chain_id}\", result=\"hit\"}[5m]) or 0 * up)",
           "interval": "",
           "legendFormat": "Hits {{node_id}}",
           "refId": "A",
@@ -1143,7 +1143,7 @@
           "datasource": {
             "type": "prometheus"
           },
-          "expr": "sum(increase(avalanche_${vm_type}_rpcchainvm_bytes_to_id_cache_get_count{chain=\"${chain_id}\"}[5m]) or 0 * up)",
+          "expr": "sum(increase(avalanche_rpcchainvm_bytes_to_id_cache_get_count{chain=\"${chain_id}\"}[5m]) or 0 * up)",
           "interval": "",
           "legendFormat": "Calls {{node_id}}",
           "refId": "B",
@@ -1244,7 +1244,7 @@
           "datasource": {
             "type": "prometheus"
           },
-          "expr": "sum(increase(avalanche_${vm_type}_rpcchainvm_missing_cache_get_count{chain=\"${chain_id}\", result=\"hit\"}[5m]) or 0 * up)",
+          "expr": "sum(increase(avalanche_rpcchainvm_missing_cache_get_count{chain=\"${chain_id}\", result=\"hit\"}[5m]) or 0 * up)",
           "interval": "",
           "legendFormat": "Hits {{node_id}}",
           "refId": "A",
@@ -1254,7 +1254,7 @@
           "datasource": {
             "type": "prometheus"
           },
-          "expr": "sum(increase(avalanche_${vm_type}_rpcchainvm_missing_cache_get_count{chain=\"${chain_id}\"}[5m]) or 0 * up)",
+          "expr": "sum(increase(avalanche_rpcchainvm_missing_cache_get_count{chain=\"${chain_id}\"}[5m]) or 0 * up)",
           "interval": "",
           "legendFormat": "Calls {{node_id}}",
           "refId": "B",
@@ -1353,7 +1353,7 @@
           "datasource": {
             "type": "prometheus"
           },
-          "expr": "sum(increase(avalanche_${vm_type}_rpcchainvm_decided_cache_get_count{chain=\"${chain_id}\", result=\"hit\"}[5m]) or 0 * up)",
+          "expr": "sum(increase(avalanche_rpcchainvm_decided_cache_get_count{chain=\"${chain_id}\", result=\"hit\"}[5m]) or 0 * up)",
           "interval": "",
           "legendFormat": "Hits {{node_id}}",
           "refId": "A",
@@ -1363,7 +1363,7 @@
           "datasource": {
             "type": "prometheus"
           },
-          "expr": "sum(increase(avalanche_${vm_type}_rpcchainvm_decided_cache_get_count{chain=\"${chain_id}\"}[5m]) or 0 * up)",
+          "expr": "sum(increase(avalanche_rpcchainvm_decided_cache_get_count{chain=\"${chain_id}\"}[5m]) or 0 * up)",
           "interval": "",
           "legendFormat": "Calls {{node_id}}",
           "refId": "B",
@@ -1462,7 +1462,7 @@
           "datasource": {
             "type": "prometheus"
           },
-          "expr": "sum(increase(avalanche_${vm_type}_rpcchainvm_unverified_cache_get_count{chain=\"${chain_id}\", result=\"hit\"}[5m]) or 0 * up)",
+          "expr": "sum(increase(avalanche_rpcchainvm_unverified_cache_get_count{chain=\"${chain_id}\", result=\"hit\"}[5m]) or 0 * up)",
           "interval": "",
           "legendFormat": "Hits {{node_id}}",
           "refId": "A",
@@ -1472,7 +1472,7 @@
           "datasource": {
             "type": "prometheus"
           },
-          "expr": "sum(increase(avalanche_${vm_type}_rpcchainvm_unverified_cache_get_count{chain=\"${chain_id}\"}[5m]) or 0 * up)",
+          "expr": "sum(increase(avalanche_rpcchainvm_unverified_cache_get_count{chain=\"${chain_id}\"}[5m]) or 0 * up)",
           "interval": "",
           "legendFormat": "Calls {{node_id}}",
           "refId": "B",
@@ -1693,30 +1693,6 @@
   ],
   "templating": {
     "list": [
-      {
-        "current": {},
-        "datasource": {
-          "type": "prometheus"
-        },
-        "definition": "metrics(avalanche_.*_rpcchainvm.*)",
-        "description": "",
-        "hide": 1,
-        "includeAll": false,
-        "label": "VM Type",
-        "multi": false,
-        "name": "vm_type",
-        "options": [],
-        "query": {
-          "qryType": 2,
-          "query": "metrics(avalanche_.*_rpcchainvm.*)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 2,
-        "regex": "/avalanche_(?<value>[^_]+).*/",
-        "skipUrlSync": false,
-        "sort": 1,
-        "type": "query"
-      },
       {
         "current": {},
         "definition": "label_values(chain)",
