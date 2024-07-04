@@ -760,7 +760,7 @@
             "type": "prometheus"
           },
           "editorMode": "code",
-          "expr": "avalanche_health_health_checks_failing{job=\"avalanchego\",tag=\"all\"}",
+          "expr": "avalanche_health_checks_failing{check=\"health\",job=\"avalanchego\",tag=\"all\"}",
           "interval": "",
           "legendFormat": "",
           "range": true,
