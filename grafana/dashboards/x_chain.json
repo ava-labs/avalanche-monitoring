@@ -770,7 +770,7 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "percentunit"
         },
         "overrides": []
       },
@@ -1183,7 +1183,7 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "percent"
         },
         "overrides": []
       },
