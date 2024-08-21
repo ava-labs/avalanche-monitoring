@@ -31,7 +31,8 @@
   "panels": [
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Database read rate. Note that these reads may be from caches and not from disk.",
       "fieldConfig": {
@@ -109,7 +110,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "sum(rate(avalanche_meterdb_size{chain=\"all\", method=~\"has|get|iterator_next\"}[5m]))",
           "interval": "",
@@ -124,7 +126,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Database write rate.",
       "fieldConfig": {
@@ -202,7 +205,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "sum(rate(avalanche_meterdb_size{chain=\"all\", method=~\"put|delete|batch_write\"}[5m]))",
           "interval": "",
@@ -217,7 +221,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Measures how many of each database operation is performed each second across all chains",
       "fieldConfig": {
@@ -307,7 +312,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Measures how long each database operation is taking on average",
       "fieldConfig": {
@@ -398,7 +404,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Measures how many of each database operation is performed each second on X-Chain",
       "fieldConfig": {
@@ -488,7 +495,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Measures how long each database operation is taking on average on X-Chain",
       "fieldConfig": {
@@ -579,7 +587,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Measures how many of each database operation is performed each second on P-Chain",
       "fieldConfig": {
@@ -669,7 +678,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Measures how long each database operation is taking on average on P-Chain",
       "fieldConfig": {
@@ -760,7 +770,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Measures how many of each database operation is performed each second across all chains",
       "fieldConfig": {
@@ -850,7 +861,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Measures how long each database operation is taking on average on C-Chain",
       "fieldConfig": {
@@ -949,8 +961,23 @@
   "templating": {
     "list": [
       {
+        "hide": 0,
+        "includeAll": false,
+        "label": "Data Source",
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
         "datasource": {
-          "type": "prometheus"
+          "type": "prometheus",
+          "uid": "${datasource}"
         },
         "filters": [],
         "hide": 0,

@@ -41,7 +41,8 @@
     {
       "collapsed": false,
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "gridPos": {
         "h": 1,
@@ -56,7 +57,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Stake weighted average uptime of your node, as reported by network peers. If this falls below 80% node probably won't be rewarded for the current staking period.",
       "fieldConfig": {
@@ -167,7 +169,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Percentage of the stake that view your node as sufficiently online and correct to vote that node be awarded at the end of the staking period.",
       "fieldConfig": {
@@ -310,7 +313,8 @@
         "notifications": []
       },
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Number of network peers the node is connected to",
       "fieldConfig": {
@@ -402,7 +406,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Shows the amount of time this node will wait for a response to a request before considering the request failed, and the average time it takes to get a response to a request.",
       "fieldConfig": {
@@ -503,7 +508,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Number of outstanding requests related to consensus/bootstrapping. Doesn't include handshake messages.",
       "fieldConfig": {
@@ -594,7 +600,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "From all chains",
       "fieldConfig": {
@@ -688,7 +695,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "From all chains",
       "fieldConfig": {
@@ -782,7 +790,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "From all chains",
       "fieldConfig": {
@@ -864,7 +873,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "rate(avalanche_network_msgs_bytes{io=\"received\", job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -877,7 +887,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "From all chains",
       "fieldConfig": {
@@ -959,7 +970,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "rate(avalanche_network_msgs_bytes{io=\"sent\", job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -972,7 +984,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "From all chains",
       "fieldConfig": {
@@ -1054,7 +1067,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "increase(avalanche_network_msgs_bytes{io=\"received\", job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1064,7 +1078,8 @@
         },
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "increase(avalanche_network_msgs{io=\"received\", job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1088,7 +1103,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "From all chains",
       "fieldConfig": {
@@ -1170,7 +1186,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "increase(avalanche_network_msgs_bytes{io=\"sent\", job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1180,7 +1197,8 @@
         },
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "increase(avalanche_network_msgs{io=\"sent\", job=\"avalanchego\"}[1m])",
           "interval": "",
@@ -1204,7 +1222,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Considers the X-Chain, P-Chain and C-Chain. A lower value indicates vote pipelining (good.) A higher value indicates failed polls (not good.)",
       "fieldConfig": {
@@ -1284,7 +1303,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "sum(increase(avalanche_network_msgs{io=\"sent\", op=~\"pull_query|push_query\", job=\"avalanchego\"}[5m]))",
           "interval": "",
@@ -1294,7 +1314,8 @@
         },
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "sum(increase(avalanche_snowman_blks_accepted_count{chain=~\"C|P|X\", job=\"avalanchego\"}[5m]))",
           "interval": "",
@@ -1318,7 +1339,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Number of messages that are queued to be sent to peers",
       "fieldConfig": {
@@ -1410,7 +1432,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Amount of the stake in AVAX that is benched (ignored) because the nodes are unhealthy",
       "fieldConfig": {
@@ -1505,7 +1528,8 @@
     {
       "collapsed": false,
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "gridPos": {
         "h": 1,
@@ -1520,7 +1544,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Number of messages waiting to acquire bytes from the inbound message throttler.",
       "fieldConfig": {
@@ -1612,7 +1637,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Number of bytes left in the validator byte allocation of the inbound message throttler",
       "fieldConfig": {
@@ -1706,7 +1732,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "The amount of time, on average, that we wait to acquire bytes from the throttler before reading a message.",
       "fieldConfig": {
@@ -1795,7 +1822,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "The amount of time, on average, that we wait to acquire from the throttler before reading a message.",
       "fieldConfig": {
@@ -1884,7 +1912,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Number of messages that are currently being handled and haven't yet returned their bytes to the inbound message throttler.",
       "fieldConfig": {
@@ -1976,7 +2005,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Number of messages waiting to acquire from the inbound message buffer throttler.",
       "fieldConfig": {
@@ -2067,7 +2097,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Number of bytes left in the at-large byte allocation of the inbound message throttler",
       "fieldConfig": {
@@ -2160,7 +2191,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Number of messages waiting to acquire bytes from the inbound bandwidth throttler.",
       "fieldConfig": {
@@ -2253,7 +2285,8 @@
     {
       "collapsed": false,
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "gridPos": {
         "h": 1,
@@ -2268,7 +2301,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Number of bytes left in the at-large byte allocation of the outbound message throttler",
       "fieldConfig": {
@@ -2361,7 +2395,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Number of bytes left in the validator byte allocation of the outbound message throttler",
       "fieldConfig": {
@@ -2451,7 +2486,8 @@
     {
       "collapsed": false,
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "gridPos": {
         "h": 1,
@@ -2466,7 +2502,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "From all chains",
       "fieldConfig": {
@@ -2558,7 +2595,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Number of messages that could not be parsed because they were of unknown type or invalidly formatted.",
       "fieldConfig": {
@@ -2645,7 +2683,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Number of inbound messages dropped (not processed) due to expiration in last minute.",
       "fieldConfig": {
@@ -2736,7 +2775,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Number of outbound messages dropped (not sent) due to rate-limiting in the last minute",
       "fieldConfig": {
@@ -2823,7 +2863,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Number of inbound connections dropped due to inbound connection rate-limiting",
       "fieldConfig": {
@@ -2911,7 +2952,8 @@
     {
       "collapsed": false,
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "gridPos": {
         "h": 1,
@@ -2926,7 +2968,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "",
       "fieldConfig": {
@@ -3009,7 +3052,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -3025,7 +3069,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "",
       "fieldConfig": {
@@ -3108,7 +3153,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "increase(avalanche_network_codec_compressed_duration{direction=\"decompression\"}[5m])/increase(avalanche_network_codec_compressed_count{direction=\"decompression\"}[5m])",
           "interval": "",
@@ -3121,7 +3167,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Rate at which we save bytes (don't send/receive them over the network) by compressing messages/receiving compressed messages.",
       "fieldConfig": {
@@ -3220,8 +3267,23 @@
   "templating": {
     "list": [
       {
+        "hide": 0,
+        "includeAll": false,
+        "label": "Data Source",
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
         "datasource": {
-          "type": "prometheus"
+          "type": "prometheus",
+          "uid": "${datasource}"
         },
         "filters": [],
         "hide": 0,

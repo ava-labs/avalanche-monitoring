@@ -44,7 +44,8 @@
       "dashLength": 10,
       "dashes": false,
       "datasource": {
-        "type": "loki"
+        "type": "loki",
+        "uid": "${loki_datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -89,7 +90,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "loki"
+            "type": "loki",
+            "uid": "${loki_datasource}"
           },
           "editorMode": "code",
           "expr": "sum(count_over_time({network_uuid=~\".+\"} |~ \"$search\"[$__interval]))",
@@ -129,7 +131,8 @@
     },
     {
       "datasource": {
-        "type": "loki"
+        "type": "loki",
+        "uid": "${loki_datasource}"
       },
       "gridPos": {
         "h": 25,
@@ -152,7 +155,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "loki"
+            "type": "loki",
+            "uid": "${loki_datasource}"
           },
           "editorMode": "code",
           "expr": "{network_uuid=~\".+\"} |~ \"$search\"",
@@ -172,6 +176,19 @@
     "list": [
       {
         "hide": 0,
+        "includeAll": false,
+        "label": "Data Source",
+        "multi": false,
+        "name": "loki_datasource",
+        "options": [],
+        "query": "loki",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
+        "hide": 0,
         "name": "search",
         "query": "",
         "skipUrlSync": false,
@@ -179,7 +196,8 @@
       },
       {
         "datasource": {
-          "type": "prometheus"
+          "type": "loki",
+          "uid": "${loki_datasource}"
         },
         "filters": [],
         "hide": 0,

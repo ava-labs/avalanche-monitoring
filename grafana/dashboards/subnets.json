@@ -41,7 +41,8 @@
   "panels": [
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -120,7 +121,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "round(increase(avalanche_snowman_blks_accepted_count{chain=\"${chain_id}\", job=\"avalanchego\"}[1m]))>0",
@@ -134,7 +136,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -215,7 +218,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "round(increase(avalanche_blks_rejected_count{chain=\"${chain_id}\", job=\"avalanchego\"}[1m]))>0",
@@ -229,7 +233,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "The average time between a block's issuance and acceptance by this node over the last 5 minutes.",
       "fieldConfig": {
@@ -306,7 +311,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "rate(avalanche_snowman_blks_accepted_sum{chain=\"${chain_id}\", job=\"avalanchego\"}[5m]) / rate(avalanche_snowman_blks_accepted_count{chain=\"${chain_id}\", job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -319,7 +325,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "The average time between a block's issuance and rejection by this node over the last 5 minutes.",
       "fieldConfig": {
@@ -399,7 +406,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "rate(avalanche_snowman_blks_rejected_sum{chain=\"${chain_id}\", job=\"avalanchego\"}[5m]) / rate(avalanche_snowman_blks_rejected_count{chain=\"${chain_id}\", job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -412,7 +420,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -487,7 +496,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "avalanche_snowman_blks_processing{chain=\"${chain_id}\", job=\"avalanchego\"}>0",
@@ -501,7 +511,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -575,7 +586,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "avalanche_snowman_polls{chain=\"${chain_id}\"} > 0",
@@ -589,7 +601,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Measures how much of each second is being spent handling different kinds of messages on the C-Chain.\nThe value for chits, for example, is the number of seconds spent handling chits messages per second, over the last 30 seconds.",
       "fieldConfig": {
@@ -668,7 +681,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "rate(avalanche_handler_message_handling_time{chain=\"${chain_id}\", job=\"avalanchego\"}[5m])",
@@ -682,7 +696,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Percentage of queries for which we receive chits on time.",
       "fieldConfig": {
@@ -764,7 +779,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "max(increase(avalanche_handler_messages{chain=\"${chain_id}\", op=\"chits\", job=\"avalanchego\"}[5m]))",
           "hide": true,
@@ -776,7 +792,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Measures how long each kind of request on the C-Chain takes to handle.\nThe value for chits, for example, is how long, in seconds, it takes to handle a chits message.",
       "fieldConfig": {
@@ -855,7 +872,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "rate(avalanche_handler_message_handling_time{chain=\"${chain_id}\", job=\"avalanchego\"}[5m])",
@@ -869,7 +887,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "The total stake of validators currently \"benched\" due to poor query responsiveness. Queries to these validators will immediately timeout until they are removed from the \"bench.\"",
       "fieldConfig": {
@@ -949,7 +968,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "avg_over_time(avalanche_benchlist_benched_weight{chain=\"${chain_id}\", job=\"avalanchego\"}[15m]) / 10^9",
@@ -963,7 +983,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Measures how many of each kind of message are received per second on the C-Chain.",
       "fieldConfig": {
@@ -1042,7 +1063,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "rate(avalanche_handler_messages{chain=\"${chain_id}\", job=\"avalanchego\"}[5m])",
@@ -1056,7 +1078,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Hit rate for the cache where the key is the byte representation of the block, and the value is the block's ID",
       "fieldConfig": {
@@ -1131,7 +1154,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "sum(increase(avalanche_rpcchainvm_bytes_to_id_cache_get_count{chain=\"${chain_id}\", result=\"hit\"}[5m]) or 0 * up)",
           "interval": "",
@@ -1141,7 +1165,8 @@
         },
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "sum(increase(avalanche_rpcchainvm_bytes_to_id_cache_get_count{chain=\"${chain_id}\"}[5m]) or 0 * up)",
           "interval": "",
@@ -1166,7 +1191,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Hit rate for the missing block cache",
       "fieldConfig": {
@@ -1242,7 +1268,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "sum(increase(avalanche_rpcchainvm_missing_cache_get_count{chain=\"${chain_id}\", result=\"hit\"}[5m]) or 0 * up)",
           "interval": "",
@@ -1252,7 +1279,8 @@
         },
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "sum(increase(avalanche_rpcchainvm_missing_cache_get_count{chain=\"${chain_id}\"}[5m]) or 0 * up)",
           "interval": "",
@@ -1276,7 +1304,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Hit rate for the decided block cache",
       "fieldConfig": {
@@ -1351,7 +1380,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "sum(increase(avalanche_rpcchainvm_decided_cache_get_count{chain=\"${chain_id}\", result=\"hit\"}[5m]) or 0 * up)",
           "interval": "",
@@ -1361,7 +1391,8 @@
         },
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "sum(increase(avalanche_rpcchainvm_decided_cache_get_count{chain=\"${chain_id}\"}[5m]) or 0 * up)",
           "interval": "",
@@ -1385,7 +1416,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Hit rate for the unverified block cache",
       "fieldConfig": {
@@ -1460,7 +1492,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "sum(increase(avalanche_rpcchainvm_unverified_cache_get_count{chain=\"${chain_id}\", result=\"hit\"}[5m]) or 0 * up)",
           "interval": "",
@@ -1470,7 +1503,8 @@
         },
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "sum(increase(avalanche_rpcchainvm_unverified_cache_get_count{chain=\"${chain_id}\"}[5m]) or 0 * up)",
           "interval": "",
@@ -1494,7 +1528,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1573,7 +1608,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "avalanche_handler_sync_unprocessed_msgs_count{chain=\"${chain_id}\", job=\"avalanchego\"}",
@@ -1583,7 +1619,8 @@
         },
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "avalanche_handler_async_unprocessed_msgs_count{chain=\"${chain_id}\", job=\"avalanchego\"}",
@@ -1597,7 +1634,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -1672,7 +1710,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "increase(avalanche_handler_expired{chain=\"${chain_id}\", job=\"avalanchego\"}[1m])",
@@ -1693,6 +1732,20 @@
   ],
   "templating": {
     "list": [
+      {
+        "hide": 0,
+        "includeAll": false,
+        "label": "Data Source",
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
       {
         "current": {},
         "definition": "label_values(chain)",
@@ -1715,7 +1768,8 @@
       },
       {
         "datasource": {
-          "type": "prometheus"
+          "type": "prometheus",
+          "uid": "${datasource}"
         },
         "filters": [],
         "hide": 0,

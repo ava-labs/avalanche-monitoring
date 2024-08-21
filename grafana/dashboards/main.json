@@ -41,7 +41,8 @@
   "panels": [
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Stake weighted average uptime of your node, as reported by network peers. If this falls below 80% node probably won't be rewarded for the current staking period.",
       "fieldConfig": {
@@ -108,7 +109,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "avalanche_network_node_uptime_weighted_average{job=\"avalanchego\"}",
@@ -122,7 +124,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Percentage of the stake that view your node as sufficiently online and correct to vote that node be awarded at the end of the staking period.",
       "fieldConfig": {
@@ -185,7 +188,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "avalanche_network_node_uptime_rewarding_stake{job=\"avalanchego\"}",
@@ -199,7 +203,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Number of accepted and rejected blocks on the X chain in the last minute",
       "fieldConfig": {
@@ -288,7 +293,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -300,7 +306,8 @@
         },
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -317,7 +324,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Number of X-Chain blocks this node has proposed on the network in the last day.",
       "fieldConfig": {
@@ -364,7 +372,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -380,7 +389,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Number of accepted and rejected blocks on the P chain in the last minute.",
       "fieldConfig": {
@@ -468,7 +478,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "round(increase(avalanche_snowman_blks_accepted_count{chain=\"P\", job=\"avalanchego\"}[1m]))>0",
@@ -478,7 +489,8 @@
         },
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "round(increase(avalanche_snowman_blks_rejected_count{chain=\"P\", job=\"avalanchego\"}[1m]))>0",
@@ -493,7 +505,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Number of P-Chain blocks this node has proposed on the network in the last day.",
       "fieldConfig": {
@@ -540,7 +553,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "round(increase(avalanche_snowman_blks_built{chain=\"P\", job=\"avalanchego\"}[1d]))",
@@ -554,7 +568,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Percentage of CPU used",
       "fieldConfig": {
@@ -616,7 +631,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "(1 - avg(irate(node_cpu_seconds_total{job=~\"avalanchego-machine\", mode=\"idle\"}[1m])) by (instance)) * 100",
           "interval": "",
@@ -629,7 +645,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Percentage of storage filled",
       "fieldConfig": {
@@ -693,7 +710,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "max(((node_filesystem_size_bytes{job=~\"avalanchego-machine\", fstype=~\"ext4|vfat\"} - node_filesystem_free_bytes{job=~\"avalanchego-machine\", fstype=~\"ext4|vfat\"}) / node_filesystem_size_bytes{job=~\"avalanchego-machine\", fstype=~\"ext4|vfat\"}) * 100) by (instance)",
           "interval": "",
@@ -706,7 +724,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Number of currently failing internal health checks",
       "fieldConfig": {
@@ -761,7 +780,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "avalanche_health_checks_failing{check=\"health\",job=\"avalanchego\",tag=\"all\"}",
@@ -776,7 +796,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Average time to get a response from a peer",
       "fieldConfig": {
@@ -838,7 +859,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "avalanche_requests_average_latency",
@@ -852,7 +874,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Amount of AVAX currently staked",
       "fieldConfig": {
@@ -900,7 +923,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "avalanche_platformvm_total_staked{chain=\"P\", job=\"avalanchego\"}/1000000000",
@@ -914,7 +938,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Amount of network stake node is currently connected to",
       "fieldConfig": {
@@ -972,7 +997,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "avalanche_stake_percent_connected{chain=\"P\", job=\"avalanchego\"}",
@@ -987,7 +1013,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Number of peers node is connected to",
       "fieldConfig": {
@@ -1074,7 +1101,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "avalanche_network_peers{job=\"avalanchego\"}",
           "interval": "",
@@ -1087,7 +1115,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Number of accepted and rejected blocks on the C chain in the last minute.",
       "fieldConfig": {
@@ -1175,7 +1204,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "round(increase(avalanche_snowman_blks_accepted_count{chain=\"C\", job=\"avalanchego\"}[1m]))>0",
@@ -1185,7 +1215,8 @@
         },
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "round(increase(avalanche_snowman_blks_rejected_count{chain=\"C\", job=\"avalanchego\"}[1m]))>0",
@@ -1200,7 +1231,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Number of blocks this node has proposed on the C-Chain in the last day.",
       "fieldConfig": {
@@ -1251,7 +1283,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "exemplar": true,
           "expr": "round(increase(avalanche_snowman_blks_built{chain=\"C\", job=\"avalanchego\"}[1d]))",
@@ -1265,7 +1298,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Number of blocks accepted in the last minute",
       "fieldConfig": {
@@ -1313,7 +1347,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "round(increase(avalanche_snowman_blks_accepted_count{job=\"avalanchego\"}[1m]))",
           "interval": "",
@@ -1327,7 +1362,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Number of blocks currently being processed by the node",
       "fieldConfig": {
@@ -1383,7 +1419,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "avalanche_snowman_blks_processing{job=\"avalanchego\"}",
           "interval": "",
@@ -1397,7 +1434,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Number of peers currently being benched (ignored) by the node",
       "fieldConfig": {
@@ -1444,7 +1482,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "avalanche_benchlist_benched_num{job=\"avalanchego\"}",
           "interval": "",
@@ -1457,7 +1496,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "Percentage of successful queries per chain in the last minute",
       "fieldConfig": {
@@ -1515,7 +1555,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "sum by (chain)(increase(avalanche_handler_messages{op=\"chits\", job=\"avalanchego\"}[1m]))",
           "hide": true,
@@ -1525,7 +1566,8 @@
         },
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "sum by (chain)(increase(avalanche_handler_messages{op=\"query_failed\", job=\"avalanchego\"}[1m]))",
           "hide": true,
@@ -1549,7 +1591,8 @@
     },
     {
       "datasource": {
-        "type": "prometheus"
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
       "description": "How long each database operation is taking on average",
       "fieldConfig": {
@@ -1628,7 +1671,8 @@
       "targets": [
         {
           "datasource": {
-            "type": "prometheus"
+            "type": "prometheus",
+            "uid": "${datasource}"
           },
           "expr": "increase(avalanche_meterdb_duration{chain=\"all\", job=\"avalanchego\"}[5m])/increase(avalanche_meterdb_calls{chain=\"all\", job=\"avalanchego\"}[5m])",
           "interval": "",
@@ -1649,8 +1693,23 @@
   "templating": {
     "list": [
       {
+        "hide": 0,
+        "includeAll": false,
+        "label": "Data Source",
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
         "datasource": {
-          "type": "prometheus"
+          "type": "prometheus",
+          "uid": "${datasource}"
         },
         "filters": [],
         "hide": 0,
