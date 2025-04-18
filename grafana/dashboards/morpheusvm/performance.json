@@ -19,7 +19,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 4,
+  "id": 18,
   "links": [],
   "panels": [
     {
@@ -76,7 +76,56 @@
             ]
           }
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "A"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Issued TX"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "B"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "TXs Built"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "C"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "TXs Verified"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "D"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "TXs Accepted"
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 8,
@@ -98,12 +147,12 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.5.1",
+      "pluginVersion": "11.6.0-pre",
       "targets": [
         {
           "editorMode": "code",
-          "expr": "rate(load_txs_issued{network_uuid=~\"$networkID\"}[1m])",
-          "legendFormat": "Submitted TXs",
+          "expr": "rate(load_txs_issued[1m])",
+          "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         },
@@ -113,10 +162,10 @@
             "uid": "eegbq9z6fow74e"
           },
           "editorMode": "code",
-          "expr": "rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_txs_built{node_id=~\"$nodeID\", chain=~\"$chainID\", network_uuid=~\"$networkID\"}[1m])",
+          "expr": "rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_txs_built[1m])",
           "hide": false,
           "instant": false,
-          "legendFormat": "TXs built into blocks",
+          "legendFormat": "__auto",
           "range": true,
           "refId": "B"
         },
@@ -126,10 +175,10 @@
             "uid": "eegbq9z6fow74e"
           },
           "editorMode": "code",
-          "expr": "rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_txs_verified{node_id=~\"$nodeID\", chain=~\"$chainID\", network_uuid=~\"$networkID\"}[1m])",
+          "expr": "rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_txs_verified[1m])",
           "hide": false,
           "instant": false,
-          "legendFormat": "Verified TXs",
+          "legendFormat": "__auto",
           "range": true,
           "refId": "C"
         },
@@ -139,10 +188,10 @@
             "uid": "eegbq9z6fow74e"
           },
           "editorMode": "code",
-          "expr": "rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_txs_accepted{node_id=~\"$nodeID\", chain=~\"$chainID\", network_uuid=~\"$networkID\"}[1m])",
+          "expr": "rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_txs_accepted[1m])",
           "hide": false,
           "instant": false,
-          "legendFormat": "Accepted TXs",
+          "legendFormat": "__auto",
           "range": true,
           "refId": "D"
         }
@@ -209,7 +258,44 @@
           },
           "unit": "ns"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "A"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Root Calculation"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "B"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "State Operation"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "C"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "State OP per TX"
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 8,
@@ -231,7 +317,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.5.1",
+      "pluginVersion": "11.6.0-pre",
       "targets": [
         {
           "datasource": {
@@ -239,10 +325,10 @@
             "uid": "eegbq9z6fow74e"
           },
           "editorMode": "code",
-          "expr": "rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_root_calculated_sum{chain=~\"$chainID\", node_id=~\"$nodeID\", network_uuid=~\"$networkID\"}[1m]) / rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_root_calculated_count{chain=~\"$chainID\", node_id=~\"$nodeID\", network_uuid=~\"$networkID\"}[1m])",
+          "expr": "rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_root_calculated_sum[1m]) / rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_root_calculated_count[1m])",
           "hide": false,
           "instant": false,
-          "legendFormat": "Root Calculation Time",
+          "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         },
@@ -252,10 +338,11 @@
             "uid": "eegbq9z6fow74e"
           },
           "editorMode": "code",
-          "expr": "rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_state_operations{chain=~\"$chainID\", node_id=~\"$nodeID\", network_uuid=~\"$networkID\"}[1m])",
+          "exemplar": false,
+          "expr": "rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_state_operations[1m])",
           "hide": false,
           "instant": false,
-          "legendFormat": "State Operation Rate",
+          "legendFormat": "__auto",
           "range": true,
           "refId": "B"
         },
@@ -265,10 +352,10 @@
             "uid": "eegbq9z6fow74e"
           },
           "editorMode": "code",
-          "expr": "rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_state_operations{chain=~\"$chainID\", node_id=~\"$nodeID\", network_uuid=~\"$networkID\"}[1m]) / rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_txs_accepted{chain=~\"$chainID\", node_id=~\"$nodeID\", network_uuid=~\"$networkID\"}[1m])",
+          "expr": "rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_state_operations[1m]) / rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_txs_accepted[1m])",
           "hide": false,
           "instant": false,
-          "legendFormat": "Avg. state operations per transaction",
+          "legendFormat": "__auto",
           "range": true,
           "refId": "C"
         }
@@ -281,7 +368,7 @@
         "type": "prometheus",
         "uid": "eegbq9z6fow74e"
       },
-      "description": "Percentage of executor tasks that run concurrently without being blocked indicating execution parallelism efficiency",
+      "description": "Percentage of executor tasks that run concurrently without being blocked indicating execution parallelism efficiency\n\nThe query measures the ratio of executable tasks to all tasks (executable + blocked) during block building, which directly indicates how efficiently your blockchain can parallelize transaction execution during the building phase. Higher values (closer to 100%) indicate better parallelism with fewer dependencies blocking execution.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -331,7 +418,32 @@
           },
           "unit": "percent"
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "A"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Build"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "B"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Verify"
+              }
+            ]
+          }
+        ]
       },
       "gridPos": {
         "h": 8,
@@ -353,7 +465,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.5.1",
+      "pluginVersion": "11.6.0-pre",
       "targets": [
         {
           "datasource": {
@@ -361,10 +473,10 @@
             "uid": "eegbq9z6fow74e"
           },
           "editorMode": "code",
-          "expr": "increase(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_executor_build_executable{chain=~\"$chainID\", node_id=~\"$nodeID\", network_uuid=~\"$networkID\"}[5m]) / (increase(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_executor_build_executable{chain=~\"$chainID\", node_id=~\"$nodeID\", network_uuid=~\"$networkID\"}[5m]) + increase(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_executor_build_blocked{chain=~\"$chainID\", node_id=~\"$nodeID\", network_uuid=~\"$networkID\"}[5m])) * 100",
+          "expr": "increase(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_executor_build_executable[5m]) / (increase(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_executor_build_executable[5m]) + increase(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_executor_build_blocked[5m])) * 100",
           "hide": false,
           "instant": false,
-          "legendFormat": "TX Build",
+          "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         },
@@ -374,10 +486,10 @@
             "uid": "eegbq9z6fow74e"
           },
           "editorMode": "code",
-          "expr": "increase(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_executor_verify_executable{chain=~\"$chainID\", node_id=~\"$nodeID\", network_uuid=~\"$networkID\"}[5m]) / (increase(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_executor_verify_executable{chain=~\"$chainID\", node_id=~\"$nodeID\", network_uuid=~\"$networkID\"}[5m]) + increase(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_executor_verify_blocked{chain=~\"$chainID\", node_id=~\"$nodeID\", network_uuid=~\"$networkID\"}[5m])) * 100",
+          "expr": "increase(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_executor_verify_executable[5m]) / (increase(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_executor_verify_executable[5m]) + increase(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_executor_verify_blocked[5m])) * 100",
           "hide": false,
           "instant": false,
-          "legendFormat": "TX Verify",
+          "legendFormat": "__auto",
           "range": true,
           "refId": "B"
         }
@@ -511,11 +623,11 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.5.1",
+      "pluginVersion": "11.6.0-pre",
       "targets": [
         {
           "editorMode": "code",
-          "expr": "rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_txs_accepted{chain=~\"$chainID\", node_id=~\"$nodeID\", network_uuid=~\"$networkID\"}[1m])",
+          "expr": "rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_txs_accepted[1m])",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -526,7 +638,7 @@
             "uid": "eegbq9z6fow74e"
           },
           "editorMode": "code",
-          "expr": "avalanche_resource_tracker_processing_time{node_id=~\"$nodeID\", network_uuid=~\"$networkID\"}",
+          "expr": "avalanche_resource_tracker_processing_time",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -601,6 +713,10 @@
               {
                 "id": "unit",
                 "value": "percent"
+              },
+              {
+                "id": "displayName",
+                "value": "CPU"
               }
             ]
           },
@@ -613,6 +729,10 @@
               {
                 "id": "unit",
                 "value": "binBps"
+              },
+              {
+                "id": "displayName",
+                "value": "Alloc. Bytes"
               }
             ]
           }
@@ -638,7 +758,7 @@
           "sort": "none"
         }
       },
-      "pluginVersion": "11.5.1",
+      "pluginVersion": "11.6.0-pre",
       "targets": [
         {
           "datasource": {
@@ -646,10 +766,10 @@
             "uid": "eegbq9z6fow74e"
           },
           "editorMode": "code",
-          "expr": "100 * avalanche_resource_tracker_processing_time{node_id=~\"$nodeID\", network_uuid=~\"$networkID\"} / on() group_left count(avalanche_resource_tracker_cpu_usage{node_id=~\"$nodeID\", network_uuid=~\"$networkID\"})",
+          "expr": "100 * avalanche_resource_tracker_processing_time / on() group_left count(avalanche_resource_tracker_cpu_usage)",
           "hide": false,
           "instant": false,
-          "legendFormat": "CPU Utilization",
+          "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         },
@@ -659,10 +779,10 @@
             "uid": "eegbq9z6fow74e"
           },
           "editorMode": "code",
-          "expr": "rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_process_go_memstats_alloc_bytes_total{chain=~\"$chainID\", node_id=~\"$nodeID\", network_uuid=~\"$networkID\"}[1m])",
+          "expr": "rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_process_go_memstats_alloc_bytes_total[1m])",
           "hide": false,
           "instant": false,
-          "legendFormat": "Memory allocation rate",
+          "legendFormat": "__auto",
           "range": true,
           "refId": "B"
         }
@@ -727,11 +847,11 @@
         "showThresholdMarkers": true,
         "sizing": "auto"
       },
-      "pluginVersion": "11.5.1",
+      "pluginVersion": "11.6.0-pre",
       "targets": [
         {
           "editorMode": "code",
-          "expr": "avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_process_go_goroutines{chain=~\"$chainID\", node_id=~\"$nodeID\", network_uuid=~\"$networkID\"}",
+          "expr": "avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_process_go_goroutines",
           "legendFormat": "Num. goroutines",
           "range": true,
           "refId": "A"
@@ -767,7 +887,7 @@
       "type": "gauge"
     },
     {
-      "collapsed": true,
+      "collapsed": false,
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -775,477 +895,442 @@
         "y": 33
       },
       "id": 15,
-      "panels": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "eegbq9z6fow74e"
+      "panels": [],
+      "title": "Latency",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "eegbq9z6fow74e"
+      },
+      "description": "How transaction latency changes as the system load increases",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
           },
-          "description": "How transaction latency changes as the system load increases",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  }
-                ]
-              }
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
             },
-            "overrides": [
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
               {
-                "matcher": {
-                  "id": "byFrameRefID",
-                  "options": "A"
-                },
-                "properties": [
-                  {
-                    "id": "custom.axisPlacement",
-                    "value": "right"
-                  },
-                  {
-                    "id": "unit",
-                    "value": "ms"
-                  }
-                ]
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "A"
+            },
+            "properties": [
+              {
+                "id": "custom.axisPlacement",
+                "value": "right"
               },
               {
-                "matcher": {
-                  "id": "byFrameRefID",
-                  "options": "B"
-                },
-                "properties": [
-                  {
-                    "id": "custom.axisPlacement",
-                    "value": "left"
-                  },
-                  {
-                    "id": "unit",
-                    "value": "reqps"
-                  }
-                ]
-              },
-              {
-                "matcher": {
-                  "id": "byFrameRefID",
-                  "options": "C"
-                },
-                "properties": [
-                  {
-                    "id": "unit",
-                    "value": "reqps"
-                  }
-                ]
+                "id": "unit",
+                "value": "ms"
               }
             ]
           },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 17
-          },
-          "id": 12,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "B"
             },
-            "tooltip": {
-              "hideZeros": false,
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "11.5.1",
-          "targets": [
-            {
-              "editorMode": "code",
-              "expr": "rate(load_tx_latency_sum{network_uuid=~\"$networkID\"}[1m]) / rate(load_tx_latency_count{network_uuid=~\"$networkID\"}[1m])",
-              "legendFormat": "Average Latency (ms)",
-              "range": true,
-              "refId": "A"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "eegbq9z6fow74e"
-              },
-              "editorMode": "code",
-              "expr": "rate(load_txs_issued{network_uuid=~\"$networkID\"}[1m])",
-              "hide": false,
-              "instant": false,
-              "legendFormat": "Issued TXs (TPS)",
-              "range": true,
-              "refId": "B"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "eegbq9z6fow74e"
-              },
-              "editorMode": "code",
-              "expr": "rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_hypervm_vm_txs_submitted{network_uuid=~\"$networkID\", chain=~\"$chainID\", node_id=~\"$nodeID\"}[1m])",
-              "hide": false,
-              "instant": false,
-              "legendFormat": "Received TX",
-              "range": true,
-              "refId": "C"
-            }
-          ],
-          "title": "Latency Under Load",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "eegbq9z6fow74e"
-          },
-          "description": "Shows how latency changes with throughput",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "fillOpacity": 50,
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "pointShape": "circle",
-                "pointSize": {
-                  "fixed": 5
-                },
-                "pointStrokeWidth": 1,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "show": "points"
-              },
-              "fieldMinMax": false,
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  }
-                ]
-              }
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 17
-          },
-          "id": 11,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": false
-            },
-            "mapping": "auto",
-            "series": [
+            "properties": [
               {
-                "frame": {
-                  "matcher": {
-                    "id": "byIndex",
-                    "options": 0
-                  }
-                }
+                "id": "custom.axisPlacement",
+                "value": "left"
+              },
+              {
+                "id": "unit",
+                "value": "reqps"
               }
-            ],
-            "tooltip": {
-              "hideZeros": false,
-              "mode": "single",
-              "sort": "none"
-            }
+            ]
           },
-          "pluginVersion": "11.5.1",
-          "targets": [
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "eegbq9z6fow74e"
-              },
-              "editorMode": "code",
-              "expr": "rate(load_txs_confirmed{network_uuid=~\"$networkID\"}[1m])",
-              "instant": false,
-              "legendFormat": "Confirmed TPS",
-              "range": true,
-              "refId": "A"
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "C"
             },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "eegbq9z6fow74e"
-              },
-              "editorMode": "code",
-              "exemplar": false,
-              "expr": "rate(load_tx_latency_sum{network_uuid=~\"$networkID\"}[1m]) / rate(load_tx_latency_count{network_uuid=~\"$networkID\"}[1m])",
-              "hide": false,
-              "instant": false,
-              "legendFormat": "Latency (ms)",
-              "range": true,
-              "refId": "B"
-            }
-          ],
-          "title": "Throughput vs. Latency Correlation",
-          "transformations": [
-            {
-              "id": "concatenate",
-              "options": {}
-            }
-          ],
-          "type": "xychart"
+            "properties": [
+              {
+                "id": "unit",
+                "value": "reqps"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 34
+      },
+      "id": 12,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.6.0-pre",
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "rate(load_tx_latency_sum[1m]) / rate(load_tx_latency_count[1m])",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
         },
         {
           "datasource": {
             "type": "prometheus",
             "uid": "eegbq9z6fow74e"
           },
-          "description": "Shows the distribution of transaction confirmation times across percentiles",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "thresholds"
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "ms"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 0,
-            "y": 25
-          },
-          "id": 13,
-          "options": {
-            "minVizHeight": 75,
-            "minVizWidth": 75,
-            "orientation": "auto",
-            "reduceOptions": {
-              "calcs": [
-                "lastNotNull"
-              ],
-              "fields": "",
-              "values": false
-            },
-            "showThresholdLabels": false,
-            "showThresholdMarkers": true,
-            "sizing": "auto"
-          },
-          "pluginVersion": "11.5.1",
-          "targets": [
-            {
-              "editorMode": "code",
-              "expr": "histogram_quantile(0.5, sum(rate(load_tx_latency_bucket{network_uuid=~\"$networkID\"}[1m])) by (le))",
-              "legendFormat": "50th percentile (median)",
-              "range": true,
-              "refId": "A"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "eegbq9z6fow74e"
-              },
-              "editorMode": "code",
-              "expr": "histogram_quantile(0.75, sum(rate(load_tx_latency_bucket{network_uuid=~\"$networkID\"}[1m])) by (le))",
-              "hide": false,
-              "instant": false,
-              "legendFormat": "75th percentile",
-              "range": true,
-              "refId": "B"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "eegbq9z6fow74e"
-              },
-              "editorMode": "code",
-              "expr": "histogram_quantile(0.95, sum(rate(load_tx_latency_bucket{network_uuid=~\"$networkID\"}[1m])) by (le))",
-              "hide": false,
-              "instant": false,
-              "legendFormat": "95th Percentile",
-              "range": true,
-              "refId": "C"
-            },
-            {
-              "datasource": {
-                "type": "prometheus",
-                "uid": "eegbq9z6fow74e"
-              },
-              "editorMode": "code",
-              "expr": "histogram_quantile(0.99, sum(rate(load_tx_latency_bucket{network_uuid=~\"$networkID\"}[1m])) by (le))",
-              "hide": false,
-              "instant": false,
-              "legendFormat": "99th Percentile",
-              "range": true,
-              "refId": "D"
-            }
-          ],
-          "title": "Latency Distribution Metrics",
-          "type": "gauge"
+          "editorMode": "code",
+          "expr": "rate(load_txs_issued[1m])",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
         },
         {
           "datasource": {
             "type": "prometheus",
             "uid": "eegbq9z6fow74e"
           },
-          "description": "How transaction latency changes as the system load increases",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  }
-                ]
-              },
-              "unit": "none"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 8,
-            "w": 12,
-            "x": 12,
-            "y": 25
-          },
-          "id": 14,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "hideZeros": false,
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "11.5.1",
-          "targets": [
-            {
-              "editorMode": "code",
-              "expr": "sum(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_hypervm_chain_mempool_size{network_uuid=~\"$networkID\", chain=~\"$chainID\"})",
-              "legendFormat": "__auto",
-              "range": true,
-              "refId": "A"
-            }
-          ],
-          "title": "Latency Under Load",
-          "type": "timeseries"
+          "editorMode": "code",
+          "expr": "rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_hypervm_vm_txs_submitted[1m])",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "C"
         }
       ],
-      "title": "Latency",
-      "type": "row"
+      "title": "Latency Under Load",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "uid": "eegbq9z6fow74e"
+      },
+      "description": "Shows how latency changes with throughput",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "fillOpacity": 50,
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "pointShape": "circle",
+            "pointSize": {
+              "fixed": 5
+            },
+            "pointStrokeWidth": 1,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "show": "points"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 34
+      },
+      "id": 11,
+      "options": {
+        "dims": {
+          "frame": {
+            "x": "Throughput",
+            "y": "Latency"
+          }
+        },
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "mapping": "auto",
+        "series": [],
+        "seriesMapping": "auto",
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.6.0-pre",
+      "targets": [
+        {
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "rate(load_txs_issued[1m])",
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "eegbq9z6fow74e"
+          },
+          "editorMode": "code",
+          "expr": "rate(load_tx_latency_sum[1m]) / rate(load_tx_latency_count[1m])",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "Latency",
+          "range": true,
+          "refId": "B"
+        }
+      ],
+      "title": "Throughput vs. Latency Correlation",
+      "transformations": [
+        {
+          "id": "seriesToColumns",
+          "options": {
+            "byField": "Time"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": false
+            },
+            "indexByName": {},
+            "renameByName": {
+              "Latency": "Latency",
+              "Throughput": "Throughput"
+            }
+          }
+        }
+      ],
+      "type": "xychart"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "eegbq9z6fow74e"
+      },
+      "description": "Shows the distribution of transaction confirmation times across percentiles",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "A"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "50 Percentile"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "B"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "75 percentile"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "C"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "95 percentile"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "D"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "99 percentile"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 42
+      },
+      "id": 13,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "11.6.0-pre",
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "histogram_quantile(0.5, sum(rate(load_tx_latency_bucket[1m])) by (le))",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "eegbq9z6fow74e"
+          },
+          "editorMode": "code",
+          "expr": "histogram_quantile(0.75, sum(rate(load_tx_latency_bucket[1m])) by (le))",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "eegbq9z6fow74e"
+          },
+          "editorMode": "code",
+          "expr": "histogram_quantile(0.95, sum(rate(load_tx_latency_bucket[1m])) by (le))",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "eegbq9z6fow74e"
+          },
+          "editorMode": "code",
+          "expr": "histogram_quantile(0.99, sum(rate(load_tx_latency_bucket[1m])) by (le))",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "D"
+        }
+      ],
+      "title": "Latency Distribution Metrics",
+      "type": "gauge"
     },
     {
       "collapsed": true,
@@ -1253,7 +1338,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 34
+        "y": 50
       },
       "id": 1,
       "panels": [
@@ -1322,7 +1407,7 @@
             "h": 11,
             "w": 8,
             "x": 0,
-            "y": 18
+            "y": 95
           },
           "id": 3,
           "options": {
@@ -1338,11 +1423,11 @@
               "sort": "none"
             }
           },
-          "pluginVersion": "11.5.1",
+          "pluginVersion": "11.6.0-pre",
           "targets": [
             {
               "editorMode": "code",
-              "expr": "sum(rate(avalanche_meterchainvm_parse_block_sum{chain=~\"$chainID\", node_id=~\"$nodeID\"}[5m])) / sum(rate(avalanche_meterchainvm_parse_block_count{chain=~\"$chainID\", node_id=~\"$nodeID\"}[5m]))",
+              "expr": "sum(rate(avalanche_meterchainvm_parse_block_sum[5m])) / sum(rate(avalanche_meterchainvm_parse_block_count[5m]))",
               "legendFormat": "__auto",
               "range": true,
               "refId": "A"
@@ -1416,7 +1501,7 @@
             "h": 11,
             "w": 8,
             "x": 8,
-            "y": 18
+            "y": 95
           },
           "id": 4,
           "options": {
@@ -1432,11 +1517,11 @@
               "sort": "none"
             }
           },
-          "pluginVersion": "11.5.1",
+          "pluginVersion": "11.6.0-pre",
           "targets": [
             {
               "editorMode": "code",
-              "expr": "sum(rate(avalanche_meterchainvm_build_block_sum{chain=~\"$chainID\", node_id=~\"$nodeID\"}[5m])) / sum(rate(avalanche_meterchainvm_build_block_count{chain=~\"$chainID\", node_id=~\"$nodeID\"}[5m]))",
+              "expr": "sum(rate(avalanche_meterchainvm_build_block_sum[5m])) / sum(rate(avalanche_meterchainvm_build_block_count[5m]))",
               "legendFormat": "__auto",
               "range": true,
               "refId": "A"
@@ -1510,7 +1595,7 @@
             "h": 11,
             "w": 8,
             "x": 16,
-            "y": 18
+            "y": 95
           },
           "id": 2,
           "options": {
@@ -1526,11 +1611,11 @@
               "sort": "none"
             }
           },
-          "pluginVersion": "11.5.1",
+          "pluginVersion": "11.6.0-pre",
           "targets": [
             {
               "editorMode": "code",
-              "expr": "sum(rate(avalanche_meterchainvm_verify_sum{chain=~\"$chainID\", node_id=~\"$nodeID\"}[5m])) / sum(rate(avalanche_meterchainvm_verify_count{chain=~\"$chainID\", node_id=~\"$nodeID\"}[5m]))",
+              "expr": "sum(rate(avalanche_meterchainvm_verify_sum[5m])) / sum(rate(avalanche_meterchainvm_verify_count[5m]))",
               "legendFormat": "__auto",
               "range": true,
               "refId": "A"
@@ -1604,7 +1689,7 @@
             "h": 11,
             "w": 8,
             "x": 0,
-            "y": 29
+            "y": 106
           },
           "id": 5,
           "options": {
@@ -1620,11 +1705,11 @@
               "sort": "none"
             }
           },
-          "pluginVersion": "11.5.1",
+          "pluginVersion": "11.6.0-pre",
           "targets": [
             {
               "editorMode": "code",
-              "expr": "sum(rate(avalanche_meterchainvm_accept_sum{chain=~\"$chainID\", node_id=~\"$nodeID\"}[5m])) / sum(rate(avalanche_meterchainvm_accept_count{chain=~\"$chainID\", node_id=~\"$nodeID\"}[5m]))",
+              "expr": "sum(rate(avalanche_meterchainvm_accept_sum[5m])) / sum(rate(avalanche_meterchainvm_accept_count[5m]))",
               "legendFormat": "__auto",
               "range": true,
               "refId": "A"
@@ -1698,7 +1783,7 @@
             "h": 11,
             "w": 8,
             "x": 8,
-            "y": 29
+            "y": 106
           },
           "id": 6,
           "options": {
@@ -1714,11 +1799,11 @@
               "sort": "none"
             }
           },
-          "pluginVersion": "11.5.1",
+          "pluginVersion": "11.6.0-pre",
           "targets": [
             {
               "editorMode": "code",
-              "expr": "sum(rate(avalanche_meterchainvm_reject_sum{chain=~\"$chainID\", node_id=~\"$nodeID\"}[5m])) / sum(rate(avalanche_meterchainvm_reject_count{chain=~\"$chainID\", node_id=~\"$nodeID\"}[5m]))",
+              "expr": "sum(rate(avalanche_meterchainvm_reject_sum[5m])) / sum(rate(avalanche_meterchainvm_reject_count[5m]))",
               "legendFormat": "__auto",
               "range": true,
               "refId": "A"
@@ -1792,7 +1877,7 @@
             "h": 11,
             "w": 8,
             "x": 16,
-            "y": 29
+            "y": 106
           },
           "id": 7,
           "options": {
@@ -1808,11 +1893,11 @@
               "sort": "none"
             }
           },
-          "pluginVersion": "11.5.1",
+          "pluginVersion": "11.6.0-pre",
           "targets": [
             {
               "editorMode": "code",
-              "expr": "sum(rate(avalanche_meterchainvm_get_block_sum{chain=~\"$chainID\", node_id=~\"$nodeID\"}[5m])) / sum(rate(avalanche_meterchainvm_get_block_count{chain=~\"$chainID\", node_id=~\"$nodeID\"}[5m]))",
+              "expr": "sum(rate(avalanche_meterchainvm_get_block_sum[5m])) / sum(rate(avalanche_meterchainvm_get_block_count[5m]))",
               "legendFormat": "__auto",
               "range": true,
               "refId": "A"
@@ -1828,7 +1913,7 @@
   ],
   "preload": false,
   "refresh": "5s",
-  "schemaVersion": 40,
+  "schemaVersion": 41,
   "tags": [
     "perf"
   ],
@@ -1836,77 +1921,38 @@
     "list": [
       {
         "current": {
-          "text": "All",
-          "value": [
-            "$__all"
-          ]
+          "text": "prometheus",
+          "value": "eegbq9z6fow74e"
         },
-        "definition": "label_values(node_id)",
-        "description": "Node IDs",
-        "includeAll": true,
-        "label": "NodeID",
-        "multi": true,
-        "name": "nodeID",
+        "label": "Data Source",
+        "name": "datasource",
         "options": [],
-        "query": {
-          "qryType": 1,
-          "query": "label_values(node_id)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
+        "query": "prometheus",
         "refresh": 1,
         "regex": "",
-        "type": "query"
+        "type": "datasource"
       },
       {
-        "current": {
-          "text": "zr7529tmWRQb8vacfLeueKMpJcENFfZ8XhfW4TJDQpNGM8jxD",
-          "value": "zr7529tmWRQb8vacfLeueKMpJcENFfZ8XhfW4TJDQpNGM8jxD"
+        "allowCustomValue": true,
+        "baseFilters": [],
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
         },
-        "definition": "label_values(chain)",
-        "label": "Chain ID",
-        "name": "chainID",
-        "options": [],
-        "query": {
-          "qryType": 1,
-          "query": "label_values(chain)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "type": "query"
-      },
-      {
-        "current": {
-          "text": "All",
-          "value": [
-            "$__all"
-          ]
-        },
-        "definition": "label_values(network_uuid)",
-        "includeAll": true,
-        "label": "Network UUID",
-        "multi": true,
-        "name": "networkID",
-        "options": [],
-        "query": {
-          "qryType": 1,
-          "query": "label_values(network_uuid)",
-          "refId": "PrometheusVariableQueryEditor-VariableQuery"
-        },
-        "refresh": 1,
-        "regex": "",
-        "type": "query"
+        "filters": [],
+        "label": "Filter",
+        "name": "filter",
+        "type": "adhoc"
       }
     ]
   },
   "time": {
-    "from": "now-5m",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "browser",
   "title": "Performance Overview",
   "uid": "eegkhgjobt340c",
-  "version": 55,
-  "weekStart": ""
+  "version": 42
 }
