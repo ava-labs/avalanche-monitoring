@@ -4,8 +4,8 @@
       {
         "builtIn": 1,
         "datasource": {
-          "type": "grafana",
-          "uid": "-- Grafana --"
+          "type": "datasource",
+          "uid": "grafana"
         },
         "enable": true,
         "hide": true,
@@ -19,13 +19,28 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 18,
-  "links": [],
+  "id": null,
+  "links": [
+    {
+      "asDropdown": false,
+      "icon": "external link",
+      "includeVars": true,
+      "keepTime": true,
+      "tags": [
+        "Avalanche"
+      ],
+      "targetBlank": false,
+      "title": "",
+      "tooltip": "",
+      "type": "dashboards",
+      "url": ""
+    }
+  ],
   "panels": [
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "eegbq9z6fow74e"
+        "uid": "${datasource}"
       },
       "description": "Shows transaction flow from submission to acceptance",
       "fieldConfig": {
@@ -151,7 +166,7 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "rate(load_txs_issued[1m])",
+          "expr": "sum(rate(load_txs_issued[5m]))",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -159,10 +174,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "eegbq9z6fow74e"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_txs_built[1m])",
+          "expr": "sum(rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_txs_built[5m]))",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -172,10 +187,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "eegbq9z6fow74e"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_txs_verified[1m])",
+          "expr": "sum(rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_txs_verified[5m]))",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -185,10 +200,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "eegbq9z6fow74e"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_txs_accepted[1m])",
+          "expr": "sum(rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_txs_accepted[5m]))",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -202,7 +217,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "eegbq9z6fow74e"
+        "uid": "${datasource}"
       },
       "description": "Breakdown of time spent in each processing stage",
       "fieldConfig": {
@@ -322,10 +337,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "eegbq9z6fow74e"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_root_calculated_sum[1m]) / rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_root_calculated_count[1m])",
+          "expr": "sum(rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_root_calculated_sum[1m]) / rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_root_calculated_count[1m]))",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -335,11 +350,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "eegbq9z6fow74e"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_state_operations[1m])",
+          "expr": "sum(rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_state_operations[1m]))",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -349,13 +364,13 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "eegbq9z6fow74e"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_state_operations[1m]) / rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_txs_accepted[1m])",
+          "expr": "sum(rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_wait_root_sum[1m]) / rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_wait_root_count[1m]))",
           "hide": false,
           "instant": false,
-          "legendFormat": "__auto",
+          "legendFormat": "Wait Root",
           "range": true,
           "refId": "C"
         }
@@ -366,7 +381,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "eegbq9z6fow74e"
+        "uid": "${datasource}"
       },
       "description": "Percentage of executor tasks that run concurrently without being blocked indicating execution parallelism efficiency\n\nThe query measures the ratio of executable tasks to all tasks (executable + blocked) during block building, which directly indicates how efficiently your blockchain can parallelize transaction execution during the building phase. Higher values (closer to 100%) indicate better parallelism with fewer dependencies blocking execution.",
       "fieldConfig": {
@@ -418,32 +433,7 @@
           },
           "unit": "percent"
         },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byFrameRefID",
-              "options": "A"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Build"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byFrameRefID",
-              "options": "B"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "Verify"
-              }
-            ]
-          }
-        ]
+        "overrides": []
       },
       "gridPos": {
         "h": 8,
@@ -470,26 +460,26 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "eegbq9z6fow74e"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "increase(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_executor_build_executable[5m]) / (increase(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_executor_build_executable[5m]) + increase(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_executor_build_blocked[5m])) * 100",
           "hide": false,
           "instant": false,
-          "legendFormat": "__auto",
+          "legendFormat": "{{node_id}} - Build",
           "range": true,
           "refId": "A"
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "eegbq9z6fow74e"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "increase(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_executor_verify_executable[5m]) / (increase(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_executor_verify_executable[5m]) + increase(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_executor_verify_blocked[5m])) * 100",
           "hide": false,
           "instant": false,
-          "legendFormat": "__auto",
+          "legendFormat": "{{node_id}} - Verify",
           "range": true,
           "refId": "B"
         }
@@ -513,9 +503,9 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "eegbq9z6fow74e"
+        "uid": "${datasource}"
       },
-      "description": "Shows transaction throughput alongside CPU usage to identify correlation patterns",
+      "description": "This ratio between total CPU usage and processing time gives  insight into overall system efficiency. Higher values suggest CPU bottlenecks affecting the entire system.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -562,46 +552,10 @@
                 "color": "green"
               }
             ]
-          }
-        },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byFrameRefID",
-              "options": "A"
-            },
-            "properties": [
-              {
-                "id": "custom.axisPlacement",
-                "value": "left"
-              },
-              {
-                "id": "unit",
-                "value": "reqps"
-              }
-            ]
           },
-          {
-            "matcher": {
-              "id": "byFrameRefID",
-              "options": "B"
-            },
-            "properties": [
-              {
-                "id": "custom.axisPlacement",
-                "value": "right"
-              },
-              {
-                "id": "unit",
-                "value": "none"
-              },
-              {
-                "id": "custom.axisLabel",
-                "value": "CPU Cores"
-              }
-            ]
-          }
-        ]
+          "unit": "Cores / Req"
+        },
+        "overrides": []
       },
       "gridPos": {
         "h": 8,
@@ -626,33 +580,26 @@
       "pluginVersion": "11.6.0-pre",
       "targets": [
         {
-          "editorMode": "code",
-          "expr": "rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_chain_chain_txs_accepted[1m])",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        },
-        {
           "datasource": {
             "type": "prometheus",
-            "uid": "eegbq9z6fow74e"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "avalanche_resource_tracker_processing_time",
+          "expr": "sum(avalanche_resource_tracker_cpu_usage) / sum(avalanche_resource_tracker_processing_time > 0)",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
-          "refId": "B"
+          "refId": "A"
         }
       ],
-      "title": "Transaction Processing vs. CPU Utilization",
+      "title": "CPU vs Processing Time",
       "type": "timeseries"
     },
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "eegbq9z6fow74e"
+        "uid": "${datasource}"
       },
       "description": "Resource saturation metrics that indicate when the system is reaching capacity limits",
       "fieldConfig": {
@@ -763,10 +710,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "eegbq9z6fow74e"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "100 * avalanche_resource_tracker_processing_time / on() group_left count(avalanche_resource_tracker_cpu_usage)",
+          "expr": "sum(100 * avalanche_resource_tracker_processing_time / on() group_left count(avalanche_resource_tracker_cpu_usage))",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -776,10 +723,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "eegbq9z6fow74e"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_process_go_memstats_alloc_bytes_total[1m])",
+          "expr": "sum(rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_process_go_memstats_alloc_bytes_total[1m]))",
           "hide": false,
           "instant": false,
           "legendFormat": "__auto",
@@ -793,7 +740,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "eegbq9z6fow74e"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -859,7 +806,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "eegbq9z6fow74e"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_process_go_memstats_heap_inuse_bytes{chain=~\"$chainID\", node_id=~\"$nodeID\", network_uuid=~\"$networkID\"}",
@@ -872,7 +819,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "eegbq9z6fow74e"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_process_go_threads{chain=~\"$chainID\", node_id=~\"$nodeID\", network_uuid=~\"$networkID\"}",
@@ -884,6 +831,157 @@
         }
       ],
       "title": "Go Gauge Metrics",
+      "type": "gauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "description": "Shows the distribution of transaction confirmation times across percentiles",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "A"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "50 Percentile"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "B"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "75 percentile"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "C"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "95 percentile"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byFrameRefID",
+              "options": "D"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "99 percentile"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 25
+      },
+      "id": 13,
+      "options": {
+        "minVizHeight": 75,
+        "minVizWidth": 75,
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "sizing": "auto"
+      },
+      "pluginVersion": "11.6.0-pre",
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "histogram_quantile(0.5, sum(rate(load_tx_latency_bucket[1m])) by (le))",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "editorMode": "code",
+          "expr": "histogram_quantile(0.75, sum(rate(load_tx_latency_bucket[1m])) by (le))",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "editorMode": "code",
+          "expr": "histogram_quantile(0.95, sum(rate(load_tx_latency_bucket[1m])) by (le))",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "editorMode": "code",
+          "expr": "histogram_quantile(0.99, sum(rate(load_tx_latency_bucket[1m])) by (le))",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "D"
+        }
+      ],
+      "title": "Latency Distribution Metrics",
       "type": "gauge"
     },
     {
@@ -902,7 +1000,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "eegbq9z6fow74e"
+        "uid": "${datasource}"
       },
       "description": "How transaction latency changes as the system load increases",
       "fieldConfig": {
@@ -1024,34 +1122,34 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "rate(load_tx_latency_sum[1m]) / rate(load_tx_latency_count[1m])",
-          "legendFormat": "__auto",
+          "expr": "sum(rate(load_tx_latency_sum[1m]) / rate(load_tx_latency_count[1m]))",
+          "legendFormat": "Latency",
           "range": true,
           "refId": "A"
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "eegbq9z6fow74e"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rate(load_txs_issued[1m])",
+          "expr": "sum(rate(load_txs_issued[1m]))",
           "hide": false,
           "instant": false,
-          "legendFormat": "__auto",
+          "legendFormat": "Issued TXs",
           "range": true,
           "refId": "B"
         },
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "eegbq9z6fow74e"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_hypervm_vm_txs_submitted[1m])",
+          "expr": "sum(rate(avalanche_qCNyZHrs3rZX458wPJXPJJypPf6w423A84jnfbdP2TPEmEE9u_vm_hypervm_vm_txs_submitted[1m]))",
           "hide": false,
           "instant": false,
-          "legendFormat": "__auto",
+          "legendFormat": "Received TXs",
           "range": true,
           "refId": "C"
         }
@@ -1060,10 +1158,24 @@
       "type": "timeseries"
     },
     {
-      "datasource": {
-        "uid": "eegbq9z6fow74e"
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 42
       },
-      "description": "Shows how latency changes with throughput",
+      "id": 1,
+      "panels": [],
+      "title": "MeterchainVM",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "description": "Shows the average time taken to parse blocks by the MeterChainVM.\n\nSpikes may indicate VM-level slowness, resource pressure, or unusual transaction loads.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -1075,122 +1187,32 @@
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
-            "fillOpacity": 50,
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
             },
-            "pointShape": "circle",
-            "pointSize": {
-              "fixed": 5
-            },
-            "pointStrokeWidth": 1,
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
             },
-            "show": "points"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 34
-      },
-      "id": 11,
-      "options": {
-        "dims": {
-          "frame": {
-            "x": "Throughput",
-            "y": "Latency"
-          }
-        },
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "mapping": "auto",
-        "series": [],
-        "seriesMapping": "auto",
-        "tooltip": {
-          "hideZeros": false,
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "11.6.0-pre",
-      "targets": [
-        {
-          "editorMode": "code",
-          "exemplar": false,
-          "expr": "rate(load_txs_issued[1m])",
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "eegbq9z6fow74e"
-          },
-          "editorMode": "code",
-          "expr": "rate(load_tx_latency_sum[1m]) / rate(load_tx_latency_count[1m])",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "Latency",
-          "range": true,
-          "refId": "B"
-        }
-      ],
-      "title": "Throughput vs. Latency Correlation",
-      "transformations": [
-        {
-          "id": "seriesToColumns",
-          "options": {
-            "byField": "Time"
-          }
-        },
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {
-              "Time": false
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
             },
-            "indexByName": {},
-            "renameByName": {
-              "Latency": "Latency",
-              "Throughput": "Throughput"
+            "thresholdsStyle": {
+              "mode": "off"
             }
-          }
-        }
-      ],
-      "type": "xychart"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "eegbq9z6fow74e"
-      },
-      "description": "Shows the distribution of transaction confirmation times across percentiles",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
           },
           "mappings": [],
           "thresholds": {
@@ -1205,717 +1227,520 @@
               }
             ]
           },
-          "unit": "ms"
+          "unit": "ns"
         },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byFrameRefID",
-              "options": "A"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "50 Percentile"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byFrameRefID",
-              "options": "B"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "75 percentile"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byFrameRefID",
-              "options": "C"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "95 percentile"
-              }
-            ]
-          },
-          {
-            "matcher": {
-              "id": "byFrameRefID",
-              "options": "D"
-            },
-            "properties": [
-              {
-                "id": "displayName",
-                "value": "99 percentile"
-              }
-            ]
-          }
-        ]
+        "overrides": []
       },
       "gridPos": {
-        "h": 8,
-        "w": 12,
+        "h": 11,
+        "w": 8,
         "x": 0,
-        "y": 42
+        "y": 43
       },
-      "id": 13,
+      "id": 3,
       "options": {
-        "minVizHeight": 75,
-        "minVizWidth": 75,
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
         },
-        "showThresholdLabels": false,
-        "showThresholdMarkers": true,
-        "sizing": "auto"
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
       },
       "pluginVersion": "11.6.0-pre",
       "targets": [
         {
           "editorMode": "code",
-          "expr": "histogram_quantile(0.5, sum(rate(load_tx_latency_bucket[1m])) by (le))",
+          "expr": "sum(rate(avalanche_meterchainvm_parse_block_sum[5m])) / sum(rate(avalanche_meterchainvm_parse_block_count[5m]))",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "eegbq9z6fow74e"
-          },
-          "editorMode": "code",
-          "expr": "histogram_quantile(0.75, sum(rate(load_tx_latency_bucket[1m])) by (le))",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "B"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "eegbq9z6fow74e"
-          },
-          "editorMode": "code",
-          "expr": "histogram_quantile(0.95, sum(rate(load_tx_latency_bucket[1m])) by (le))",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "C"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "eegbq9z6fow74e"
-          },
-          "editorMode": "code",
-          "expr": "histogram_quantile(0.99, sum(rate(load_tx_latency_bucket[1m])) by (le))",
-          "hide": false,
-          "instant": false,
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "D"
         }
       ],
-      "title": "Latency Distribution Metrics",
-      "type": "gauge"
+      "title": "Average Parse Block Time",
+      "type": "timeseries"
     },
     {
-      "collapsed": true,
-      "gridPos": {
-        "h": 1,
-        "w": 24,
-        "x": 0,
-        "y": 50
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
       },
-      "id": 1,
-      "panels": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "eegbq9z6fow74e"
+      "description": "Shows the average time taken to build blocks by the MeterChainVM.\n\nSpikes may indicate VM-level slowness, resource pressure, or unusual transaction loads.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
           },
-          "description": "Shows the average time taken to parse blocks by the MeterChainVM.\n\nSpikes may indicate VM-level slowness, resource pressure, or unusual transaction loads.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "ns"
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
             },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 11,
-            "w": 8,
-            "x": 0,
-            "y": 95
-          },
-          "id": 3,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
             },
-            "tooltip": {
-              "hideZeros": false,
-              "mode": "single",
-              "sort": "none"
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
             }
           },
-          "pluginVersion": "11.6.0-pre",
-          "targets": [
-            {
-              "editorMode": "code",
-              "expr": "sum(rate(avalanche_meterchainvm_parse_block_sum[5m])) / sum(rate(avalanche_meterchainvm_parse_block_count[5m]))",
-              "legendFormat": "__auto",
-              "range": true,
-              "refId": "A"
-            }
-          ],
-          "title": "Average Parse Block Time",
-          "type": "timeseries"
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ns"
         },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "eegbq9z6fow74e"
-          },
-          "description": "Shows the average time taken to build blocks by the MeterChainVM.\n\nSpikes may indicate VM-level slowness, resource pressure, or unusual transaction loads.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "ns"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 11,
-            "w": 8,
-            "x": 8,
-            "y": 95
-          },
-          "id": 4,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "hideZeros": false,
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "11.6.0-pre",
-          "targets": [
-            {
-              "editorMode": "code",
-              "expr": "sum(rate(avalanche_meterchainvm_build_block_sum[5m])) / sum(rate(avalanche_meterchainvm_build_block_count[5m]))",
-              "legendFormat": "__auto",
-              "range": true,
-              "refId": "A"
-            }
-          ],
-          "title": "Average Build Block Time",
-          "type": "timeseries"
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 8,
+        "x": 8,
+        "y": 43
+      },
+      "id": 4,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
         },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.6.0-pre",
+      "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "eegbq9z6fow74e"
-          },
-          "description": "Shows the average time taken to verify blocks by the MeterChainVM.\n\nSpikes may indicate VM-level slowness, resource pressure, or unusual transaction loads.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "ns"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 11,
-            "w": 8,
-            "x": 16,
-            "y": 95
-          },
-          "id": 2,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "hideZeros": false,
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "11.6.0-pre",
-          "targets": [
-            {
-              "editorMode": "code",
-              "expr": "sum(rate(avalanche_meterchainvm_verify_sum[5m])) / sum(rate(avalanche_meterchainvm_verify_count[5m]))",
-              "legendFormat": "__auto",
-              "range": true,
-              "refId": "A"
-            }
-          ],
-          "title": "Average Verify Block Time",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "eegbq9z6fow74e"
-          },
-          "description": "Shows the average time taken to accept blocks by the MeterChainVM.\n\nSpikes may indicate VM-level slowness, resource pressure, or unusual transaction loads.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "ns"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 11,
-            "w": 8,
-            "x": 0,
-            "y": 106
-          },
-          "id": 5,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "hideZeros": false,
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "11.6.0-pre",
-          "targets": [
-            {
-              "editorMode": "code",
-              "expr": "sum(rate(avalanche_meterchainvm_accept_sum[5m])) / sum(rate(avalanche_meterchainvm_accept_count[5m]))",
-              "legendFormat": "__auto",
-              "range": true,
-              "refId": "A"
-            }
-          ],
-          "title": "Average Accept Block Time",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "eegbq9z6fow74e"
-          },
-          "description": "Shows the average time taken to reject blocks by the MeterChainVM.\n\nSpikes may indicate VM-level slowness, resource pressure, or unusual transaction loads.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "ns"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 11,
-            "w": 8,
-            "x": 8,
-            "y": 106
-          },
-          "id": 6,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "hideZeros": false,
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "11.6.0-pre",
-          "targets": [
-            {
-              "editorMode": "code",
-              "expr": "sum(rate(avalanche_meterchainvm_reject_sum[5m])) / sum(rate(avalanche_meterchainvm_reject_count[5m]))",
-              "legendFormat": "__auto",
-              "range": true,
-              "refId": "A"
-            }
-          ],
-          "title": "Average Reject Block Time",
-          "type": "timeseries"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "eegbq9z6fow74e"
-          },
-          "description": "Shows the average time taken to get a blocks by the MeterChainVM.\n\nSpikes may indicate VM-level slowness, resource pressure, or unusual transaction loads.",
-          "fieldConfig": {
-            "defaults": {
-              "color": {
-                "mode": "palette-classic"
-              },
-              "custom": {
-                "axisBorderShow": false,
-                "axisCenteredZero": false,
-                "axisColorMode": "text",
-                "axisLabel": "",
-                "axisPlacement": "auto",
-                "barAlignment": 0,
-                "barWidthFactor": 0.6,
-                "drawStyle": "line",
-                "fillOpacity": 0,
-                "gradientMode": "none",
-                "hideFrom": {
-                  "legend": false,
-                  "tooltip": false,
-                  "viz": false
-                },
-                "insertNulls": false,
-                "lineInterpolation": "linear",
-                "lineWidth": 1,
-                "pointSize": 5,
-                "scaleDistribution": {
-                  "type": "linear"
-                },
-                "showPoints": "auto",
-                "spanNulls": false,
-                "stacking": {
-                  "group": "A",
-                  "mode": "none"
-                },
-                "thresholdsStyle": {
-                  "mode": "off"
-                }
-              },
-              "mappings": [],
-              "thresholds": {
-                "mode": "absolute",
-                "steps": [
-                  {
-                    "color": "green"
-                  },
-                  {
-                    "color": "red",
-                    "value": 80
-                  }
-                ]
-              },
-              "unit": "ns"
-            },
-            "overrides": []
-          },
-          "gridPos": {
-            "h": 11,
-            "w": 8,
-            "x": 16,
-            "y": 106
-          },
-          "id": 7,
-          "options": {
-            "legend": {
-              "calcs": [],
-              "displayMode": "list",
-              "placement": "bottom",
-              "showLegend": true
-            },
-            "tooltip": {
-              "hideZeros": false,
-              "mode": "single",
-              "sort": "none"
-            }
-          },
-          "pluginVersion": "11.6.0-pre",
-          "targets": [
-            {
-              "editorMode": "code",
-              "expr": "sum(rate(avalanche_meterchainvm_get_block_sum[5m])) / sum(rate(avalanche_meterchainvm_get_block_count[5m]))",
-              "legendFormat": "__auto",
-              "range": true,
-              "refId": "A"
-            }
-          ],
-          "title": "Average Get Block Time",
-          "type": "timeseries"
+          "editorMode": "code",
+          "expr": "sum(rate(avalanche_meterchainvm_build_block_sum[5m])) / sum(rate(avalanche_meterchainvm_build_block_count[5m]))",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
         }
       ],
-      "title": "MeterchainVM",
-      "type": "row"
+      "title": "Average Build Block Time",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "description": "Shows the average time taken to verify blocks by the MeterChainVM.\n\nSpikes may indicate VM-level slowness, resource pressure, or unusual transaction loads.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 8,
+        "x": 16,
+        "y": 43
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.6.0-pre",
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "sum(rate(avalanche_meterchainvm_verify_sum[5m])) / sum(rate(avalanche_meterchainvm_verify_count[5m]))",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Average Verify Block Time",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "description": "Shows the average time taken to accept blocks by the MeterChainVM.\n\nSpikes may indicate VM-level slowness, resource pressure, or unusual transaction loads.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 8,
+        "x": 0,
+        "y": 54
+      },
+      "id": 5,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.6.0-pre",
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "sum(rate(avalanche_meterchainvm_accept_sum[5m])) / sum(rate(avalanche_meterchainvm_accept_count[5m]))",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Average Accept Block Time",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "description": "Shows the average time taken to reject blocks by the MeterChainVM.\n\nSpikes may indicate VM-level slowness, resource pressure, or unusual transaction loads.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 8,
+        "x": 8,
+        "y": 54
+      },
+      "id": 6,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.6.0-pre",
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "sum(rate(avalanche_meterchainvm_reject_sum[5m])) / sum(rate(avalanche_meterchainvm_reject_count[5m]))",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Average Reject Block Time",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "description": "Shows the average time taken to get a blocks by the MeterChainVM.\n\nSpikes may indicate VM-level slowness, resource pressure, or unusual transaction loads.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 8,
+        "x": 16,
+        "y": 54
+      },
+      "id": 7,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.6.0-pre",
+      "targets": [
+        {
+          "editorMode": "code",
+          "expr": "sum(rate(avalanche_meterchainvm_get_block_sum[5m])) / sum(rate(avalanche_meterchainvm_get_block_count[5m]))",
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Average Get Block Time",
+      "type": "timeseries"
     }
   ],
   "preload": false,
   "refresh": "5s",
   "schemaVersion": 41,
   "tags": [
-    "perf"
+    "Performance",
+    "Avalanche"
   ],
   "templating": {
     "list": [
@@ -1953,6 +1778,6 @@
   "timepicker": {},
   "timezone": "browser",
   "title": "Performance Overview",
-  "uid": "eegkhgjobt340c",
-  "version": 42
+  "uid": "cejpdf8fl064ge",
+  "version": 17
 }
