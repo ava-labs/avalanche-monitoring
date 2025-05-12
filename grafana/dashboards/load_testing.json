@@ -97,7 +97,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.6.0-pre",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "editorMode": "code",
@@ -159,7 +159,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.6.0-pre",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "editorMode": "code",
@@ -238,7 +238,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.6.0-pre",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "editorMode": "code",
@@ -304,7 +304,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.6.0-pre",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "editorMode": "code",
@@ -370,7 +370,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.6.0-pre",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "editorMode": "code",
@@ -436,7 +436,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.6.0-pre",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "editorMode": "code",
@@ -511,7 +511,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.6.0-pre",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "editorMode": "code",
@@ -573,7 +573,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.6.0-pre",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "editorMode": "code",
@@ -635,7 +635,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.6.0-pre",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "editorMode": "code",
@@ -697,7 +697,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.6.0-pre",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "editorMode": "code",
@@ -759,7 +759,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.6.0-pre",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "editorMode": "code",
@@ -834,7 +834,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.6.0-pre",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "editorMode": "code",
@@ -896,7 +896,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.6.0-pre",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "editorMode": "code",
@@ -958,7 +958,7 @@
         "textMode": "auto",
         "wideLayout": true
       },
-      "pluginVersion": "11.6.0-pre",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": {
@@ -1008,7 +1008,7 @@
       {
         "current": {
           "text": "prometheus",
-          "value": "eegbq9z6fow74e"
+          "value": "P1809F7CD0C75ACF3"
         },
         "label": "Datasource",
         "name": "datasource",
@@ -1027,6 +1027,6 @@
   "timepicker": {},
   "timezone": "browser",
   "title": "Load Testing",
-  "uid": "dek82rf6cpfr4b",
+  "uid": "eabddd1d-0a06-4ba1-8e68-a44504e37535",
   "version": 4
 }
