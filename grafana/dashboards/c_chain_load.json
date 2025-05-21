@@ -467,7 +467,7 @@
         "type": "prometheus",
         "uid": "${datasource}"
       },
-      "description": "Number of transactions processed per second averaged across all nodes",
+      "description": "Sum of all current number of transactions processed per second across all nodes",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -493,7 +493,7 @@
         "x": 0,
         "y": 11
       },
-      "id": 14,
+      "id": 17,
       "options": {
         "colorMode": "value",
         "graphMode": "area",
@@ -515,13 +515,13 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "avg(rate(avalanche_evm_eth_chain_txs_processed[1m]))",
+          "expr": "sum(rate(avalanche_evm_eth_chain_txs_processed[1m]))",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Average txs per second",
+      "title": "Txs per second",
       "type": "stat"
     },
     {
@@ -529,7 +529,7 @@
         "type": "prometheus",
         "uid": "${datasource}"
       },
-      "description": "Number of gas processed per second averaged across all nodes",
+      "description": "Max gas processed per second across all nodes",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -577,13 +577,13 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "avg(rate(avalanche_evm_eth_chain_block_gas_used_processed[1m]))",
+          "expr": "max(rate(avalanche_evm_eth_chain_block_gas_used_processed[1m]))",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
         }
       ],
-      "title": "Average gas per second",
+      "title": "Gas per second",
       "type": "stat"
     },
     {
@@ -591,7 +591,7 @@
         "type": "prometheus",
         "uid": "${datasource}"
       },
-      "description": "Number of blocks produced per son, averaged  across all nodes",
+      "description": "Number of blocks produced per second, averaged  across all nodes",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -649,136 +649,12 @@
       "type": "stat"
     },
     {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${datasource}"
-      },
-      "description": "Max current number of transactions processed per second across all nodes",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "light-blue",
-            "mode": "fixed"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 4,
-        "x": 0,
-        "y": 15
-      },
-      "id": 17,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.0.0",
-      "targets": [
-        {
-          "editorMode": "code",
-          "expr": "max(rate(avalanche_evm_eth_chain_txs_processed[1m]))",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Max txs per second",
-      "type": "stat"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${datasource}"
-      },
-      "description": "Max number of gas processed per second across all nodes",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "fixedColor": "light-blue",
-            "mode": "fixed"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green"
-              }
-            ]
-          },
-          "unit": "none"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 4,
-        "w": 4,
-        "x": 4,
-        "y": 15
-      },
-      "id": 24,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "percentChangeColorMode": "standard",
-        "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
-          "fields": "",
-          "values": false
-        },
-        "showPercentChange": false,
-        "textMode": "auto",
-        "wideLayout": true
-      },
-      "pluginVersion": "12.0.0",
-      "targets": [
-        {
-          "editorMode": "code",
-          "expr": "max(rate(avalanche_evm_eth_chain_block_gas_used_processed[1m]))",
-          "legendFormat": "__auto",
-          "range": true,
-          "refId": "A"
-        }
-      ],
-      "title": "Max gas per second",
-      "type": "stat"
-    },
-    {
       "collapsed": true,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 19
+        "y": 15
       },
       "id": 21,
       "panels": [],
@@ -814,7 +690,7 @@
         "h": 4,
         "w": 4,
         "x": 0,
-        "y": 20
+        "y": 16
       },
       "id": 12,
       "options": {
@@ -852,7 +728,7 @@
         "type": "prometheus",
         "uid": "${datasource}"
       },
-      "description": "Gas used in processed block averaged across all nodes",
+      "description": "Sum of gas used in processed block across all nodes",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -876,7 +752,7 @@
         "h": 4,
         "w": 4,
         "x": 4,
-        "y": 20
+        "y": 16
       },
       "id": 11,
       "options": {
@@ -900,7 +776,7 @@
       "targets": [
         {
           "editorMode": "code",
-          "expr": "avg(rate(avalanche_evm_eth_chain_block_gas_used_processed[1m])) / avg(rate(avalanche_evm_eth_chain_block_inserts_count[1m]))",
+          "expr": "sum(rate(avalanche_evm_eth_chain_block_gas_used_processed[1m])) / avg(rate(avalanche_evm_eth_chain_block_inserts_count[1m]))",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -938,7 +814,7 @@
         "h": 4,
         "w": 4,
         "x": 8,
-        "y": 20
+        "y": 16
       },
       "id": 5,
       "options": {
