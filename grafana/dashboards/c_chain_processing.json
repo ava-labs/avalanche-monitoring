@@ -25,7 +25,7 @@
     "editable": true,
     "fiscalYearStartMonth": 0,
     "graphTooltip": 0,
-    "id": 17,
+    "id": 3,
     "links": [
       {
         "icon": "external link",
@@ -57,8 +57,8 @@
               "axisPlacement": "auto",
               "barAlignment": 0,
               "barWidthFactor": 0.6,
-              "drawStyle": "bars",
-              "fillOpacity": 0,
+              "drawStyle": "line",
+              "fillOpacity": 50,
               "gradientMode": "none",
               "hideFrom": {
                 "legend": false,
@@ -124,22 +124,22 @@
         "pluginVersion": "12.0.0",
         "targets": [
           {
-            "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[5m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[5m])) + sum by (chain) (rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[5m])) + sum by (chain) (rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[5m])) + sum by (chain) (rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[5m])))",
+            "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m])) + 0.000001)",
             "legendFormat": "Account Commit %",
             "refId": "A"
           },
           {
-            "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[5m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[5m])) + sum by (chain) (rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[5m])) + sum by (chain) (rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[5m])) + sum by (chain) (rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[5m])))",
+            "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m])) + 0.000001)",
             "legendFormat": "Storage Commit %",
             "refId": "B"
           },
           {
-            "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[5m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[5m])) + sum by (chain) (rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[5m])) + sum by (chain) (rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[5m])) + sum by (chain) (rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[5m])))",
+            "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m])) + 0.000001)",
             "legendFormat": "Snapshot Commit %",
             "refId": "C"
           },
           {
-            "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[5m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[5m])) + sum by (chain) (rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[5m])) + sum by (chain) (rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[5m])) + sum by (chain) (rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[5m])))",
+            "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m])) + 0.000001)",
             "legendFormat": "TrieDB Commit %",
             "refId": "D"
           }
@@ -165,8 +165,8 @@
               "axisPlacement": "auto",
               "barAlignment": 0,
               "barWidthFactor": 0.6,
-              "drawStyle": "bars",
-              "fillOpacity": 0,
+              "drawStyle": "line",
+              "fillOpacity": 50,
               "gradientMode": "none",
               "hideFrom": {
                 "legend": false,
@@ -232,37 +232,37 @@
         "pluginVersion": "12.0.0",
         "targets": [
           {
-            "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[5m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[5m])))",
+            "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m])) + 0.000001)",
             "legendFormat": "Content Validation %",
             "refId": "A"
           },
           {
-            "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[5m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[5m])))",
+            "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m])) + 0.000001)",
             "legendFormat": "State Init %",
             "refId": "B"
           },
           {
-            "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[5m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[5m])))",
+            "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m])) + 0.000001)",
             "legendFormat": "Execution %",
             "refId": "C"
           },
           {
-            "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[5m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[5m])))",
+            "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m])) + 0.000001)",
             "legendFormat": "State Validation %",
             "refId": "D"
           },
           {
-            "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[5m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[5m])))",
+            "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m])) + 0.000001)",
             "legendFormat": "Trie Ops %",
             "refId": "E"
           },
           {
-            "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[5m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[5m])))",
+            "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m])) + 0.000001)",
             "legendFormat": "Write %",
             "refId": "F"
           },
           {
-            "expr": "(sum by (chain) (rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[5m])) + sum by (chain) (rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[5m])) + sum by (chain) (rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[5m])) + sum by (chain) (rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[5m]))) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[5m])))",
+            "expr": "(sum by (chain) (rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m]))) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m])) + 0.000001)",
             "legendFormat": "Commit Total %",
             "refId": "G"
           }
@@ -288,7 +288,7 @@
               "axisPlacement": "auto",
               "barAlignment": 0,
               "barWidthFactor": 0.6,
-              "drawStyle": "bars",
+              "drawStyle": "line",
               "fillOpacity": 0,
               "gradientMode": "none",
               "hideFrom": {
@@ -352,7 +352,7 @@
         "pluginVersion": "12.0.0",
         "targets": [
           {
-            "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_gas_used_processed{chain=\"${chain}\"}[5m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_gas_used_processed{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_txs_processed{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_txs_accepted{chain=\"${chain}\"}[5m])))",
+            "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_gas_used_processed{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_gas_used_processed{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_txs_processed{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_txs_accepted{chain=\"${chain}\"}[1m])) + 0.000001)",
             "legendFormat": "MGas / S (per total activity)",
             "refId": "A"
           }
@@ -378,7 +378,7 @@
               "axisPlacement": "auto",
               "barAlignment": 0,
               "barWidthFactor": 0.6,
-              "drawStyle": "bars",
+              "drawStyle": "line",
               "fillOpacity": 0,
               "gradientMode": "none",
               "hideFrom": {
@@ -442,7 +442,7 @@
         "pluginVersion": "12.0.0",
         "targets": [
           {
-            "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_txs_processed{chain=\"${chain}\"}[5m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_gas_used_processed{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_txs_processed{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[5m]) + rate(avalanche_evm_eth_chain_txs_accepted{chain=\"${chain}\"}[5m])))",
+            "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_txs_processed{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_gas_used_processed{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_txs_processed{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_txs_accepted{chain=\"${chain}\"}[1m])) + 0.000001)",
             "legendFormat": "Txs / Block (per total activity)",
             "refId": "A"
           }
@@ -468,7 +468,7 @@
               "axisPlacement": "auto",
               "barAlignment": 0,
               "barWidthFactor": 0.6,
-              "drawStyle": "bars",
+              "drawStyle": "line",
               "fillOpacity": 0,
               "gradientMode": "none",
               "hideFrom": {
@@ -532,7 +532,7 @@
         "pluginVersion": "12.0.0",
         "targets": [
           {
-            "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_inserts_count{chain=\"${chain}\"}[5m]))",
+            "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_inserts_count{chain=\"${chain}\"}[1m]))",
             "legendFormat": "Blocks Verified / S",
             "refId": "A"
           }
@@ -558,7 +558,7 @@
               "axisPlacement": "auto",
               "barAlignment": 0,
               "barWidthFactor": 0.6,
-              "drawStyle": "bars",
+              "drawStyle": "line",
               "fillOpacity": 0,
               "gradientMode": "none",
               "hideFrom": {
@@ -622,7 +622,7 @@
         "pluginVersion": "12.0.0",
         "targets": [
           {
-            "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_txs_accepted{chain=\"${chain}\"}[5m]))",
+            "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_txs_accepted{chain=\"${chain}\"}[1m]))",
             "legendFormat": "C-Chain Accepted TPS",
             "refId": "A"
           }
@@ -631,44 +631,47 @@
         "type": "timeseries"
       }
     ],
-    "preload": false,
     "refresh": "10s",
-    "schemaVersion": 41,
+    "schemaVersion": 37,
+    "style": "dark",
     "tags": [
       "Avalanche"
     ],
     "templating": {
       "list": [
         {
-          "current": {
-            "text": "prometheus",
-            "value": "P1809F7CD0C75ACF3"
-          },
+          "hide": 0,
           "includeAll": false,
           "label": "Data Source",
+          "multi": false,
           "name": "datasource",
           "options": [],
           "query": "prometheus",
+          "queryValue": "",
           "refresh": 1,
           "regex": "",
+          "skipUrlSync": false,
           "type": "datasource"
         },
         {
-          "baseFilters": [],
           "datasource": {
             "type": "prometheus",
             "uid": "${datasource}"
           },
           "filters": [],
+          "hide": 0,
           "label": "Filter",
           "name": "filter",
+          "skipUrlSync": false,
           "type": "adhoc"
         },
         {
           "current": {
+            "selected": true,
             "text": "C",
             "value": "C"
           },
+          "hide": 0,
           "name": "chain",
           "options": [],
           "query": "label_values(avalanche_evm_eth_chain_account_commits, chain)",
@@ -678,12 +681,13 @@
       ]
     },
     "time": {
-      "from": "now-1h",
+      "from": "now-6h",
       "to": "now"
     },
     "timepicker": {},
     "timezone": "",
     "title": "Avalanche C-Chain Processing Metrics (Custom)",
-    "uid": "c-chain-processing-custom-v4",
-    "version": 1
+    "uid": "c-chain-processing-custom-v8",
+    "version": 8
   }
+  
