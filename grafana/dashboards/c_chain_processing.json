@@ -686,7 +686,7 @@
     },
     "timepicker": {},
     "timezone": "",
-    "title": "Avalanche C-Chain Processing Metrics (Custom)",
+    "title": "C-Chain Processing",
     "uid": "c-chain-processing-custom-v8",
     "version": 8
   }
