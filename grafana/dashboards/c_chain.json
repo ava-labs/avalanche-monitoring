@@ -24,7 +24,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
+  "id": 25,
   "links": [
     {
       "icon": "external link",
@@ -49,27 +49,30 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "bars",
-            "fillOpacity": 100,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "never",
-            "spanNulls": true,
+            "showPoints": "auto",
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -83,16 +86,14 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
                 "value": 80
               }
             ]
-          },
-          "unit": "short"
+          }
         },
         "overrides": []
       },
@@ -102,38 +103,35 @@
         "x": 0,
         "y": 0
       },
-      "id": 15,
+      "id": 7,
       "options": {
         "legend": {
-          "calcs": [
-            "min",
-            "mean",
-            "max"
-          ],
+          "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${datasource}"
-          },
-          "exemplar": true,
-          "expr": "round(increase(avalanche_snowman_blks_accepted_count{chain=\"C\", job=\"avalanchego\"}[1m]))>0",
-          "interval": "",
-          "legendFormat": "Blocks {{node_id}}",
-          "refId": "A"
+          "disableTextWrap": false,
+          "editorMode": "code",
+          "expr": "avalanche_snowman_last_accepted_height{chain=\"$chain\"}",
+          "fullMetaSearch": false,
+          "includeNullMetadata": true,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A",
+          "useBackend": false
         }
       ],
-      "title": "Accepted Blocks in Last Minute",
+      "title": "Last Accepted Height",
       "type": "timeseries"
     },
     {
@@ -147,11 +145,604 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 0
+      },
+      "id": 3,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_gas_used_processed{chain=\"${chain}\"}[1m])) / 1000000",
+          "legendFormat": "MGas / s",
+          "refId": "A"
+        }
+      ],
+      "title": "Verified MGas/s",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 50,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "percent"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "max": 1,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 8
+      },
+      "id": 2,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m])) + 0.000001)",
+          "legendFormat": "Content Validation %",
+          "refId": "A"
+        },
+        {
+          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m])) + 0.000001)",
+          "legendFormat": "State Init %",
+          "refId": "B"
+        },
+        {
+          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m])) + 0.000001)",
+          "legendFormat": "Execution %",
+          "refId": "C"
+        },
+        {
+          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m])) + 0.000001)",
+          "legendFormat": "State Validation %",
+          "refId": "D"
+        },
+        {
+          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m])) + 0.000001)",
+          "legendFormat": "Trie Ops %",
+          "refId": "E"
+        },
+        {
+          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m])) + 0.000001)",
+          "legendFormat": "Write %",
+          "refId": "F"
+        },
+        {
+          "expr": "(sum by (chain) (rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m]))) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m])) + 0.000001)",
+          "legendFormat": "Commit Total %",
+          "refId": "G"
+        }
+      ],
+      "title": "Block Processing %",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 50,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "percent"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "max": 1,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 9
+      },
+      "id": 1,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m])) + 0.000001)",
+          "legendFormat": "Account Commit %",
+          "refId": "A"
+        },
+        {
+          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m])) + 0.000001)",
+          "legendFormat": "Storage Commit %",
+          "refId": "B"
+        },
+        {
+          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m])) + 0.000001)",
+          "legendFormat": "Snapshot Commit %",
+          "refId": "C"
+        },
+        {
+          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m])) + 0.000001)",
+          "legendFormat": "TrieDB Commit %",
+          "refId": "D"
+        }
+      ],
+      "title": "Commit Time",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 17
+      },
+      "id": 6,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_txs_accepted{chain=\"${chain}\"}[1m]))",
+          "legendFormat": "EVM Accepted TPS",
+          "refId": "A"
+        }
+      ],
+      "title": "EVM Accepted TPS",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 18
+      },
+      "id": 5,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_inserts_count{chain=\"${chain}\"}[1m]))",
+          "legendFormat": "Blocks Verified / S",
+          "refId": "A"
+        }
+      ],
+      "title": "Blocks Verified / S",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 26
+      },
+      "id": 4,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_txs_processed{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_inserts_count{chain=\"${chain}\"}[1m])) + 0.000001)",
+          "legendFormat": "Txs / Block",
+          "refId": "A"
+        }
+      ],
+      "title": "Txs / Block",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "bars",
             "fillOpacity": 100,
             "gradientMode": "none",
@@ -160,6 +751,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -181,8 +773,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -198,7 +789,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 0
+        "y": 27
       },
       "id": 20,
       "options": {
@@ -213,11 +804,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": {
@@ -226,7 +818,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "round(increase(avalanche_snowman_blks_rejected_count{chain=\"C\", job=\"avalanchego\"}[1m]))>0",
+          "expr": "round(increase(avalanche_snowman_blks_rejected_count{chain=\"$chain\", job=\"avalanchego\"}[1m]))>0",
           "interval": "",
           "legendFormat": "Blocks {{node_id}}",
           "range": true,
@@ -241,27 +833,29 @@
         "type": "prometheus",
         "uid": "${datasource}"
       },
-      "description": "The average time between a block's issuance and acceptance by this node over the last 5 minutes.",
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "bars",
+            "fillOpacity": 100,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
             },
-            "lineInterpolation": "smooth",
+            "insertNulls": false,
+            "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
@@ -274,21 +868,23 @@
               "mode": "none"
             },
             "thresholdsStyle": {
-              "mode": "line+area"
+              "mode": "off"
             }
           },
           "mappings": [],
-          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
               {
-                "color": "transparent",
-                "value": null
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
           },
-          "unit": "ns"
+          "unit": "short"
         },
         "overrides": []
       },
@@ -296,9 +892,9 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 8
+        "y": 35
       },
-      "id": 22,
+      "id": 15,
       "options": {
         "legend": {
           "calcs": [
@@ -311,24 +907,26 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "rate(avalanche_snowman_blks_accepted_sum{chain=\"C\", job=\"avalanchego\"}[5m]) / rate(avalanche_snowman_blks_accepted_count{chain=\"C\", job=\"avalanchego\"}[5m])",
+          "exemplar": true,
+          "expr": "round(increase(avalanche_snowman_blks_accepted_count{chain=\"$chain\", job=\"avalanchego\"}[1m]))>0",
           "interval": "",
-          "legendFormat": "Avg Acceptance Latency {{node_id}}",
+          "legendFormat": "Blocks {{node_id}}",
           "refId": "A"
         }
       ],
-      "title": "Average Block Acceptance Latency",
+      "title": "Accepted Blocks in Last Minute",
       "type": "timeseries"
     },
     {
@@ -343,11 +941,13 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 0,
             "gradientMode": "none",
@@ -356,6 +956,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
@@ -377,8 +978,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -394,7 +994,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 8
+        "y": 35
       },
       "id": 23,
       "options": {
@@ -409,18 +1009,19 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "rate(avalanche_snowman_blks_rejected_sum{chain=\"C\", job=\"avalanchego\"}[5m]) / rate(avalanche_snowman_blks_rejected_count{chain=\"C\", job=\"avalanchego\"}[5m])",
+          "expr": "rate(avalanche_snowman_blks_rejected_sum{chain=\"$chain\", job=\"avalanchego\"}[5m]) / rate(avalanche_snowman_blks_rejected_count{chain=\"$chain\", job=\"avalanchego\"}[5m])",
           "interval": "",
           "legendFormat": "Avg Rejection Latency {{node_id}}",
           "refId": "A"
@@ -434,204 +1035,20 @@
         "type": "prometheus",
         "uid": "${datasource}"
       },
+      "description": "The average time between a block's issuance and acceptance by this node over the last 5 minutes.",
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "Transactions",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "bars",
-            "fillOpacity": 100,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "line+area"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "transparent",
-                "value": null
-              }
-            ]
-          },
-          "unit": "short"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 16
-      },
-      "id": 9,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "max"
-          ],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "8.0.4",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${datasource}"
-          },
-          "exemplar": true,
-          "expr": "avalanche_snowman_blks_processing{chain=\"C\", job=\"avalanchego\"}>0",
-          "interval": "",
-          "legendFormat": "Blocks {{node_id}}",
-          "refId": "A"
-        }
-      ],
-      "title": "Processing Blocks",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${datasource}"
-      },
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "Incomplete Polls",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "bars",
-            "fillOpacity": 100,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "linear",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "line+area"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "transparent",
-                "value": null
-              }
-            ]
-          },
-          "unit": "short"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 16
-      },
-      "id": 39,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "max"
-          ],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "8.0.4",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${datasource}"
-          },
-          "exemplar": true,
-          "expr": "avalanche_snowman_polls{chain=\"C\"} > 0",
-          "interval": "",
-          "legendFormat": "Polls {{node_id}}",
-          "refId": "A"
-        }
-      ],
-      "title": "Incomplete Polls",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${datasource}"
-      },
-      "description": "Measures how much of each second is being spent handling different kinds of messages on the C-Chain.\nThe value for chits, for example, is the number of seconds spent handling chits messages per second, over the last 30 seconds.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 0,
             "gradientMode": "none",
@@ -640,105 +1057,7 @@
               "tooltip": false,
               "viz": false
             },
-            "lineInterpolation": "smooth",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "never",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "ns"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 9,
-        "w": 12,
-        "x": 0,
-        "y": 24
-      },
-      "id": 5,
-      "options": {
-        "legend": {
-          "calcs": [
-            "mean",
-            "max"
-          ],
-          "displayMode": "table",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "pluginVersion": "8.0.4",
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${datasource}"
-          },
-          "exemplar": true,
-          "expr": "rate(avalanche_handler_message_handling_time{chain=\"C\", job=\"avalanchego\"}[5m])",
-          "interval": "",
-          "legendFormat": "{{ op }} {{node_id}}",
-          "refId": "A"
-        }
-      ],
-      "title": "Message Handling Time (Total)",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${datasource}"
-      },
-      "description": "Percentage of queries for which we receive chits on time.",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "axisSoftMin": 0,
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
@@ -761,8 +1080,298 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "red",
-                "value": null
+                "color": "transparent"
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 43
+      },
+      "id": 22,
+      "options": {
+        "legend": {
+          "calcs": [
+            "min",
+            "mean",
+            "max"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "expr": "rate(avalanche_snowman_blks_accepted_sum{chain=\"$chain\", job=\"avalanchego\"}[5m]) / rate(avalanche_snowman_blks_accepted_count{chain=\"$chain\", job=\"avalanchego\"}[5m])",
+          "interval": "",
+          "legendFormat": "Avg Acceptance Latency {{node_id}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Average Block Acceptance Latency",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "Incomplete Polls",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "bars",
+            "fillOpacity": 100,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "line+area"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "transparent"
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 43
+      },
+      "id": 39,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "exemplar": true,
+          "expr": "avalanche_snowman_polls{chain=\"$chain\"} > 0",
+          "interval": "",
+          "legendFormat": "Polls {{node_id}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Incomplete Polls",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "Transactions",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "bars",
+            "fillOpacity": 100,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "line+area"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "transparent"
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 51
+      },
+      "id": 9,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "exemplar": true,
+          "expr": "avalanche_snowman_blks_processing{chain=\"$chain\", job=\"avalanchego\"}>0",
+          "interval": "",
+          "legendFormat": "Blocks {{node_id}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Processing Blocks",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "description": "Percentage of queries for which we receive chits on time.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "line+area"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red"
               },
               {
                 "color": "transparent",
@@ -778,7 +1387,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 24
+        "y": 51
       },
       "id": 11,
       "options": {
@@ -793,18 +1402,19 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "max(increase(avalanche_handler_messages{chain=\"C\", op=\"chits\", job=\"avalanchego\"}[5m]))",
+          "expr": "max(increase(avalanche_handler_messages{chain=\"$chain\", op=\"chits\", job=\"avalanchego\"}[5m]))",
           "hide": true,
           "refId": "A"
         },
@@ -813,7 +1423,7 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "max(increase(avalanche_handler_messages{chain=\"C\", op=\"query_failed\", job=\"avalanchego\"}[5m]))",
+          "expr": "max(increase(avalanche_handler_messages{chain=\"$chain\", op=\"query_failed\", job=\"avalanchego\"}[5m]))",
           "hide": true,
           "refId": "B"
         },
@@ -835,18 +1445,20 @@
         "type": "prometheus",
         "uid": "${datasource}"
       },
-      "description": "Measures how long each kind of request on the C-Chain takes to handle.\nThe value for chits, for example, is how long, in seconds, it takes to handle a chits message.",
+      "description": "Measures how much of each second is being spent handling different kinds of messages on the C-Chain.\nThe value for chits, for example, is the number of seconds spent handling chits messages per second, over the last 30 seconds.",
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 0,
             "gradientMode": "none",
@@ -855,6 +1467,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
@@ -876,8 +1489,108 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ns"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 59
+      },
+      "id": 40,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "exemplar": true,
+          "expr": "rate(avalanche_handler_message_handling_time{chain=\"$chain\", job=\"avalanchego\"}[5m])",
+          "interval": "",
+          "legendFormat": "{{ op }} {{node_id}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Message Handling Time (Total)",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "description": "Measures how long each kind of request on the C-Chain takes to handle.\nThe value for chits, for example, is how long, in seconds, it takes to handle a chits message.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
               },
               {
                 "color": "red",
@@ -893,9 +1606,9 @@
         "h": 9,
         "w": 12,
         "x": 12,
-        "y": 32
+        "y": 59
       },
-      "id": 7,
+      "id": 41,
       "options": {
         "legend": {
           "calcs": [
@@ -907,11 +1620,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": {
@@ -919,7 +1633,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "rate(avalanche_handler_message_handling_time{chain=\"C\", job=\"avalanchego\"}[5m])/rate(avalanche_handler_messages{chain=\"C\", job=\"avalanchego\"}[5m])",
+          "expr": "rate(avalanche_handler_message_handling_time{chain=\"$chain\", job=\"avalanchego\"}[5m])/rate(avalanche_handler_messages{chain=\"$chain\", job=\"avalanchego\"}[5m])",
           "interval": "",
           "legendFormat": "{{ op }} {{node_id}}",
           "refId": "A"
@@ -939,11 +1653,13 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "bars",
             "fillOpacity": 0,
             "gradientMode": "none",
@@ -952,6 +1668,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -974,8 +1691,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -991,21 +1707,23 @@
         "h": 8,
         "w": 6,
         "x": 0,
-        "y": 33
+        "y": 68
       },
       "id": 19,
       "options": {
         "legend": {
+          "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
-      "pluginVersion": "8.0.6",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": {
@@ -1013,7 +1731,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "avalanche_handler_sync_unprocessed_msgs_count{chain=\"C\"}",
+          "expr": "avalanche_handler_sync_unprocessed_msgs_count{chain=\"$chain\"}",
           "interval": "",
           "legendFormat": "{{ op }} {{node_id}}",
           "refId": "A"
@@ -1024,7 +1742,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "avalanche_handler_async_unprocessed_msgs_count{chain=\"C\"}",
+          "expr": "avalanche_handler_async_unprocessed_msgs_count{chain=\"$chain\"}",
           "interval": "",
           "legendFormat": "{{ op }}",
           "refId": "B"
@@ -1044,11 +1762,13 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "bars",
             "fillOpacity": 0,
             "gradientMode": "none",
@@ -1057,6 +1777,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -1079,8 +1800,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1096,21 +1816,23 @@
         "h": 8,
         "w": 6,
         "x": 6,
-        "y": 33
+        "y": 68
       },
       "id": 29,
       "options": {
         "legend": {
+          "calcs": [],
           "displayMode": "list",
           "placement": "bottom",
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
-      "pluginVersion": "8.0.6",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": {
@@ -1118,13 +1840,114 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "increase(avalanche_handler_expired{chain=\"C\", job=\"avalanchego\"}[1m]) or 0 * up",
+          "expr": "increase(avalanche_handler_expired{chain=\"$chain\", job=\"avalanchego\"}[1m]) or 0 * up",
           "interval": "",
           "legendFormat": "{{ op }} {{node_id}}",
           "refId": "A"
         }
       ],
       "title": "Incoming Messages Expired in Last Minute",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "description": "Measures how many of each kind of message are received per second on the C-Chain.",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "Messages / Second",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 68
+      },
+      "id": 42,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "max"
+          ],
+          "displayMode": "table",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "exemplar": true,
+          "expr": "rate(avalanche_handler_messages{chain=\"$chain\", job=\"avalanchego\"}[5m])",
+          "interval": "",
+          "legendFormat": "{{ op }} {{node_id}}",
+          "refId": "A"
+        }
+      ],
+      "title": "Messages Received per Second",
       "type": "timeseries"
     },
     {
@@ -1139,11 +1962,13 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 0,
             "gradientMode": "none",
@@ -1152,6 +1977,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
@@ -1174,8 +2000,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1191,7 +2016,7 @@
         "h": 9,
         "w": 12,
         "x": 0,
-        "y": 41
+        "y": 76
       },
       "id": 25,
       "options": {
@@ -1205,11 +2030,12 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": {
@@ -1217,7 +2043,7 @@
             "uid": "${datasource}"
           },
           "exemplar": true,
-          "expr": "avg_over_time(avalanche_benchlist_benched_weight{chain=\"C\", job=\"avalanchego\"}[15m]) / 10^9",
+          "expr": "avg_over_time(avalanche_benchlist_benched_weight{chain=\"$chain\", job=\"avalanchego\"}[15m]) / 10^9",
           "interval": "",
           "legendFormat": "AVAX Benched {{node_id}}",
           "refId": "A"
@@ -1231,18 +2057,21 @@
         "type": "prometheus",
         "uid": "${datasource}"
       },
-      "description": "Measures how many of each kind of message are received per second on the C-Chain.",
+      "description": "Hit rate for the decided block cache",
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
-            "axisLabel": "Messages / Second",
+            "axisLabel": "",
             "axisPlacement": "auto",
+            "axisSoftMin": 0,
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 0,
             "gradientMode": "none",
@@ -1251,14 +2080,15 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
             },
-            "showPoints": "never",
-            "spanNulls": true,
+            "showPoints": "auto",
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -1272,8 +2102,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1281,47 +2110,66 @@
               }
             ]
           },
-          "unit": "short"
+          "unit": "percentunit"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
+        "h": 8,
         "w": 12,
         "x": 12,
-        "y": 41
+        "y": 77
       },
-      "id": 6,
+      "id": 36,
       "options": {
         "legend": {
-          "calcs": [
-            "mean",
-            "max"
-          ],
-          "displayMode": "table",
+          "calcs": [],
+          "displayMode": "list",
           "placement": "bottom",
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
-      "pluginVersion": "8.0.4",
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "exemplar": true,
-          "expr": "rate(avalanche_handler_messages{chain=\"C\", job=\"avalanchego\"}[5m])",
+          "expr": "sum(increase(avalanche_evm_chain_state_decided_cache_get_count{chain=\"$chain\", result=\"hit\"}[5m]) or 0 * up)",
+          "hide": true,
           "interval": "",
-          "legendFormat": "{{ op }} {{node_id}}",
+          "legendFormat": "Hits {{node_id}}",
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "expr": "sum(increase(avalanche_evm_chain_state_decided_cache_get_count{chain=\"$chain\"}[5m]) or 0 * up)",
+          "hide": true,
+          "interval": "",
+          "legendFormat": "Calls {{node_id}}",
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "name": "Expression",
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "$A/$B",
+          "refId": "Hit Rate",
+          "type": "math"
         }
       ],
-      "title": "Messages Received per Second",
+      "title": "Decided Cache Hit Rate",
       "type": "timeseries"
     },
     {
@@ -1336,12 +2184,14 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "axisSoftMin": 0,
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 0,
             "gradientMode": "none",
@@ -1350,6 +2200,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "linear",
             "lineWidth": 1,
             "pointSize": 5,
@@ -1371,8 +2222,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1388,7 +2238,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 50
+        "y": 85
       },
       "id": 35,
       "options": {
@@ -1399,279 +2249,48 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "sum(increase(avalanche_evm_chain_state_bytes_to_id_cache_get_count{chain=\"C\", result=\"hit\"}[5m]) or 0 * up)",
+          "expr": "sum(increase(avalanche_evm_chain_state_bytes_to_id_cache_get_count{chain=\"$chain\", result=\"hit\"}[5m]) or 0 * up)",
+          "hide": true,
           "interval": "",
           "legendFormat": "Hits {{node_id}}",
-          "refId": "A",
-          "hide": true
+          "refId": "A"
         },
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "sum(increase(avalanche_evm_chain_state_bytes_to_id_cache_get_count{chain=\"C\"}[5m]) or 0 * up)",
+          "expr": "sum(increase(avalanche_evm_chain_state_bytes_to_id_cache_get_count{chain=\"$chain\"}[5m]) or 0 * up)",
+          "hide": true,
           "interval": "",
           "legendFormat": "Calls {{node_id}}",
-          "refId": "B",
-          "hide": true
+          "refId": "B"
         },
         {
           "datasource": {
+            "name": "Expression",
             "type": "__expr__",
-            "uid": "__expr__",
-            "name": "Expression"
+            "uid": "__expr__"
           },
-          "refId": "Hit Rate",
-          "type": "math",
+          "expression": "$A/$B",
           "hide": false,
-          "expression": "$A/$B"
+          "refId": "Hit Rate",
+          "type": "math"
         }
       ],
       "title": "Block ID Cache Hit Rate",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${datasource}"
-      },
-      "description": "Hit rate for the decided block cache",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "axisSoftMin": 0,
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "smooth",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "percentunit"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 50
-      },
-      "id": 36,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${datasource}"
-          },
-          "expr": "sum(increase(avalanche_evm_chain_state_decided_cache_get_count{chain=\"C\", result=\"hit\"}[5m]) or 0 * up)",
-          "interval": "",
-          "legendFormat": "Hits {{node_id}}",
-          "refId": "A",
-          "hide": true
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${datasource}"
-          },
-          "expr": "sum(increase(avalanche_evm_chain_state_decided_cache_get_count{chain=\"C\"}[5m]) or 0 * up)",
-          "interval": "",
-          "legendFormat": "Calls {{node_id}}",
-          "refId": "B",
-          "hide": true
-        },
-        {
-          "refId": "Hit Rate",
-          "datasource": {
-            "type": "__expr__",
-            "uid": "__expr__",
-            "name": "Expression"
-          },
-          "type": "math",
-          "expression": "$A/$B"
-        }
-      ],
-      "title": "Decided Cache Hit Rate",
-      "type": "timeseries"
-    },
-    {
-      "datasource": {
-        "type": "prometheus",
-        "uid": "${datasource}"
-      },
-      "description": "Hit rate for the missing block cache",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisCenteredZero": false,
-            "axisColorMode": "text",
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "axisSoftMax": 1,
-            "axisSoftMin": 0,
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "none",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "smooth",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": false,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              },
-              {
-                "color": "red",
-                "value": 80
-              }
-            ]
-          },
-          "unit": "percentunit"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 0,
-        "y": 58
-      },
-      "id": 37,
-      "options": {
-        "legend": {
-          "calcs": [],
-          "displayMode": "list",
-          "placement": "bottom",
-          "showLegend": true
-        },
-        "tooltip": {
-          "mode": "single",
-          "sort": "none"
-        }
-      },
-      "targets": [
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${datasource}"
-          },
-          "expr": "sum(increase(avalanche_evm_chain_state_missing_cache_get_count{chain=\"C\", result=\"hit\"}[5m]) or 0 * up)",
-          "interval": "",
-          "legendFormat": "Hits {{node_id}}",
-          "refId": "A",
-          "hide": true
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${datasource}"
-          },
-          "expr": "sum(increase(avalanche_evm_chain_state_missing_cache_get_count{chain=\"C\"}[5m]) or 0 * up)",
-          "interval": "",
-          "legendFormat": "Calls {{node_id}}",
-          "refId": "B",
-          "hide": true
-        },
-        {
-          "refId": "Hit Rate",
-          "datasource": {
-            "type": "__expr__",
-            "uid": "__expr__",
-            "name": "Expression"
-          },
-          "type": "math",
-          "expression": "$A/$B"
-        }
-      ],
-      "title": "Missing Block Cache Hit Rate",
       "type": "timeseries"
     },
     {
@@ -1686,12 +2305,14 @@
             "mode": "palette-classic"
           },
           "custom": {
+            "axisBorderShow": false,
             "axisCenteredZero": false,
             "axisColorMode": "text",
             "axisLabel": "",
             "axisPlacement": "auto",
             "axisSoftMin": 0,
             "barAlignment": 0,
+            "barWidthFactor": 0.6,
             "drawStyle": "line",
             "fillOpacity": 0,
             "gradientMode": "none",
@@ -1700,6 +2321,7 @@
               "tooltip": false,
               "viz": false
             },
+            "insertNulls": false,
             "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
@@ -1721,8 +2343,7 @@
             "mode": "absolute",
             "steps": [
               {
-                "color": "green",
-                "value": null
+                "color": "green"
               },
               {
                 "color": "red",
@@ -1738,7 +2359,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 58
+        "y": 85
       },
       "id": 38,
       "options": {
@@ -1749,105 +2370,224 @@
           "showLegend": true
         },
         "tooltip": {
+          "hideZeros": false,
           "mode": "single",
           "sort": "none"
         }
       },
+      "pluginVersion": "12.0.0",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "sum(increase(avalanche_evm_chain_state_unverified_cache_get_count{chain=\"C\", result=\"hit\"}[5m]) or 0 * up)",
+          "expr": "sum(increase(avalanche_evm_chain_state_unverified_cache_get_count{chain=\"$chain\", result=\"hit\"}[5m]) or 0 * up)",
+          "hide": true,
           "interval": "",
           "legendFormat": "Hits {{node_id}}",
-          "refId": "A",
-          "hide": true
+          "refId": "A"
         },
         {
           "datasource": {
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "sum(increase(avalanche_evm_chain_state_unverified_cache_get_count{chain=\"C\"}[5m]) or 0 * up)",
+          "expr": "sum(increase(avalanche_evm_chain_state_unverified_cache_get_count{chain=\"$chain\"}[5m]) or 0 * up)",
+          "hide": true,
           "interval": "",
           "legendFormat": "Calls {{node_id}}",
-          "refId": "B",
-          "hide": true
+          "refId": "B"
         },
         {
-          "refId": "Hit Rate",
           "datasource": {
+            "name": "Expression",
             "type": "__expr__",
-            "uid": "__expr__",
-            "name": "Expression"
+            "uid": "__expr__"
           },
-          "type": "math",
-          "expression": "$A/$B"
+          "expression": "$A/$B",
+          "refId": "Hit Rate",
+          "type": "math"
         }
       ],
       "title": "Unverified Block Cache Hit Rate",
       "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "description": "Hit rate for the missing block cache",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "axisSoftMax": 1,
+            "axisSoftMin": 0,
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 93
+      },
+      "id": 37,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "expr": "sum(increase(avalanche_evm_chain_state_missing_cache_get_count{chain=\"$chain\", result=\"hit\"}[5m]) or 0 * up)",
+          "hide": true,
+          "interval": "",
+          "legendFormat": "Hits {{node_id}}",
+          "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "expr": "sum(increase(avalanche_evm_chain_state_missing_cache_get_count{chain=\"$chain\"}[5m]) or 0 * up)",
+          "hide": true,
+          "interval": "",
+          "legendFormat": "Calls {{node_id}}",
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "name": "Expression",
+            "type": "__expr__",
+            "uid": "__expr__"
+          },
+          "expression": "$A/$B",
+          "refId": "Hit Rate",
+          "type": "math"
+        }
+      ],
+      "title": "Missing Block Cache Hit Rate",
+      "type": "timeseries"
     }
   ],
+  "preload": false,
   "refresh": "10s",
-  "schemaVersion": 37,
-  "style": "dark",
+  "schemaVersion": 41,
   "tags": [
     "Avalanche"
   ],
   "templating": {
     "list": [
       {
-        "hide": 0,
+        "current": {
+          "text": "prometheus",
+          "value": "P1809F7CD0C75ACF3"
+        },
         "includeAll": false,
         "label": "Data Source",
-        "multi": false,
         "name": "datasource",
         "options": [],
         "query": "prometheus",
-        "queryValue": "",
         "refresh": 1,
         "regex": "",
-        "skipUrlSync": false,
         "type": "datasource"
       },
       {
+        "baseFilters": [],
         "datasource": {
           "type": "prometheus",
           "uid": "${datasource}"
         },
         "filters": [],
-        "hide": 0,
         "label": "Filter",
         "name": "filter",
-        "skipUrlSync": false,
         "type": "adhoc"
+      },
+      {
+        "current": {
+          "text": "C",
+          "value": "C"
+        },
+        "name": "chain",
+        "options": [],
+        "query": "label_values(avalanche_evm_eth_chain_account_commits, chain)",
+        "refresh": 1,
+        "type": "query"
       }
     ]
   },
   "time": {
-    "from": "now-6h",
-    "to": "now"
+    "from": "2025-07-03T19:06:18.000Z",
+    "to": "2025-07-03T19:21:18.000Z"
   },
-  "timepicker": {
-    "refresh_intervals": [
-      "5s",
-      "10s",
-      "30s",
-      "1m",
-      "5m",
-      "15m",
-      "30m",
-      "1h",
-      "2h",
-      "1d"
-    ]
-  },
-  "timezone": "",
-  "title": "C-Chain",
-  "uid": "Gl1I20mnk",
-  "version": 52,
-  "weekStart": ""
+  "timepicker": {},
+  "timezone": "America/New_York",
+  "title": "C-Chain 2",
+  "uid": "Gl1I20mnk1",
+  "version": 1
 }
