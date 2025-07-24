@@ -96,7 +96,6 @@ install_prometheus() {
   sudo chown prometheus:prometheus /usr/local/bin/{prometheus,promtool}
   sudo chown -R prometheus:prometheus /etc/prometheus
   sudo chown prometheus:prometheus /var/lib/prometheus
-  sudo cp -r {consoles,console_libraries} /etc/prometheus/
   sudo cp prometheus.yml /etc/prometheus/
 
   #creating the service file
@@ -112,7 +111,7 @@ install_prometheus() {
     echo "User=prometheus"
     echo "Group=prometheus"
     echo "ExecReload=/bin/kill -HUP \$MAINPID"
-    echo "ExecStart=/usr/local/bin/prometheus   --config.file=/etc/prometheus/prometheus.yml   --storage.tsdb.path=/var/lib/prometheus   --web.console.templates=/etc/prometheus/consoles   --web.console.libraries=/etc/prometheus/console_libraries   --web.listen-address=127.0.0.1:9090   --web.external-url="
+    echo "ExecStart=/usr/local/bin/prometheus   --config.file=/etc/prometheus/prometheus.yml   --storage.tsdb.path=/var/lib/prometheus   --web.listen-address=127.0.0.1:9090   --web.external-url="
     echo ""
     echo "SyslogIdentifier=prometheus"
     echo "Restart=always"
