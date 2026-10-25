@@ -216,13 +216,14 @@
       "pluginVersion": "12.0.0",
       "targets": [
         {
-          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_gas_used_processed{chain=\"${chain}\"}[1m])) / 1000000",
-          "legendFormat": "MGas / s",
+          "expr": "sum by (chain) (rate(avalanche_evm_sae_executed_gas_charged_total{chain=\"${chain}\"}[1m])) / 1000000",
+          "legendFormat": "SAE Executed Charged MGas/s",
           "refId": "A"
         }
       ],
-      "title": "Verified MGas/s",
-      "type": "timeseries"
+      "title": "SAE Executed Charged MGas/s",
+      "type": "timeseries",
+      "description": "Rate of SAE executed charged gas (MGas/s). This measures executed charged gas, not the legacy Coreth verified-gas metric. Requires AvalancheGo v1.15.2+ SAE metric names."
     },
     {
       "datasource": {
@@ -2966,6 +2967,93 @@
       ],
       "title": "Average Block Accept Time (ms)",
       "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green"
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 117
+      },
+      "id": 47,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "12.0.0",
+      "targets": [
+        {
+          "expr": "sum by (chain) (rate(avalanche_evm_sae_execute_block_duration_seconds_count{chain=\"${chain}\"}[1m]))",
+          "legendFormat": "SAE Execution Observations/s",
+          "refId": "A"
+        }
+      ],
+      "title": "SAE Execution Observations/s",
+      "type": "timeseries",
+      "description": "Rate of observations recorded by the SAE block execution duration histogram. This is a histogram observation rate, not a transaction throughput metric. Requires AvalancheGo v1.15.2+ SAE metric names."
     }
   ],
   "preload": false,
