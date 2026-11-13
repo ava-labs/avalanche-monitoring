@@ -139,6 +139,7 @@
         "type": "prometheus",
         "uid": "${datasource}"
       },
+      "description": "Gas per second of executed blocks (SAE). Charged is what transactions and end-of-block operations used; the limit series are worst-case gas of executed and accepted blocks; target is the ACP-176 gas target.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -216,12 +217,47 @@
       "pluginVersion": "12.0.0",
       "targets": [
         {
-          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_gas_used_processed{chain=\"${chain}\"}[1m])) / 1000000",
-          "legendFormat": "MGas / s",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "expr": "rate({__name__=~\"avalanche_evm_(transition_)?sae_executed_gas_charged_total\", chain=\"$chain\"}[1m]) / 1e6",
+          "legendFormat": "Charged {{node_id}}",
+          "range": true,
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "expr": "rate({__name__=~\"avalanche_evm_(transition_)?sae_executed_gas_limit_total\", chain=\"$chain\"}[1m]) / 1e6",
+          "legendFormat": "Executed gas limit {{node_id}}",
+          "range": true,
+          "refId": "B"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "expr": "rate({__name__=~\"avalanche_evm_(transition_)?sae_accepted_gas_limit_total\", chain=\"$chain\"}[1m]) / 1e6",
+          "legendFormat": "Accepted gas limit {{node_id}}",
+          "range": true,
+          "refId": "C"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "expr": "{__name__=~\"avalanche_evm_(transition_)?sae_gas_target\", chain=\"$chain\"} / 1e6",
+          "legendFormat": "Target {{node_id}}",
+          "range": true,
+          "refId": "D"
         }
       ],
-      "title": "Verified MGas/s",
+      "title": "Gas Throughput (MGas/s)",
       "type": "timeseries"
     },
     {
@@ -229,6 +265,7 @@
         "type": "prometheus",
         "uid": "${datasource}"
       },
+      "description": "Wall-clock time to execute a single block, including the state commit and post-execution work.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -243,7 +280,7 @@
             "barAlignment": 0,
             "barWidthFactor": 0.6,
             "drawStyle": "line",
-            "fillOpacity": 50,
+            "fillOpacity": 10,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -261,15 +298,13 @@
             "spanNulls": false,
             "stacking": {
               "group": "A",
-              "mode": "percent"
+              "mode": "none"
             },
             "thresholdsStyle": {
               "mode": "off"
             }
           },
           "mappings": [],
-          "max": 1,
-          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -282,7 +317,7 @@
               }
             ]
           },
-          "unit": "percentunit"
+          "unit": "s"
         },
         "overrides": []
       },
@@ -309,72 +344,27 @@
       "pluginVersion": "12.0.0",
       "targets": [
         {
-          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_signature_recovery{chain=\"${chain}\"}[1m])) + 0.000001)",
-          "legendFormat": "Content Validation %",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "expr": "rate({__name__=~\"avalanche_evm_(transition_)?sae_execute_block_duration_seconds_sum\", chain=\"$chain\"}[5m]) / rate({__name__=~\"avalanche_evm_(transition_)?sae_execute_block_duration_seconds_count\", chain=\"$chain\"}[5m])",
+          "legendFormat": "Average {{node_id}}",
+          "range": true,
           "refId": "A"
         },
         {
-          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_signature_recovery{chain=\"${chain}\"}[1m])) + 0.000001)",
-          "legendFormat": "State Init %",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "expr": "histogram_quantile(0.95, rate({__name__=~\"avalanche_evm_(transition_)?sae_execute_block_duration_seconds_bucket\", chain=\"$chain\"}[5m]))",
+          "legendFormat": "p95 {{node_id}}",
+          "range": true,
           "refId": "B"
-        },
-        {
-          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_signature_recovery{chain=\"${chain}\"}[1m])) + 0.000001)",
-          "legendFormat": "Execution %",
-          "refId": "C"
-        },
-        {
-          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_signature_recovery{chain=\"${chain}\"}[1m])) + 0.000001)",
-          "legendFormat": "State Validation %",
-          "refId": "D"
-        },
-        {
-          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_account_hashes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_hashes{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_signature_recovery{chain=\"${chain}\"}[1m])) + 0.000001)",
-          "legendFormat": "Trie Hashes %",
-          "refId": "E"
-        },
-        {
-          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_account_updates{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_updates{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_signature_recovery{chain=\"${chain}\"}[1m])) + 0.000001)",
-          "legendFormat": "Trie Update %",
-          "refId": "F"
-        },
-        {
-          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_storage_reads{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_signature_recovery{chain=\"${chain}\"}[1m])) + 0.000001)",
-          "legendFormat": "Trie Storage Read %",
-          "refId": "G"
-        },
-        {
-          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_snapshot_storage_reads{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_signature_recovery{chain=\"${chain}\"}[1m])) + 0.000001)",
-          "legendFormat": "Snapshot Storage Read %",
-          "refId": "H"
-        },
-        {
-          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_account_reads{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_signature_recovery{chain=\"${chain}\"}[1m])) + 0.000001)",
-          "legendFormat": "Trie Account Read %",
-          "refId": "I"
-        },
-        {
-          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_snapshot_account_reads{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_signature_recovery{chain=\"${chain}\"}[1m])) + 0.000001)",
-          "legendFormat": "Snapshot Account Read %",
-          "refId": "J"
-        },
-        {
-          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_signature_recovery{chain=\"${chain}\"}[1m])) + 0.000001)",
-          "legendFormat": "Write %",
-          "refId": "K"
-        },
-        {
-          "expr": "(sum by (chain) (rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m]))) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_signature_recovery{chain=\"${chain}\"}[1m])) + 0.000001)",
-          "legendFormat": "Commit Total %",
-          "refId": "L"
-        },
-        {
-          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_signature_recovery{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_validations_content{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_inits_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_executions{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_validations_state{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_trie{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_writes{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m]) + rate(avalanche_evm_eth_chain_block_signature_recovery{chain=\"${chain}\"}[1m])) + 0.000001)",
-          "legendFormat": "Signature Recovery %",
-          "refId": "M"
         }
       ],
-      "title": "Block Processing %",
+      "title": "Block Execution Time",
       "type": "timeseries"
     },
     {
@@ -382,6 +372,7 @@
         "type": "prometheus",
         "uid": "${datasource}"
       },
+      "description": "Accepted minus executed height should stay near 0; a climb means execution is falling behind consensus. Executed minus settled is expected to stay at a small positive value, since blocks settle some time after they execute.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -396,7 +387,7 @@
             "barAlignment": 0,
             "barWidthFactor": 0.6,
             "drawStyle": "line",
-            "fillOpacity": 50,
+            "fillOpacity": 10,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -414,15 +405,13 @@
             "spanNulls": false,
             "stacking": {
               "group": "A",
-              "mode": "percent"
+              "mode": "none"
             },
             "thresholdsStyle": {
               "mode": "off"
             }
           },
           "mappings": [],
-          "max": 1,
-          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -435,7 +424,7 @@
               }
             ]
           },
-          "unit": "percentunit"
+          "unit": "short"
         },
         "overrides": []
       },
@@ -462,27 +451,27 @@
       "pluginVersion": "12.0.0",
       "targets": [
         {
-          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m])) + 0.000001)",
-          "legendFormat": "Account Commit %",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "expr": "avalanche_snowman_last_accepted_height{chain=\"$chain\"} - {__name__=~\"avalanche_evm_(transition_)?sae_last_executed_height\", chain=\"$chain\"}",
+          "legendFormat": "Accepted - executed {{node_id}}",
+          "range": true,
           "refId": "A"
         },
         {
-          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m])) + 0.000001)",
-          "legendFormat": "Storage Commit %",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "expr": "{__name__=~\"avalanche_evm_(transition_)?sae_last_executed_height\", chain=\"$chain\"} - {__name__=~\"avalanche_evm_(transition_)?sae_last_settled_height\", chain=\"$chain\"}",
+          "legendFormat": "Executed - settled {{node_id}}",
+          "range": true,
           "refId": "B"
-        },
-        {
-          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m])) + 0.000001)",
-          "legendFormat": "Snapshot Commit %",
-          "refId": "C"
-        },
-        {
-          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_account_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_storage_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_snapshot_commits{chain=\"${chain}\"}[1m])) + sum by (chain) (rate(avalanche_evm_eth_chain_triedb_commits{chain=\"${chain}\"}[1m])) + 0.000001)",
-          "legendFormat": "TrieDB Commit %",
-          "refId": "D"
         }
       ],
-      "title": "Commit Time",
+      "title": "Execution Lag (blocks)",
       "type": "timeseries"
     },
     {
@@ -490,6 +479,7 @@
         "type": "prometheus",
         "uid": "${datasource}"
       },
+      "description": "Time from a block's acceptance until its execution completes.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -540,7 +530,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "s"
         },
         "overrides": []
       },
@@ -567,12 +558,27 @@
       "pluginVersion": "12.0.0",
       "targets": [
         {
-          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_txs_accepted{chain=\"${chain}\"}[1m]))",
-          "legendFormat": "EVM Accepted TPS",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "expr": "histogram_quantile(0.5, rate({__name__=~\"avalanche_evm_(transition_)?sae_execution_queue_duration_seconds_bucket\", chain=\"$chain\"}[5m]))",
+          "legendFormat": "p50 {{node_id}}",
+          "range": true,
           "refId": "A"
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "expr": "histogram_quantile(0.95, rate({__name__=~\"avalanche_evm_(transition_)?sae_execution_queue_duration_seconds_bucket\", chain=\"$chain\"}[5m]))",
+          "legendFormat": "p95 {{node_id}}",
+          "range": true,
+          "refId": "B"
         }
       ],
-      "title": "EVM Accepted TPS",
+      "title": "Execution Queue Wait",
       "type": "timeseries"
     },
     {
@@ -580,6 +586,7 @@
         "type": "prometheus",
         "uid": "${datasource}"
       },
+      "description": "Blocks executed per second (rate of block execution observations).",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -657,12 +664,17 @@
       "pluginVersion": "12.0.0",
       "targets": [
         {
-          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_block_inserts_count{chain=\"${chain}\"}[1m]))",
-          "legendFormat": "Blocks Verified / S",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "expr": "rate({__name__=~\"avalanche_evm_(transition_)?sae_execute_block_duration_seconds_count\", chain=\"$chain\"}[1m])",
+          "legendFormat": "Blocks executed / s {{node_id}}",
+          "range": true,
           "refId": "A"
         }
       ],
-      "title": "Blocks Verified / S",
+      "title": "Blocks Executed / S",
       "type": "timeseries"
     },
     {
@@ -670,6 +682,7 @@
         "type": "prometheus",
         "uid": "${datasource}"
       },
+      "description": "Accepted blocks that have not yet completed execution.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -720,7 +733,8 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "short"
         },
         "overrides": []
       },
@@ -747,12 +761,17 @@
       "pluginVersion": "12.0.0",
       "targets": [
         {
-          "expr": "sum by (chain) (rate(avalanche_evm_eth_chain_txs_processed{chain=\"${chain}\"}[1m])) / (sum by (chain) (rate(avalanche_evm_eth_chain_block_inserts_count{chain=\"${chain}\"}[1m])) + 0.000001)",
-          "legendFormat": "Txs / Block",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "expr": "{__name__=~\"avalanche_evm_(transition_)?sae_execution_queue_blocks\", chain=\"$chain\"}",
+          "legendFormat": "Queued blocks {{node_id}}",
+          "range": true,
           "refId": "A"
         }
       ],
-      "title": "Txs / Block",
+      "title": "Execution Queue Depth",
       "type": "timeseries"
     },
     {
@@ -2087,7 +2106,7 @@
         "type": "prometheus",
         "uid": "${datasource}"
       },
-      "description": "Hit rate for the decided block cache",
+      "description": "Base fee realized by execution of the latest executed block, and the worst-case base fee admitted by consensus for it, in nAVAX.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2139,8 +2158,7 @@
                 "value": 80
               }
             ]
-          },
-          "unit": "percentunit"
+          }
         },
         "overrides": []
       },
@@ -2171,10 +2189,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "sum(increase(avalanche_evm_chain_state_decided_cache_get_count{chain=\"$chain\", result=\"hit\"}[5m]) or 0 * up)",
-          "hide": true,
-          "interval": "",
-          "legendFormat": "Hits {{node_id}}",
+          "expr": "{__name__=~\"avalanche_evm_(transition_)?sae_executed_base_fee\", chain=\"$chain\"} / 1e9",
+          "legendFormat": "Executed {{node_id}}",
+          "range": true,
           "refId": "A"
         },
         {
@@ -2182,24 +2199,13 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "sum(increase(avalanche_evm_chain_state_decided_cache_get_count{chain=\"$chain\"}[5m]) or 0 * up)",
-          "hide": true,
-          "interval": "",
-          "legendFormat": "Calls {{node_id}}",
+          "expr": "{__name__=~\"avalanche_evm_(transition_)?sae_worst_case_base_fee\", chain=\"$chain\"} / 1e9",
+          "legendFormat": "Worst case {{node_id}}",
+          "range": true,
           "refId": "B"
-        },
-        {
-          "datasource": {
-            "name": "Expression",
-            "type": "__expr__",
-            "uid": "__expr__"
-          },
-          "expression": "$A/$B",
-          "refId": "Hit Rate",
-          "type": "math"
         }
       ],
-      "title": "Decided Cache Hit Rate",
+      "title": "Base Fee",
       "type": "timeseries"
     },
     {
@@ -2207,7 +2213,7 @@
         "type": "prometheus",
         "uid": "${datasource}"
       },
-      "description": "Hit rate for the cache where the key is the byte representation of the block, and the value is the block's ID",
+      "description": "Gas excess realized by execution of the latest executed block, and the worst-case gas excess simulated for it.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2260,7 +2266,7 @@
               }
             ]
           },
-          "unit": "percent"
+          "unit": "short"
         },
         "overrides": []
       },
@@ -2291,10 +2297,9 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "sum(increase(avalanche_evm_chain_state_bytes_to_id_cache_get_count{chain=\"$chain\", result=\"hit\"}[5m]) or 0 * up)",
-          "hide": true,
-          "interval": "",
-          "legendFormat": "Hits {{node_id}}",
+          "expr": "{__name__=~\"avalanche_evm_(transition_)?sae_executed_gas_excess\", chain=\"$chain\"}",
+          "legendFormat": "Executed {{node_id}}",
+          "range": true,
           "refId": "A"
         },
         {
@@ -2302,25 +2307,13 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "sum(increase(avalanche_evm_chain_state_bytes_to_id_cache_get_count{chain=\"$chain\"}[5m]) or 0 * up)",
-          "hide": true,
-          "interval": "",
-          "legendFormat": "Calls {{node_id}}",
+          "expr": "{__name__=~\"avalanche_evm_(transition_)?sae_worst_case_gas_excess\", chain=\"$chain\"}",
+          "legendFormat": "Worst case {{node_id}}",
+          "range": true,
           "refId": "B"
-        },
-        {
-          "datasource": {
-            "name": "Expression",
-            "type": "__expr__",
-            "uid": "__expr__"
-          },
-          "expression": "$A/$B",
-          "hide": false,
-          "refId": "Hit Rate",
-          "type": "math"
         }
       ],
-      "title": "Block ID Cache Hit Rate",
+      "title": "Gas Excess",
       "type": "timeseries"
     },
     {
@@ -2328,7 +2321,7 @@
         "type": "prometheus",
         "uid": "${datasource}"
       },
-      "description": "Hit rate for the unverified block cache",
+      "description": "Gas time minus wall time, observed when the latest block finished executing; negative when gas time lags the wall clock.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2381,7 +2374,7 @@
               }
             ]
           },
-          "unit": "percent"
+          "unit": "s"
         },
         "overrides": []
       },
@@ -2412,35 +2405,13 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "sum(increase(avalanche_evm_chain_state_unverified_cache_get_count{chain=\"$chain\", result=\"hit\"}[5m]) or 0 * up)",
-          "hide": true,
-          "interval": "",
-          "legendFormat": "Hits {{node_id}}",
+          "expr": "{__name__=~\"avalanche_evm_(transition_)?sae_gas_time_wall_time_gap_seconds\", chain=\"$chain\"}",
+          "legendFormat": "Gas time - wall time {{node_id}}",
+          "range": true,
           "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${datasource}"
-          },
-          "expr": "sum(increase(avalanche_evm_chain_state_unverified_cache_get_count{chain=\"$chain\"}[5m]) or 0 * up)",
-          "hide": true,
-          "interval": "",
-          "legendFormat": "Calls {{node_id}}",
-          "refId": "B"
-        },
-        {
-          "datasource": {
-            "name": "Expression",
-            "type": "__expr__",
-            "uid": "__expr__"
-          },
-          "expression": "$A/$B",
-          "refId": "Hit Rate",
-          "type": "math"
         }
       ],
-      "title": "Unverified Block Cache Hit Rate",
+      "title": "Gas Time vs Wall Clock",
       "type": "timeseries"
     },
     {
@@ -2448,7 +2419,7 @@
         "type": "prometheus",
         "uid": "${datasource}"
       },
-      "description": "Hit rate for the missing block cache",
+      "description": "Number of SAE blocks still live in memory (created but not yet garbage collected).",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -2502,7 +2473,7 @@
               }
             ]
           },
-          "unit": "percentunit"
+          "unit": "short"
         },
         "overrides": []
       },
@@ -2533,41 +2504,19 @@
             "type": "prometheus",
             "uid": "${datasource}"
           },
-          "expr": "sum(increase(avalanche_evm_chain_state_missing_cache_get_count{chain=\"$chain\", result=\"hit\"}[5m]) or 0 * up)",
-          "hide": true,
-          "interval": "",
-          "legendFormat": "Hits {{node_id}}",
+          "expr": "{__name__=~\"avalanche_evm_(transition_)?sae_in_memory_blocks\", chain=\"$chain\"}",
+          "legendFormat": "In-memory blocks {{node_id}}",
+          "range": true,
           "refId": "A"
-        },
-        {
-          "datasource": {
-            "type": "prometheus",
-            "uid": "${datasource}"
-          },
-          "expr": "sum(increase(avalanche_evm_chain_state_missing_cache_get_count{chain=\"$chain\"}[5m]) or 0 * up)",
-          "hide": true,
-          "interval": "",
-          "legendFormat": "Calls {{node_id}}",
-          "refId": "B"
-        },
-        {
-          "datasource": {
-            "name": "Expression",
-            "type": "__expr__",
-            "uid": "__expr__"
-          },
-          "expression": "$A/$B",
-          "refId": "Hit Rate",
-          "type": "math"
         }
       ],
-      "title": "Missing Block Cache Hit Rate",
+      "title": "In-memory Blocks",
       "type": "timeseries"
     },
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "P1809F7CD0C75ACF3"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2658,7 +2607,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "sum by (chain) (rate(avalanche_meterchainvm_verify_sum{chain=\"$chain\"}[1m])) / sum by (chain) (rate(avalanche_meterchainvm_parse_block_sum{chain=\"$chain\"}[1m]) + rate(avalanche_meterchainvm_verify_sum{chain=\"$chain\"}[1m]) + rate(avalanche_meterchainvm_accept_sum{chain=\"$chain\"}[1m]))",
@@ -2671,7 +2620,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "P1809F7CD0C75ACF3"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "sum by (chain) (rate(avalanche_meterchainvm_accept_sum{chain=\"$chain\"}[1m])) / sum by (chain) (rate(avalanche_meterchainvm_parse_block_sum{chain=\"$chain\"}[1m]) + rate(avalanche_meterchainvm_verify_sum{chain=\"$chain\"}[1m]) + rate(avalanche_meterchainvm_accept_sum{chain=\"$chain\"}[1m]))",
@@ -2688,7 +2637,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "P1809F7CD0C75ACF3"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2782,7 +2731,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "P1809F7CD0C75ACF3"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -2876,7 +2825,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "P1809F7CD0C75ACF3"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -3008,7 +2957,7 @@
         },
         "name": "chain",
         "options": [],
-        "query": "label_values(avalanche_evm_eth_chain_account_commits, chain)",
+        "query": "label_values({__name__=~\"avalanche_evm_(transition_)?sae_last_executed_height\"}, chain)",
         "refresh": 1,
         "type": "query"
       }
